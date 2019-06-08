@@ -8,8 +8,8 @@
 			<p class="text-center h1">まずはログインから</p>
 		</section>
 		<div class="content-btn">
-			<div class="pull-left modal-open">
-				<button class="entry-btn">会員登録</button>
+			<div class="pull-left">
+				<button target="#modal1" class="entry-btn modal-open" >会員登録</button>
 			</div>
 			<div class="pull-right modal-open">
 				<button class="entry-btn">ログイン</button>
@@ -19,9 +19,75 @@
 </div>
 
 <!---- モーダルウィンドウ ---->
-<div id="modal-content">
-	<p>「閉じる」か「背景」をクリックするとモーダルウィンドウを閉じる</p>
+<div id="modal1">
+	<div class="container-sign_up ">
+
+		<h2>会員登録</h2>
+
+		<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+			<%= render "devise/shared/error_messages", resource: resource %>
+
+			<div class="field">
+				<%= f.label :名前 %><br />
+				<%= f.text_field :name, autofocus: true, autocomplete: "name", class: "name", :size => "" %>
+			</div>
+
+			<div class="field">
+				<%= f.label :メールアドレス %><br />
+				<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "email" %>
+			</div>
+
+			<div class="field">
+				<%= f.label :パスワード %>
+				<% if @minimum_password_length %>
+					<em>(<%= @minimum_password_length %> characters minimum)</em>
+				<% end %><br />
+				<%= f.password_field :password, autocomplete: "new-password", class: "password" %>
+			</div>
+
+			<div class="field">
+				<%= f.label :パスワード確認 %><br />
+				<%= f.password_field :password_confirmation, autocomplete: "new-password", class: "password_confirm" %>
+			</div>
+
+			<div class="actions">
+				<%= f.submit "登録", class: "submit-btn" %>
+			</div>
+		<% end %>
+
+	</div>
 	<p><a id="modal-close" class="button-link">閉じる</a></p>
 </div>
+<div id="modal2">
+	<div class="container-sign_in ">
+
+		<h2>ログイン</h2>
+
+		<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+			<div class="field">
+				<%= f.label :メールアドレス %><br />
+				<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "email" %>
+			</div>
+
+			<div class="field">
+				<%= f.label :パスワード %><br />
+				<%= f.password_field :password, autocomplete: "current-password", class: "password" %>
+			</div>
+
+			<% if devise_mapping.rememberable? %>
+				<div class="field">
+					<%= f.check_box :remember_me %>
+					<%= f.label :remember_me %>
+				</div>
+			<% end %>
+
+			<div class="actions">
+				<%= f.submit "Log in", class: "btn btn-primary" %>
+			</div>
+
+		<% end %>
+
+		<p><a id="modal-close" class="button-link">閉じる</a></p>
+	</div>
 
 <%= javascript_include_tag "modal_window.js" %>
