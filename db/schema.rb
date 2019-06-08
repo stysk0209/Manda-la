@@ -10,28 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_07_052829) do
-
-  create_table "activities", force: :cascade do |t|
-    t.integer "element_id"
-    t.string "activity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "elements", force: :cascade do |t|
-    t.integer "mandala_id"
-    t.string "element"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2019_06_08_170446) do
 
   create_table "mandalas", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "parent_id"
     t.string "target"
+    t.boolean "achieved", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "achieved"
   end
 
   create_table "points", force: :cascade do |t|
