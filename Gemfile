@@ -65,7 +65,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'bootstrap' #レイアウト用
+gem 'bootstrap-sass' #レイアウト用
 gem 'jquery-rails'
 gem 'chart-js-rails'
 gem 'jQuery-Validation-Engine-rails' #バリデーションチェック用

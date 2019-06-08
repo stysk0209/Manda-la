@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :create, :edit, :update, :destroy]
 
   resources :mandalas
+  get 'mandalas/about', as: 'mandala_about'
 
   get 'sessions/log_in', as: 'log_in'
   get 'sessions/log_out', as: 'log_out'
