@@ -1,8 +1,6 @@
 $(function() {
 	$('.modal-open').on('click', function() {
-		// console.log($(this).attr('target'))
 		var modal = $(this).attr('target');
-		// console.log(modal)
 		$(this).blur(); //多重起動防止のため、フォーカスを外す
 		if ($("#modal-overlay")[0]) return false; //2回目以降モーダルを表示しない
 		$('body').append('<div id="modal-overlay"></div>');
