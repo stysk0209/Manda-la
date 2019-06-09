@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -22,7 +23,7 @@
           <div class="col-md-4 col-md-offset-2">
               <ul class="nav navbar-nav">
                 <li><%= link_to "About", mandala_about_path, class: "nav-btn" %></li>
-                <li><a class="nav-btn">会員登録</a></li>
+                <li><a class="nav-btn modal-open" target="#modal1">会員登録</a></li>
                 <li><a class="nav-btn">ログイン</a></li>
               </ul>
           </div>

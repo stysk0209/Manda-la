@@ -17,6 +17,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+	font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro",
+				 メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
 a {
 	color: #ffffff;
 	text-decoration: none;
@@ -62,4 +66,89 @@ a {
 }
 .nav .nav-btn:hover::after {
 	transform: scale(1, 1);
+}
+
+
+
+
+/* 入力フォーム */
+.cp_iptxt {
+	position: relative;
+	margin: 35px 20%;
+}
+.cp_iptxt input[type='text'],
+.cp_iptxt input[type='email'],
+.cp_iptxt input[type='password'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	padding-left: 40px;
+	letter-spacing: 1px;
+	border: 0;
+}
+.cp_iptxt input[type='text']:focus,
+.cp_iptxt input[type='email']:focus,
+.cp_iptxt input[type='password']:focus {
+	outline: none;
+}
+.cp_iptxt input[type='text']:focus::after,
+.cp_iptxt input[type='email']:focus::after,
+.cp_iptxt input[type='password']:focus::after {
+	outline: none;
+}
+.cp_iptxt i {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 9px 5px;
+	transition: 0.3s;
+	color: #aaaaaa;
+}
+.cp_iptxt::after {
+	display: block;
+	width: 100%;
+	height: 4px;
+	margin-top: -1px;
+	content: '';
+	border-width: 0 1px 1px 1px;
+	border-style: solid;
+	border-color: #337ab7;
+}
+
+
+/* チェックボックス */
+.checkbox01-input{
+	display: none;
+}
+.checkbox01-parts{
+	padding-left: 20px;
+	position:relative;
+	margin-right: 20px;
+}
+.checkbox01-parts::before{
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 15px;
+	height: 15px;
+	border: 1px solid #999;
+	border-radius: 4px;
+}
+.checkbox01-input:checked + .checkbox01-parts{
+	color: #337ab7;
+}
+.checkbox01-input:checked + .checkbox01-parts::after{
+	content: "";
+	display: block;
+	position: absolute;
+	top: -5px;
+	left: 5px;
+	width: 7px;
+	height: 14px;
+	transform: rotate(40deg);
+	border-bottom: 3px solid #337ab7;
+	border-right: 3px solid #337ab7;
 }

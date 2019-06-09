@@ -9,85 +9,90 @@
 		</section>
 		<div class="content-btn">
 			<div class="pull-left">
-				<button target="#modal1" class="entry-btn modal-open" >会員登録</button>
+				<span target="#modal1" class="entry-btn modal-open" >会員登録</span>
 			</div>
 			<div class="pull-right modal-open">
-				<button class="entry-btn">ログイン</button>
+				<span target="#modal2" class="entry-btn modal-open">ログイン</span>
 			</div>
 		</div>
 	</div>
 </div>
 
 <!---- モーダルウィンドウ ---->
-<div id="modal1">
-	<div class="container-sign_up ">
+<div id="modal1" class="modal-container">
+	<i id="modal-close" class="fas fa-times pull-right fa-lg"></i>
 
-		<h2>会員登録</h2>
+	<h2 class="text-center">会員登録</h2>
 
-		<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-			<%= render "devise/shared/error_messages", resource: resource %>
+	<div class="text-center">
+	<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+		<%= render "devise/shared/error_messages", resource: resource %>
 
-			<div class="field">
-				<%= f.label :名前 %><br />
-				<%= f.text_field :name, autofocus: true, autocomplete: "name", class: "name", :size => "" %>
-			</div>
+		<div class="field cp_iptxt">
+			<%= f.text_field :name, placeholder: "名前", autofocus: true, autocomplete: "name", class: "name", :size => "" %>
+			<i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+		</div>
 
-			<div class="field">
-				<%= f.label :メールアドレス %><br />
-				<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "email" %>
-			</div>
+		<div class="field cp_iptxt">
+			<%= f.email_field :email, placeholder: "メールアドレス", autofocus: true, autocomplete: "email", class: "email" %>
+			<i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+		</div>
 
-			<div class="field">
-				<%= f.label :パスワード %>
-				<% if @minimum_password_length %>
-					<em>(<%= @minimum_password_length %> characters minimum)</em>
-				<% end %><br />
-				<%= f.password_field :password, autocomplete: "new-password", class: "password" %>
-			</div>
+		<div class="field cp_iptxt">
+			<% if @minimum_password_length %>
+				<em>(<%= @minimum_password_length %> characters minimum)</em>
+			<% end %>
+			<%= f.password_field :password, placeholder: "パスワード", autocomplete: "new-password", class: "password" %>
+			<i class="fas fa-unlock-alt fa-lg fa-fw" aria-hidden="true"></i>
+		</div>
 
-			<div class="field">
-				<%= f.label :パスワード確認 %><br />
-				<%= f.password_field :password_confirmation, autocomplete: "new-password", class: "password_confirm" %>
-			</div>
+		<div class="field cp_iptxt">
+			<%= f.password_field :password_confirmation, placeholder: "パスワード確認", autocomplete: "new-password", class: "password_confirm" %>
+			<i class="fas fa-unlock-alt fa-lg fa-fw" aria-hidden="true"></i>
+		</div>
 
-			<div class="actions">
-				<%= f.submit "登録", class: "submit-btn" %>
-			</div>
-		<% end %>
-
+		<div class="field">
+			<%= f.submit "登 録", class: "btn btn-primary submit-btn" %>
+		</div>
+	<% end %>
 	</div>
-	<p><a id="modal-close" class="button-link">閉じる</a></p>
+
 </div>
 <div id="modal2">
-	<div class="container-sign_in ">
+	<i id="modal-close" class="fas fa-times pull-right fa-lg"></i>
+	<div class="modal-container">
 
-		<h2>ログイン</h2>
+		<h2 class="text-center">ログイン</h2>
 
+		<div class="text-center">
 		<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-			<div class="field">
-				<%= f.label :メールアドレス %><br />
-				<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "email" %>
+			<div class="field cp_iptxt">
+				<!-- <%= f.label :メールアドレス, class: "text-left" %><br /> -->
+				<%= f.email_field :email, placeholder: "メールアドレス", autofocus: true, autocomplete: "email", class: "email" %>
+				<i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
 			</div>
 
-			<div class="field">
-				<%= f.label :パスワード %><br />
-				<%= f.password_field :password, autocomplete: "current-password", class: "password" %>
+			<div class="field cp_iptxt">
+				<!-- <%= f.label :パスワード, class: "text-left" %><br /> -->
+				<%= f.password_field :password, placeholder: "パスワード", autocomplete: "current-password", class: "password" %>
+				<i class="fas fa-unlock-alt fa-lg fa-fw" aria-hidden="true"></i>
 			</div>
 
 			<% if devise_mapping.rememberable? %>
-				<div class="field">
-					<%= f.check_box :remember_me %>
-					<%= f.label :remember_me %>
+				<div class="check-box">
+					<div class="check-box-child checkbox01">
+						<%= f.check_box :remember_me, class: "checkbox01-input" %>
+						<%= f.label :remember_me, class: "checkbox01-parts" %>
+					</div>
 				</div>
 			<% end %>
 
-			<div class="actions">
-				<%= f.submit "Log in", class: "btn btn-primary" %>
+			<div class="field">
+				<%= f.submit "ログイン", class: "btn btn-primary submit-btn" %>
 			</div>
 
 		<% end %>
-
-		<p><a id="modal-close" class="button-link">閉じる</a></p>
+		</div>
 	</div>
 
 <%= javascript_include_tag "modal_window.js" %>

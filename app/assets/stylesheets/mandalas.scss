@@ -65,19 +65,24 @@
 }
 /* ボタンデザインを調整 */
 .entry-btn {
-  display: inline-block;
-  padding: 0.5em 2em;
-  text-decoration: none;
-  color: #000;
-  font-size: 20px;
-  border: double 4px #000;
-  border-radius: 3px;
-  transition: .4s;
-  background-color: #ffffff;
+	display: inline-block;
+	width: 160px;
+	padding: 0.8em;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+	background:#0C88CA;
+	border-bottom:4px solid #005691;
+	border-radius: 4px;
+	transition: .0s;
 }
 .entry-btn:hover {
-  background-color: #fffbef;
-  text-decoration: none;
+	 cursor: pointer;
+	 text-decoration: none;
+	 background:#005691;
+	 transform: translate3d(0, 4px, 0);
+	 transition: .0s;
+	 border-bottom: none;
 }
 
 /* モーダルウィンドウ用 */
@@ -87,24 +92,10 @@
 	width:40%;
 	height: 70%;
 	margin:1.5em auto 0;
-	padding:1rem 2rem;
-	border:2px solid #aaa;
+	padding:1rem 1rem;
+	// border:2px solid #aaa;
 	background:#fff;
 	z-index:2000;
-}
-.modal-p {
-	margin-top:1em;
-}
-.modal-p:first-child {
-	margin-top:0;
-}
-.button-link {
-	color: #00f;
-	text-decoration: underline;
-}
-.button-link:hover {
-	cursor: pointer;
-	color: #f00;
 }
 #modal-overlay {
 	z-index:1500;
@@ -117,31 +108,19 @@
 	background-color:rgba(0,0,0,0.75);
 }
 
-/* 会員登録フォーム用 */
-.container-sign_up {
-	text-align: center;
+/* 会員登録・ログインフォーム用 */
+#modal-close {
+	color: #f00;
+	font-size: 2rem;
+	cursor: pointer;
 }
-.container-sign_up .field{
-	margin: 2rem 0;
-}
-.container-sign_up .field input{
-	width: 30rem;
+.modal-container .check-box-child {
+	width: 60%;
+	margin: 0 auto;
 }
 .submit-btn {
-	display: inline-block;
 	margin-top: 2rem;
-	padding: 0.5em 2em;
-	text-decoration: none;
-	color: #000;
-	font-size: 20px;
-	border: double 4px #000;
-	border-radius: 3px;
-	transition: .4s;
-	background-color: #ffffff;
-}
-.submit-btn:hover {
-	background-color: #90ee90;
-	text-decoration: none;
+	width: 60%;
 }
 
 
