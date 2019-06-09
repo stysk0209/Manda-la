@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: 'mandalas#top'
@@ -7,8 +8,5 @@ Rails.application.routes.draw do
 
   resources :mandalas
   get 'mandalas/about', as: 'mandala_about'
-
-  get 'sessions/log_in', as: 'log_in'
-  get 'sessions/log_out', as: 'log_out'
 
 end
