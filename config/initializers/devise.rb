@@ -297,8 +297,10 @@ Devise.setup do |config|
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
 
+
   # 認証失敗時に遷移先を変更するための記述
   config.warden do |manager|
   manager.failure_app = CustomFailure
   end
+
 end

@@ -9,6 +9,7 @@ class MandalasController < ApplicationController
   end
 
   def new
+    @mandalas = Mandala.new
   end
 
   def create

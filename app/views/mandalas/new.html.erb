@@ -6,39 +6,89 @@
 		<h1>マンダラチャートを作成しよう！</h1>
 		<p>まずは達成したい目標を中心のマスに入力してください！</p>
 	</div>
+	<%= form_for @mandalas do |f| %>
 		<div class="row text-center">
-			<div class="squares">
+			<div id="box1" class="squares">
 				<div class="box">
-					<textarea></textarea>
+					<div class="box-header">
+						<p>必要な要素</p>
+					</div>
+					<%= f.text_area :target %>
 				</div>
 			</div>
-			<div class="squares">
-				<div class="box"></div>
+			<div id="box2" class="squares">
+				<div class="box">
+					<div class="box-header">
+						<p>必要な要素</p>
+					</div>
+					<%= f.text_area :target %>
+				</div>
 			</div>
-			<div class="squares">
-				<div class="box"></div>
+			<div id="box3" class="squares">
+				<div class="box">
+					<div class="box-header">
+						<p>必要な要素</p>
+					</div>
+					<%= f.text_area :target %>
+				</div>
 			</div>
 		</div>
 		<div class="row text-center">
-			<div class="squares">
-				<div class="box"></div>
+			<div id="box4" class="squares">
+				<div class="box">
+					<div class="box-header">
+						<p>必要な要素</p>
+					</div>
+					<%= f.text_area :target %>
+				</div>
 			</div>
-			<div class="squares">
-				<div class="box"></div>
+			<div id="box5" class="squares">
+				<div class="box">
+					<div class="box-header">
+						<p>達成したい目標</p>
+					</div>
+					<%= f.text_area :target %>
+				</div>
 			</div>
-			<div class="squares">
-				<div class="box"></div>
+			<div id="box6" class="squares">
+				<div class="box">
+					<div class="box-header">
+						<p>必要な要素</p>
+					</div>
+					<%= f.text_area :target %>
+				</div>
 			</div>
 		</div>
 		<div class="row text-center">
-			<div class="squares">
-				<div class="box"></div>
+			<div id="box7" class="squares">
+				<div class="box">
+					<div class="box-header">
+						<p>必要な要素</p>
+					</div>
+					<%= f.text_area :target %>
+				</div>
 			</div>
-			<div class="squares">
-				<div class="box"></div>
+			<div id="box8" class="squares">
+				<div class="box">
+					<div class="box-header">
+						<p>必要な要素</p>
+					</div>
+					<%= f.text_area :target %>
+				</div>
 			</div>
-			<div class="squares">
-				<div class="box"></div>
+			<div id="box9" class="squares">
+				<div class="box">
+					<div class="box-header">
+						<p>必要な要素</p>
+					</div>
+					<%= f.text_area :target %>
+				</div>
 			</div>
 		</div>
+		<%= f.submit "登 録", class: "btn btn-primary center-block" %>
+	<% end %>
+</div>
+
+<!-- 入力フォーム -->
+<div class="container">
 </div>
