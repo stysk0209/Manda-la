@@ -1,7 +1,25 @@
 $(function() {
+	if (gon.registfail == "false") {
+		var modal = '#modal1'
+		ModalOpen(modal);
+		gon.clear
+	}
+	else if (gon.log_in_fail == "false") {
+		var modal = '#modal2'
+		ModalOpen(modal);
+		gon.clear
+	}
+
 	$('.modal-open').on('click', function() {
 		var modal = $(this).attr('target');
 		$(this).blur(); //多重起動防止のため、フォーカスを外す
+		ModalOpen(modal);
+	});
+
+});
+
+
+function ModalOpen(modal) {
 		if ($("#modal-overlay")[0]) return false; //2回目以降モーダルを表示しない
 		$('body').append('<div id="modal-overlay"></div>');
 		$('#modal-overlay').fadeIn('slow');
@@ -13,10 +31,10 @@ $(function() {
 		$('#modal-overlay,#modal-close').on('click', function() {
 			$(modal + ', #modal-overlay').fadeOut('slow', function() {
 				$('#modal-overlay').remove();
+			sessionStorage.removeItem('regist_fail');
 			});
 		});
-	});
-});
+}
 
 
 function centeringModelSyncer(modal) {

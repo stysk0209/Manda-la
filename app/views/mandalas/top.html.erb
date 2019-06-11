@@ -26,7 +26,12 @@
 
 	<div class="text-center">
 	<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-		<%= render "devise/shared/error_messages", resource: resource %>
+
+		<%if flash[:message] %>
+			<% flash[:message].each do |message| %>
+				<p class="text-danger"><%= message %></p>
+			<% end %>
+		<% end %>
 
 		<div class="field cp_iptxt">
 			<%= f.text_field :name, placeholder: "名前", autofocus: true, autocomplete: "name", class: "name", :size => "" %>
