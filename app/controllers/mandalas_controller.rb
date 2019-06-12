@@ -9,7 +9,7 @@ class MandalasController < ApplicationController
   end
 
   def new
-    @mandalas = Mandala.new
+    @user = current_user
   end
 
   def create
