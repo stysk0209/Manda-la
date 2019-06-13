@@ -1,94 +1,162 @@
-<h1>Mandalas#new</h1>
-<p>Find me in app/views/mandalas/new.html.erb</p>
 
-<div class="container-fluid">
+<div class="container-fluid mandara_main">
 	<div class="row text-center">
 		<h1>マンダラチャートを作成しよう！</h1>
-		<p>まずは達成したい目標を中心のマスに入力してください！</p>
+		<% if @section == 1 %>
+			<p>まずは達成したい目標を中心のマスに入力しましょう！</p>
+		<% else %>
+			<p>目標を達成するために必要な要素を入力していきましょう！</p>
+		<% end %>
 	</div>
-	<%= form_for @mandalas do |f| %>
-		<div class="row text-center">
-			<div id="box1" class="squares">
-				<div class="box">
-					<div class="box-header">
-						<p>必要な要素</p>
+	<%= form_for @user, url: mandalas_path, method: :post do |f| %>
+			<div class="row text-center">
+				<div class="squares">
+					<div id="element1" class="box modal-open" target="#input-modal">
+						<div class="box-header">
+							<p class="element_title"><%= @around_text %></p>
+						</div>
+						<div class="box-body">
+							<p class="text"></p>
+							<%= f.fields_for :mandalas do |m| %>
+								<%= m.hidden_field :target, class: "element_val" %>
+							<% end %>
+						</div>
 					</div>
-					<%= f.text_area :target %>
+				</div>
+				<div class="squares">
+					<div id="element2" class="box modal-open" target="#input-modal">
+						<div class="box-header">
+							<p class="element_title"><%= @around_text %></p>
+						</div>
+						<div class="box-body">
+							<p class="text"></p>
+							<%= f.fields_for :mandalas do |m| %>
+								<%= m.hidden_field :target, class: "element_val" %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+				<div class="squares">
+					<div id="element3" class="box modal-open" target="#input-modal">
+						<div class="box-header">
+							<p class="element_title"><%= @around_text %></p>
+						</div>
+						<div class="box-body">
+							<p class="text"></p>
+							<%= f.fields_for :mandalas do |m| %>
+								<%= m.hidden_field :target, class: "element_val" %>
+							<% end %>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div id="box2" class="squares">
-				<div class="box">
-					<div class="box-header">
-						<p>必要な要素</p>
+			<div class="row text-center">
+				<div class="squares">
+					<div id="element4" class="box modal-open" target="#input-modal">
+						<div class="box-header">
+							<p class="element_title"><%= @around_text %></p>
+						</div>
+						<div class="box-body">
+							<p class="text"></p>
+							<%= f.fields_for :mandalas do |m| %>
+								<%= m.hidden_field :target, class: "element_val" %>
+							<% end %>
+						</div>
 					</div>
-					<%= f.text_area :target %>
+				</div>
+				<div class="squares">
+					<div id="element5" class="box modal-open" target="#input-modal">
+						<div class="box-header">
+							<p class="element_title"><%= @center_text %></p>
+						</div>
+						<div class="box-body">
+							<p class="text"><%= @mandala_center.target %></p>
+							<% if @section == 1 %>
+								<%= f.fields_for :mandalas do |m| %>
+									<%= m.hidden_field :target, class: "element_val" %>
+								<% end %>
+							<% else %>
+								<%= f.fields_for @mandala_center do |m| %>
+									<%= m.hidden_field :target, class: "element_val" %>
+								<% end %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+				<div class="squares">
+					<div id="element6" class="box modal-open" target="#input-modal">
+						<div class="box-header">
+							<p class="element_title"><%= @around_text %></p>
+						</div>
+						<div class="box-body">
+							<p class="text"></p>
+							<%= f.fields_for :mandalas do |m| %>
+								<%= m.hidden_field :target, class: "element_val" %>
+							<% end %>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div id="box3" class="squares">
-				<div class="box">
-					<div class="box-header">
-						<p>必要な要素</p>
+			<div class="row text-center">
+				<div class="squares">
+					<div id="element7" class="box modal-open" target="#input-modal">
+						<div class="box-header">
+							<p class="element_title"><%= @around_text %></p>
+						</div>
+						<div class="box-body">
+							<p class="text"></p>
+							<%= f.fields_for :mandalas do |m| %>
+								<%= m.hidden_field :target, class: "element_val" %>
+							<% end %>
+						</div>
 					</div>
-					<%= f.text_area :target %>
+				</div>
+				<div class="squares">
+					<div id="element8" class="box modal-open" target="#input-modal">
+						<div class="box-header">
+							<p class="element_title"><%= @around_text %></p>
+						</div>
+						<div class="box-body">
+							<p class="text"></p>
+							<%= f.fields_for :mandalas do |m| %>
+								<%= m.hidden_field :target, class: "element_val" %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+				<div class="squares">
+					<div id="element9" class="box modal-open" target="#input-modal">
+						<div class="box-header">
+							<p class="element_title"><%= @around_text %></p>
+						</div>
+						<div class="box-body">
+							<p class="text"></p>
+							<%= f.fields_for :mandalas do |m| %>
+								<%= m.hidden_field :target, class: "element_val" %>
+							<% end %>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row text-center">
-			<div id="box4" class="squares">
-				<div class="box">
-					<div class="box-header">
-						<p>必要な要素</p>
-					</div>
-					<%= f.text_area :target %>
-				</div>
-			</div>
-			<div id="box5" class="squares">
-				<div class="box">
-					<div class="box-header">
-						<p>達成したい目標</p>
-					</div>
-					<%= f.text_area :target %>
-				</div>
-			</div>
-			<div id="box6" class="squares">
-				<div class="box">
-					<div class="box-header">
-						<p>必要な要素</p>
-					</div>
-					<%= f.text_area :target %>
-				</div>
-			</div>
-		</div>
-		<div class="row text-center">
-			<div id="box7" class="squares">
-				<div class="box">
-					<div class="box-header">
-						<p>必要な要素</p>
-					</div>
-					<%= f.text_area :target %>
-				</div>
-			</div>
-			<div id="box8" class="squares">
-				<div class="box">
-					<div class="box-header">
-						<p>必要な要素</p>
-					</div>
-					<%= f.text_area :target %>
-				</div>
-			</div>
-			<div id="box9" class="squares">
-				<div class="box">
-					<div class="box-header">
-						<p>必要な要素</p>
-					</div>
-					<%= f.text_area :target %>
-				</div>
-			</div>
-		</div>
-		<%= f.submit "登 録", class: "btn btn-primary center-block" %>
+		<%= f.submit "登 録", class: "btn btn-primary center-block mandala_submit" %>
 	<% end %>
 </div>
 
 <!-- 入力フォーム -->
-<div class="container">
+<div id="input-modal" class="container">
+	<i id="modal-close" class="fas fa-times pull-right fa-lg"></i>
+	<div class="row">
+		<div id="modal-header" class="row text-center">
+			<h2 id="header-text"></h2>
+		</div>
+	</div>
+	<div class="row">
+		<input id="input" class="col-md-10 col-md-offset-1" type="text" maxlength='30' placeholder="入力してください">
+	</div>
+	<div class="row">
+		<button id="done" class="col-md-4 col-md-offset-4 btn btn-primary">入力OK</button>
+	</div>
 </div>
+
+
+<%= javascript_include_tag "mandalas_new.js" %>

@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :create, :edit, :update, :destroy]
 
-  resources :mandalas
   get 'mandalas/about', as: 'mandala_about'
+  get 'mandalas/new_step2', as: 'mandala_new_step2'
+  resources :mandalas
 
 end
