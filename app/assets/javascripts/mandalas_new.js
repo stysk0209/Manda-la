@@ -1,16 +1,17 @@
 $(function() {
 
-	if ( gon.section == 1 ) {
+	if ( gon.step == 1 ) {
 		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').removeClass('modal-open');
-		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').find('.element_val').prop('disabled', true);
+		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').find('.element_val,.element_num').prop('disabled', true);
 	}
 
 	$('.modal-open').on('click', function() {
 		let title = $(this).find('.element_title').text();
 		$('#header-text').text(title);
 		let modal = $(this).attr('target');
-		let element = $(this).find('.element_val');
-		let body_text = $(this).find('.text');
+		let element = $(this).find('.element_val'); //form(hidden_field)を取得
+		let body_text = $(this).find('.text'); //クリックした要素のテキストを取得
+		$('#input').val($(body_text).text())
 		$(this).blur(); //多重起動防止のため、フォーカスを外す
 		ModalOpen(modal);
 
@@ -21,6 +22,7 @@ $(function() {
 			});
 		});
 		// 入力内容を保存して閉じる
+		$('#done').off('click'); //処理がループしないようにイベントを削除！
 		$('#done').on('click', function() {
 			let val = $("#input").val();
 			$(body_text).text(val);
@@ -30,10 +32,7 @@ $(function() {
 				$('#modal-overlay').remove();
 			});
 		});
-
-
 	});
-
 });
 
 

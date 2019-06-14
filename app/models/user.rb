@@ -4,7 +4,7 @@ class User < ApplicationRecord
 	devise :database_authenticatable, :registerable,
 			:recoverable, :rememberable, :validatable
 
-	has_many :mandalas
+	has_many :mandalas, :dependent => :destroy
 	accepts_nested_attributes_for :mandalas, allow_destroy: true
 
 end

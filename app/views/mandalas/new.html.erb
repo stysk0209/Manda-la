@@ -2,13 +2,10 @@
 <div class="container-fluid mandara_main">
 	<div class="row text-center">
 		<h1>マンダラチャートを作成しよう！</h1>
-		<% if @section == 1 %>
-			<p>まずは達成したい目標を中心のマスに入力しましょう！</p>
-		<% else %>
-			<p>目標を達成するために必要な要素を入力していきましょう！</p>
-		<% end %>
+			<p><%= @main_text %></p>
 	</div>
-	<%= form_for @user, url: mandalas_path, method: :post do |f| %>
+	<%= form_for @mandala, url: mandalas_path, method: :post do |f| %>
+		<%= hidden_field_tag :step, @step %>
 			<div class="row text-center">
 				<div class="squares">
 					<div id="element1" class="box modal-open" target="#input-modal">
@@ -16,9 +13,11 @@
 							<p class="element_title"><%= @around_text %></p>
 						</div>
 						<div class="box-body">
-							<p class="text"></p>
-							<%= f.fields_for :mandalas do |m| %>
-								<%= m.hidden_field :target, class: "element_val" %>
+
+							<p class="text"><%= @element_text1 %></p>
+							<%= f.fields_for :elements do |m| %>
+								<%= m.hidden_field :element, class: "element_val" %>
+								<%= m.hidden_field :number, :value => 1, class: "element_num" %>
 							<% end %>
 						</div>
 					</div>
@@ -29,9 +28,10 @@
 							<p class="element_title"><%= @around_text %></p>
 						</div>
 						<div class="box-body">
-							<p class="text"></p>
-							<%= f.fields_for :mandalas do |m| %>
-								<%= m.hidden_field :target, class: "element_val" %>
+							<p class="text"><%= @element_text2 %></p>
+							<%= f.fields_for :elements do |m| %>
+								<%= m.hidden_field :element, class: "element_val" %>
+								<%= m.hidden_field :number, :value => 2, class: "element_num" %>
 							<% end %>
 						</div>
 					</div>
@@ -42,9 +42,10 @@
 							<p class="element_title"><%= @around_text %></p>
 						</div>
 						<div class="box-body">
-							<p class="text"></p>
-							<%= f.fields_for :mandalas do |m| %>
-								<%= m.hidden_field :target, class: "element_val" %>
+							<p class="text"><%= @element_text3 %></p>
+							<%= f.fields_for :elements do |m| %>
+								<%= m.hidden_field :element, class: "element_val" %>
+								<%= m.hidden_field :number, :value => 3, class: "element_num" %>
 							<% end %>
 						</div>
 					</div>
@@ -57,9 +58,10 @@
 							<p class="element_title"><%= @around_text %></p>
 						</div>
 						<div class="box-body">
-							<p class="text"></p>
-							<%= f.fields_for :mandalas do |m| %>
-								<%= m.hidden_field :target, class: "element_val" %>
+							<p class="text"><%= @element_text4 %></p>
+							<%= f.fields_for :elements do |m| %>
+								<%= m.hidden_field :element, class: "element_val" %>
+								<%= m.hidden_field :number, :value => 4, class: "element_num" %>
 							<% end %>
 						</div>
 					</div>
@@ -70,16 +72,8 @@
 							<p class="element_title"><%= @center_text %></p>
 						</div>
 						<div class="box-body">
-							<p class="text"><%= @mandala_center.target %></p>
-							<% if @section == 1 %>
-								<%= f.fields_for :mandalas do |m| %>
-									<%= m.hidden_field :target, class: "element_val" %>
-								<% end %>
-							<% else %>
-								<%= f.fields_for @mandala_center do |m| %>
-									<%= m.hidden_field :target, class: "element_val" %>
-								<% end %>
-							<% end %>
+								<p class="text"><%= @mandala_text %></p>
+							<%= f.hidden_field :target, class: "element_val" %>
 						</div>
 					</div>
 				</div>
@@ -89,9 +83,10 @@
 							<p class="element_title"><%= @around_text %></p>
 						</div>
 						<div class="box-body">
-							<p class="text"></p>
-							<%= f.fields_for :mandalas do |m| %>
-								<%= m.hidden_field :target, class: "element_val" %>
+							<p class="text"><%= @element_text5 %></p>
+							<%= f.fields_for :elements do |m| %>
+								<%= m.hidden_field :element, class: "element_val" %>
+								<%= m.hidden_field :number, :value => 5, class: "element_num" %>
 							<% end %>
 						</div>
 					</div>
@@ -104,9 +99,10 @@
 							<p class="element_title"><%= @around_text %></p>
 						</div>
 						<div class="box-body">
-							<p class="text"></p>
-							<%= f.fields_for :mandalas do |m| %>
-								<%= m.hidden_field :target, class: "element_val" %>
+							<p class="text"><%= @element_text6 %></p>
+							<%= f.fields_for :elements do |m| %>
+								<%= m.hidden_field :element, class: "element_val" %>
+								<%= m.hidden_field :number, :value => 6, class: "element_num" %>
 							<% end %>
 						</div>
 					</div>
@@ -117,9 +113,10 @@
 							<p class="element_title"><%= @around_text %></p>
 						</div>
 						<div class="box-body">
-							<p class="text"></p>
-							<%= f.fields_for :mandalas do |m| %>
-								<%= m.hidden_field :target, class: "element_val" %>
+							<p class="text"><%= @element_text7 %></p>
+							<%= f.fields_for :elements do |m| %>
+								<%= m.hidden_field :element, class: "element_val" %>
+								<%= m.hidden_field :number, :value => 7, class: "element_num" %>
 							<% end %>
 						</div>
 					</div>
@@ -130,9 +127,10 @@
 							<p class="element_title"><%= @around_text %></p>
 						</div>
 						<div class="box-body">
-							<p class="text"></p>
-							<%= f.fields_for :mandalas do |m| %>
-								<%= m.hidden_field :target, class: "element_val" %>
+							<p class="text"><%= @element_text8 %></p>
+							<%= f.fields_for :elements do |m| %>
+								<%= m.hidden_field :element, class: "element_val" %>
+								<%= m.hidden_field :number, :value => 8, class: "element_num" %>
 							<% end %>
 						</div>
 					</div>

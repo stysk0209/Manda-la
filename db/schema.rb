@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_13_100433) do
+ActiveRecord::Schema.define(version: 2019_06_14_051015) do
 
   create_table "activities", force: :cascade do |t|
     t.integer "element_id"
     t.string "activity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "number"
   end
 
   create_table "elements", force: :cascade do |t|
@@ -24,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_100433) do
     t.string "element"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "number"
   end
 
   create_table "mandalas", force: :cascade do |t|
@@ -32,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_100433) do
     t.boolean "achieved", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "number"
   end
 
   create_table "points", force: :cascade do |t|
