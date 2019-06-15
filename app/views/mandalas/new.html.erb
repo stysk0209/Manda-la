@@ -4,7 +4,7 @@
 		<h1>マンダラチャートを作成しよう！</h1>
 			<p><%= @main_text %></p>
 	</div>
-	<%= form_for @mandala, url: mandalas_path, method: :post do |f| %>
+	<%= form_for @mandala_center, url: mandalas_path, method: :post do |f| %>
 		<%= hidden_field_tag :step, @step %>
 			<div class="row text-center">
 				<div class="squares">
@@ -13,12 +13,8 @@
 							<p class="element_title"><%= @around_text %></p>
 						</div>
 						<div class="box-body">
-
 							<p class="text"><%= @element_text1 %></p>
-							<%= f.fields_for :elements do |m| %>
-								<%= m.hidden_field :element, class: "element_val" %>
-								<%= m.hidden_field :number, :value => 1, class: "element_num" %>
-							<% end %>
+							<%= render 'mandalas/element_form',step: @step, value: 1, f:f, mandala_center: @mandala_center %>
 						</div>
 					</div>
 				</div>
@@ -29,10 +25,7 @@
 						</div>
 						<div class="box-body">
 							<p class="text"><%= @element_text2 %></p>
-							<%= f.fields_for :elements do |m| %>
-								<%= m.hidden_field :element, class: "element_val" %>
-								<%= m.hidden_field :number, :value => 2, class: "element_num" %>
-							<% end %>
+							<%= render 'mandalas/element_form', step: @step, value: 2, f:f, mandala_center: @mandala_center %>
 						</div>
 					</div>
 				</div>
@@ -43,10 +36,7 @@
 						</div>
 						<div class="box-body">
 							<p class="text"><%= @element_text3 %></p>
-							<%= f.fields_for :elements do |m| %>
-								<%= m.hidden_field :element, class: "element_val" %>
-								<%= m.hidden_field :number, :value => 3, class: "element_num" %>
-							<% end %>
+							<%= render 'mandalas/element_form', step: @step, value: 3, f:f, mandala_center: @mandala_center %>
 						</div>
 					</div>
 				</div>
@@ -59,10 +49,7 @@
 						</div>
 						<div class="box-body">
 							<p class="text"><%= @element_text4 %></p>
-							<%= f.fields_for :elements do |m| %>
-								<%= m.hidden_field :element, class: "element_val" %>
-								<%= m.hidden_field :number, :value => 4, class: "element_num" %>
-							<% end %>
+							<%= render 'mandalas/element_form', step: @step, value: 4, f:f, mandala_center: @mandala_center %>
 						</div>
 					</div>
 				</div>
@@ -72,8 +59,9 @@
 							<p class="element_title"><%= @center_text %></p>
 						</div>
 						<div class="box-body">
-								<p class="text"><%= @mandala_text %></p>
+							<p class="text"><%= @element_text5 %></p>
 							<%= f.hidden_field :target, class: "element_val" %>
+							<%= f.hidden_field :number %>
 						</div>
 					</div>
 				</div>
@@ -83,11 +71,8 @@
 							<p class="element_title"><%= @around_text %></p>
 						</div>
 						<div class="box-body">
-							<p class="text"><%= @element_text5 %></p>
-							<%= f.fields_for :elements do |m| %>
-								<%= m.hidden_field :element, class: "element_val" %>
-								<%= m.hidden_field :number, :value => 5, class: "element_num" %>
-							<% end %>
+							<p class="text"><%= @element_text6 %></p>
+							<%= render 'mandalas/element_form', step: @step, value: 5, f:f, mandala_center: @mandala_center %>
 						</div>
 					</div>
 				</div>
@@ -99,11 +84,8 @@
 							<p class="element_title"><%= @around_text %></p>
 						</div>
 						<div class="box-body">
-							<p class="text"><%= @element_text6 %></p>
-							<%= f.fields_for :elements do |m| %>
-								<%= m.hidden_field :element, class: "element_val" %>
-								<%= m.hidden_field :number, :value => 6, class: "element_num" %>
-							<% end %>
+							<p class="text"><%= @element_text7 %></p>
+							<%= render 'mandalas/element_form', step: @step, value: 6, f:f, mandala_center: @mandala_center %>
 						</div>
 					</div>
 				</div>
@@ -113,11 +95,8 @@
 							<p class="element_title"><%= @around_text %></p>
 						</div>
 						<div class="box-body">
-							<p class="text"><%= @element_text7 %></p>
-							<%= f.fields_for :elements do |m| %>
-								<%= m.hidden_field :element, class: "element_val" %>
-								<%= m.hidden_field :number, :value => 7, class: "element_num" %>
-							<% end %>
+							<p class="text"><%= @element_text8 %></p>
+							<%= render 'mandalas/element_form', step: @step, value: 7, f:f, mandala_center: @mandala_center %>
 						</div>
 					</div>
 				</div>
@@ -127,11 +106,8 @@
 							<p class="element_title"><%= @around_text %></p>
 						</div>
 						<div class="box-body">
-							<p class="text"><%= @element_text8 %></p>
-							<%= f.fields_for :elements do |m| %>
-								<%= m.hidden_field :element, class: "element_val" %>
-								<%= m.hidden_field :number, :value => 8, class: "element_num" %>
-							<% end %>
+							<p class="text"><%= @element_text9 %></p>
+							<%= render 'mandalas/element_form', step: @step, value: 8, f:f, mandala_center: @mandala_center %>
 						</div>
 					</div>
 				</div>

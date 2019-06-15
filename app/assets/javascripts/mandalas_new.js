@@ -4,6 +4,10 @@ $(function() {
 		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').removeClass('modal-open');
 		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').find('.element_val,.element_num').prop('disabled', true);
 	}
+	if ( gon.step == 3 ) {
+		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').removeClass('modal-open');
+		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').addClass('edit_link');
+	}
 
 	$('.modal-open').on('click', function() {
 		let title = $(this).find('.element_title').text();
@@ -32,6 +36,12 @@ $(function() {
 				$('#modal-overlay').remove();
 			});
 		});
+	});
+
+	$('.edit_link').off('click');
+	$('.edit_link').on('click', function() {
+		let id = $(this).find('.element_num').val();
+	window.location.href = "/mandalas/new?element_edit=" + id
 	});
 });
 

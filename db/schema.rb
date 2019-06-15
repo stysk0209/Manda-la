@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_14_051015) do
+ActiveRecord::Schema.define(version: 2019_06_14_075009) do
 
   create_table "activities", force: :cascade do |t|
     t.integer "element_id"
-    t.string "activity"
+    t.string "target"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "number"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_06_14_051015) do
 
   create_table "elements", force: :cascade do |t|
     t.integer "mandala_id"
-    t.string "element"
+    t.string "target"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "number"
