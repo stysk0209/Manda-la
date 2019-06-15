@@ -24,7 +24,6 @@
           <% if user_signed_in? %>
             <div class="col-md-4 col-md-offset-2">
                 <ul class="nav navbar-nav">
-                  <li><%= link_to "About", mandala_about_path, class: "nav-btn" %></li>
                   <li><%= link_to "マイページ", user_path(current_user.id), class: "nav-btn" %></li>
                   <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-btn" %></li>
                 </ul>
@@ -34,9 +33,8 @@
           <% else %>
               <div class="col-md-4 col-md-offset-2">
                 <ul class="nav navbar-nav">
-                  <li><%= link_to "About", mandala_about_path, class: "nav-btn" %></li>
-                  <li><a class="nav-btn modal-open" target="#modal1">会員登録</a></li>
-                  <li><a class="nav-btn">ログイン</a></li>
+                  <li><a class="nav-btn modal_open" target="#modal1">会員登録</a></li>
+                  <li><a class="nav-btn modal_open" target="#modal2">ログイン</a></li>
                 </ul>
             </div>
             <p class="navbar-text col-md-3 pull-right">ようこそ ゲスト さん</p>

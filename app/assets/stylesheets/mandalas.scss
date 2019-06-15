@@ -86,7 +86,7 @@
 }
 
 /* カーソルを指マークに */
-.modal-open {
+.modal_open {
 	cursor : pointer;
 }
 .edit_link {
@@ -105,7 +105,7 @@
 	background:#fff;
 	z-index:2000;
 }
-#modal-close {
+#modal_close {
 	color: #f00;
 	font-size: 2rem;
 	cursor: pointer;
