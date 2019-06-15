@@ -15,3 +15,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 # JavaScript読み込みのため記述しています。
 Rails.application.config.assets.precompile += %w( modal_window.js )
+Rails.application.config.assets.precompile += %w( mandalas_new.js )

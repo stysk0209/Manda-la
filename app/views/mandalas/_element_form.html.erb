@@ -1,0 +1,22 @@
+
+	<% if step == 1 || step == 2 %> <!-- マンダラチャート目標 & 必要な要素入力画面用 -->
+		<%= f.fields_for :elements do |m| %>
+			<%= m.hidden_field :target, class: "element_val" %>
+			<%= m.hidden_field :number, :value => value, class: "element_num" %>
+		<% end %>
+	<% elsif step == 3 %>
+		<%= f.fields_for :elements, Element.find_by(mandala_id: mandala_center.id, number: value) do |m| %>
+			<%= m.hidden_field :target, class: "element_val" %>
+			<%= m.hidden_field :number, :value => value, class: "element_num" %>
+		<% end %>
+	<% elsif mandala_center.activities.present? %> <!-- すでに必要な行動を入力しているか確認 -->
+		<%= f.fields_for :activities, Activity.find_by(element_id: mandala_center.id, number: value) do |m| %>
+			<%= m.hidden_field :target, class: "element_val" %>
+			<%= m.hidden_field :number, :value => value, class: "element_num" %>
+		<% end %>
+	<% else %>
+		<%= f.fields_for :activities do |m| %>
+			<%= m.hidden_field :target, class: "element_val" %>
+			<%= m.hidden_field :number, :value => value, class: "element_num" %>
+		<% end %>
+	<% end %>
