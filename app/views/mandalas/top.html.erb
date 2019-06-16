@@ -6,15 +6,11 @@
 		<section class="content-text">
 			<p class="text-center h1">さあ、あなたも始めてみましょう！</p>
 			<p class="text-center h1">まずはログインから</p>
+			<div class="content-btn">
+				<a class="button button-blue margin-right modal_open" target="#modal1">会員登録</a>
+				<a class="button button-blue modal_open" target="#modal2">ログイン</a>
+			</div>
 		</section>
-		<div class="content-btn">
-			<div class="pull-left">
-				<span target="#modal1" class="entry-btn modal_open" >会員登録</span>
-			</div>
-			<div class="pull-right">
-				<span target="#modal2" class="entry-btn modal_open">ログイン</span>
-			</div>
-		</div>
 	</div>
 </div>
 
@@ -58,7 +54,7 @@
 		</div>
 
 		<div class="field">
-			<%= f.submit "登 録", class: "btn btn-primary submit-btn" %>
+			<%= f.submit "登 録", class: "button button-blue submit-btn" %>
 		</div>
 	<% end %>
 	</div>
@@ -94,7 +90,7 @@
 			<% end %>
 
 			<div class="field">
-				<%= f.submit "ログイン", class: "btn btn-primary submit-btn" %>
+				<%= f.submit "ログイン", class: "button button-blue submit-btn" %>
 			</div>
 
 		<% end %>
