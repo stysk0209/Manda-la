@@ -3,10 +3,9 @@ $(function() {
 	if ( gon.step == 1 ) {
 		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').removeClass('modal-open');
 		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').find('.element_val,.element_num').prop('disabled', true);
-	}
-	if ( gon.step == 3 ) {
+	} else if ( gon.step == 3 ) {
 		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').removeClass('modal-open');
-		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').addClass('edit_link');
+		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').addClass('element_link');
 	}
 
 	$('.modal-open').on('click', function() {
@@ -38,11 +37,21 @@ $(function() {
 		});
 	});
 
-	$('.edit_link').off('click');
-	$('.edit_link').on('click', function() {
+	// マンダラチャート作成画面用
+	$('.element_link').off('click');
+	$('.element_link').on('click', function() {
 		let id = $(this).find('.element_num').val();
 	window.location.href = "/mandalas/new?element_edit=" + id
 	});
+
+	// Userマイページ マンダラチャート用
+	$('.el_select').off('click');
+	$('.el_select').on('click', function() {
+		let id = $(this).attr('id').replace('element', "");
+		let url = $(location).attr('href');
+	window.location.href = url + "?element_select=" + id;
+	});
+
 });
 
 

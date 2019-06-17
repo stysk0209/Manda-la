@@ -1,2 +1,112 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container-fluid">
+	<div class="row">
+		<h1 class="mp_header_text text-center">目標：<%= @mandala_center.target %></h1>
+	</div>
+	<div class="col-md-5 col-md-offset-1">
+		<div class="row text-center">
+			<div class="mp_squares">
+				<div id="element1" class="box el_select" target="#input-modal">
+					<div class="box-header">
+						<p class="element_title"><%= @around_text %></p>
+					</div>
+					<div class="box-body">
+						<p class="text"><%= @element_text1 %></p>
+					</div>
+				</div>
+			</div>
+			<div class="mp_squares">
+				<div id="element2" class="box el_select" target="#input-modal">
+					<div class="box-header">
+						<p class="element_title"><%= @around_text %></p>
+					</div>
+					<div class="box-body">
+						<p class="text"><%= @element_text2 %></p>
+					</div>
+				</div>
+			</div>
+			<div class="mp_squares">
+				<div id="element3" class="box el_select" target="#input-modal">
+					<div class="box-header">
+						<p class="element_title"><%= @around_text %></p>
+					</div>
+					<div class="box-body">
+						<p class="text"><%= @element_text3 %></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row text-center">
+			<div class="mp_squares">
+				<div id="element4" class="box el_select" target="#input-modal">
+					<div class="box-header">
+						<p class="element_title"><%= @around_text %></p>
+					</div>
+					<div class="box-body">
+						<p class="text"><%= @element_text4 %></p>
+					</div>
+				</div>
+			</div>
+			<div class="mp_squares">
+				<div id="element5" class="box" target="#input-modal">
+					<div class="box-header">
+						<p class="element_title"><%= @center_text %></p>
+					</div>
+					<div class="box-body">
+						<p class="text"><%= @element_text5 %></p>
+					</div>
+				</div>
+			</div>
+			<div class="mp_squares">
+				<div id="element6" class="box el_select" target="#input-modal">
+					<div class="box-header">
+						<p class="element_title"><%= @around_text %></p>
+					</div>
+					<div class="box-body">
+						<p class="text"><%= @element_text6 %></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row text-center">
+			<div class="mp_squares">
+				<div id="element7" class="box el_select" target="#input-modal">
+					<div class="box-header">
+						<p class="element_title"><%= @around_text %></p>
+					</div>
+					<div class="box-body">
+						<p class="text"><%= @element_text7 %></p>
+					</div>
+				</div>
+			</div>
+			<div class="mp_squares">
+				<div id="element8" class="box el_select" target="#input-modal">
+					<div class="box-header">
+						<p class="element_title"><%= @around_text %></p>
+					</div>
+					<div class="box-body">
+						<p class="text"><%= @element_text8 %></p>
+					</div>
+				</div>
+			</div>
+			<div class="mp_squares">
+				<div id="element9" class="box el_select" target="#input-modal">
+					<div class="box-header">
+						<p class="element_title"><%= @around_text %></p>
+					</div>
+					<div class="box-body">
+						<p class="text"><%= @element_text9 %></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row text-center">
+			<%= link_to "編集する", edit_mandala_path(@mandala_center.id), class: "btn btn-primary edit_btn" %>
+		</div>
+	</div>
+		<div class="col-md-5">
+		</div>
+	</div>
+</div>
+
+
+<%= javascript_include_tag "mandalas_new.js" %>

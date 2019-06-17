@@ -1,3 +1,31 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+
+/* -- Mandalaチャート用のCSSは、[mandalas.css]での記述が適用しています -- */
+
+.mp_header_text {
+	margin-top: 10rem;
+	margin-bottom: 4rem;
+}
+
+
+/* ---- チャートレイアウト用 ---- */
+.mp_squares {
+    position: relative;
+    width: 25%;
+    height: auto;
+    background: #EEE;
+    display: inline-block;
+}
+.mp_squares:before {
+	content: "";
+	display: block;
+	padding-top: 100%;
+}
+.edit_btn {
+	margin-top: 2rem;
+}
