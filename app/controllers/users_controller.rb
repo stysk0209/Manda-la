@@ -8,8 +8,8 @@ class UsersController < ApplicationController
     if params[:element_select]
       @around_text = "必要な行動"
       @center_text = "必要な要素"
-      mandala = Mandala.find_by(user_id: current_user.id, achieved: false)
-      @mandala_center = Element.find_by(Mandala_id: mandala.id, number: params[:element_select])
+      @mandala = Mandala.find_by(user_id: current_user.id, achieved: false)
+      @mandala_center = Element.find_by(Mandala_id: @mandala.id, number: params[:element_select])
       text_element #viewに反映させるテキスト情報
     else
       @around_text = "必要な要素"

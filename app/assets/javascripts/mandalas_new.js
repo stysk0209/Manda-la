@@ -3,7 +3,7 @@ $(function() {
 	if ( gon.step == 1 ) {
 		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').removeClass('modal-open');
 		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').find('.element_val,.element_num').prop('disabled', true);
-	} else if ( gon.step == 3 ) {
+	} else if ( gon.step == 3 || gon.step == "edit" ) {
 		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').removeClass('modal-open');
 		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').addClass('element_link');
 	}
@@ -41,7 +41,8 @@ $(function() {
 	$('.element_link').off('click');
 	$('.element_link').on('click', function() {
 		let id = $(this).find('.element_num').val();
-	window.location.href = "/mandalas/new?element_edit=" + id
+		let url = $(location).attr('href');
+	window.location.href = url + "?element_edit=" + id
 	});
 
 	// Userマイページ マンダラチャート用
