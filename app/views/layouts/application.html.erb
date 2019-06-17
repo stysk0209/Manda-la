@@ -15,35 +15,38 @@
   <body>
     <div>
       <ul id="gn-menu" class="gn-menu-main">
-        <li class="gn-trigger">
-          <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
-          <nav class="gn-menu-wrapper">
-            <div class="gn-scroller">
-              <ul class="gn-menu">
-                <% if user_signed_in? %>
-                  <li><%= link_to "マイページ", user_path(current_user.id), class: "gn-icon gn-icon-mypage" %></li>
-                  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "gn-icon gn-icon-logout" %></li>
-                <% else %>
-                  <li><a class="gn-icon gn-icon-user-regist modal_open" target="#modal1">会員登録</a></li>
-                  <li><a class="gn-icon gn-icon-login modal_open" target="#modal2">ログイン</a></li>
-                <% end %>
-              </ul>
-            </div><!-- /gn-scroller -->
-          </nav>
+        <li>
+          <%= link_to root_path do %>
+            <img src="/images/logo.png">
+          <% end %>
         </li>
-        <li><%= link_to root_path do %>Manda-la<% end %></li>
         <% if user_signed_in? %>
-          <li><a class="codrops-icon codrops-icon-drop" href="#"><span>ようこそ<%= current_user.name %>さん</span></a></li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete, class: "gn-icon gn-icon-logout" do %>
+              <span>ログアウト</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to user_path(current_user.id), class: "gn-icon gn-icon-mypage" do %>
+              <span>マイページ</span>
+            <% end %>
+            <ul class="gn-menu-sub">
+              <li>
+                <%= link_to edit_user_path(current_user.id), class: "gn-icon gn-icon-user-edit" do %>
+                  <span>ユーザ情報編集</span>
+                <% end %>
+              </li>
+              <li><a class="gn-icon gn-icon-graph" href="./new.html"><span>グラフを見る</span></a></li>
+            </ul>
+          </li>
         <% else %>
-          <li><a class="codrops-icon codrops-icon-drop" href="#"><span>ようこそゲストさん</span></a></li>
+          <li><a class="gn-icon gn-icon-login modal_open" target="#modal2"><span>ログイン</span></a></li>
+          <li><a class="gn-icon gn-icon-user-regist modal_open" target="#modal1"><span>会員登録</span></a></li>
         <% end %>
       </ul>
     </div>
-    <%= yield %>
 
-    <%= javascript_include_tag 'classie' %>
-    <%= javascript_include_tag 'gnmenu' %>
-    <script>new gnMenu( document.getElementById( 'gn-menu' ) );</script>
+    <%= yield %>
 
   </body>
 </html>

@@ -1,13 +1,11 @@
 
-<div class="container-fluid mandara_main">
-	<div class="row text-center">
-		<h1>マンダラチャートを作成しよう！</h1>
-			<p><%= @main_text %></p>
-	</div>
+<div class="container-main">
+	<header><h1>マンダラチャートを作成しよう！<span><%= @main_text %></span></h1></header>
+	<div class="container-mandalas text-center">
 	<%= form_for @mandala_center, url: mandalas_path, method: :post do |f| %>
 		<%= hidden_field_tag :step, @step %>
-			<div class="row text-center">
-				<div class="squares">
+			<div class="mandalas-row">
+				<div class="squares squares-gray">
 					<div id="element1" class="box modal_open" target="#input-modal">
 						<div class="box-header">
 							<p class="element_title"><%= @around_text %></p>
@@ -18,7 +16,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="squares">
+				<div class="squares squares-gray">
 					<div id="element2" class="box modal_open" target="#input-modal">
 						<div class="box-header">
 							<p class="element_title"><%= @around_text %></p>
@@ -29,7 +27,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="squares">
+				<div class="squares squares-gray">
 					<div id="element3" class="box modal_open" target="#input-modal">
 						<div class="box-header">
 							<p class="element_title"><%= @around_text %></p>
@@ -41,8 +39,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="row text-center">
-				<div class="squares">
+			<div class="mandalas-row">
+				<div class="squares squares-gray">
 					<div id="element4" class="box modal_open" target="#input-modal">
 						<div class="box-header">
 							<p class="element_title"><%= @around_text %></p>
@@ -53,7 +51,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="squares">
+				<div class="squares squares-white">
 					<div id="element5" class="box modal_open" target="#input-modal">
 						<div class="box-header">
 							<p class="element_title"><%= @center_text %></p>
@@ -65,7 +63,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="squares">
+				<div class="squares squares-gray">
 					<div id="element6" class="box modal_open" target="#input-modal">
 						<div class="box-header">
 							<p class="element_title"><%= @around_text %></p>
@@ -77,8 +75,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="row text-center">
-				<div class="squares">
+			<div class="mandalas-row">
+				<div class="squares squares-gray">
 					<div id="element7" class="box modal_open" target="#input-modal">
 						<div class="box-header">
 							<p class="element_title"><%= @around_text %></p>
@@ -89,7 +87,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="squares">
+				<div class="squares squares-gray">
 					<div id="element8" class="box modal_open" target="#input-modal">
 						<div class="box-header">
 							<p class="element_title"><%= @around_text %></p>
@@ -100,7 +98,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="squares">
+				<div class="squares squares-gray">
 					<div id="element9" class="box modal_open" target="#input-modal">
 						<div class="box-header">
 							<p class="element_title"><%= @around_text %></p>
@@ -112,8 +110,11 @@
 					</div>
 				</div>
 			</div>
-		<%= f.submit "登 録", class: "btn btn-primary center-block mandala_submit" %>
+			<div class="margin-top">
+				<%= f.submit "登 録", class: "button button-white" %>
+			</div>
 	<% end %>
+	</div>
 </div>
 
 <!-- 入力フォーム -->
@@ -124,11 +125,11 @@
 			<h2 id="header-text"></h2>
 		</div>
 	</div>
-	<div class="row">
-		<input id="input" class="col-md-10 col-md-offset-1" type="text" maxlength='30' placeholder="入力してください">
+	<div class="row cp_iptxt">
+		<input id="input" class="" type="text" maxlength='30' placeholder="入力してください">
 	</div>
-	<div class="row">
-		<button id="done" class="col-md-4 col-md-offset-4 btn btn-primary">入力OK</button>
+	<div class="row text-center">
+		<button id="done" class="button button-blue margin-top">入力OK</button>
 	</div>
 </div>
 

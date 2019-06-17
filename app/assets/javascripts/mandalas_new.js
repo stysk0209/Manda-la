@@ -2,9 +2,10 @@ $(function() {
 
 	if ( gon.step == 1 ) {
 		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').removeClass('modal_open');
+		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').parent().removeClass('squares-gray');
+		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').parent().addClass('squares-disabled');
 		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').find('.element_val,.element_num').prop('disabled', true);
-	}
-	if ( gon.step == 3 ) {
+	}else if ( gon.step == 3 ) {
 		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').removeClass('modal_open');
 		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').addClass('edit_link');
 	}
