@@ -2,108 +2,70 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 /* TOPページ 画面スクロール用 */
 .scroll-field {
 	position: relative;
-	overflow: auto;
 	scroll-snap-type: y mandatory;
 	height: 100vh;
 }
-// .scroll-field::after {
-// 	content: "";
-// 	position: absolute;
-// 	top: 0;
-// 	left: 0;
-// 	height: 300%;
-// 	width: 100%;
-// 	background: rgba(0, 0, 0, 0.6);
-// }
 .area {
 	scroll-snap-align: start;
 	height: 100vh;
 	width: 100%;
 }
 
-
 /* 各要素に画像追加 */
 .content-1 {
-	background-image: image-url('/images/dream.jpg');
+	background-image: url('/images/dream.jpg');
 	background-size: cover;
 }
 .content-2 {
 	position: relative;
-	background-image: image-url('/images/checklist.jpg');
+	background-image: url('/images/checklist.jpg');
 	background-size: cover;
-}
-.content-3 {
-	background-image: image-url('/images/goals.jpg');
-	background-size: cover;
-}
-.content-text {
-	padding-top: 30rem;
-	padding-bottom: 10rem;
-	color: #ffffff;
-	position: relative;
-	z-index: 2;
 }
 .content-2::after {
 	content: "";
 	position: absolute;
 	top: 0;
 	left: 0;
-	height: 100%;
+	height: 200%;
 	width: 100%;
-	background: rgba(0, 0, 0, 0.6);
+	background: rgba(0, 0, 0, 0.2);
+}
+.content-3 {
+	background-image: url('/images/goals.jpg');
+	background-size: cover;
+}
+.content-text {
+	padding-top: 23rem;
+	color: #ffffff;
+	position: relative;
+	z-index: 1;
+}
+@media screen and (max-width: 740px) {
+	.content-text {
+		padding-top: 13rem;
+	}
 }
 
 /* ボタンレイアウト調整 */
 .content-btn {
-	width: 40%;
-	margin: 0 auto;
-}
-
-/* ボタンデザインを調整 */
-.entry-btn {
-	display: inline-block;
-	width: 160px;
-	padding: 0.8em;
+	padding-top: 8rem;
 	text-align: center;
-	text-decoration: none;
-	color: #fff;
-	background:#0C88CA;
-	border-bottom:4px solid #005691;
-	border-radius: 4px;
-	transition: .0s;
-}
-.entry-btn:hover {
-	 cursor: pointer;
-	 text-decoration: none;
-	 background:#005691;
-	 transform: translate3d(0, 4px, 0);
-	 transition: .0s;
-	 border-bottom: none;
 }
 
-/* カーソルを指マークに */
-.modal-open {
-	cursor : pointer;
-}
-.edit_link {
-	cursor : pointer;
-}
 
 /* 会員登録・ログインフォーム用 */
 #modal1,
 #modal2 {
 	position: fixed;
 	width:40%;
-	height: 70%;
 	margin:1.5em auto 0;
 	padding:1rem 1rem;
-	// border:2px solid #aaa;
 	background:#fff;
 	z-index:2000;
+	color: #34495e;
 }
 #modal-close {
 	color: #f00;
@@ -112,28 +74,60 @@
 }
 .modal-container .check-box-child {
 	width: 60%;
-	margin: 0 auto;
+	margin: 10rem auto 0 auto;
 }
 .submit-btn {
 	margin-top: 2rem;
 	width: 60%;
 }
-
-
-/* マンダラチャート作成画面用 */
-.mandara_main {
-	padding: 10rem 0;
-}
-.mandara_main h1 {
-	margin: 1rem 0;
+.submit_field {
+	padding-bottom: 4rem;
 }
 
+
+/* マンダラチャート用 */
+.container-mandalas {
+	margin: 3rem 0 1rem;
+	width: 100%;
+}
 .squares {
 	position: relative;
 	width: 15%;
 	height: auto;
-	background: #EEE;
 	display: inline-block;
+	color: #5f6f81;
+	cursor: pointer;
+}
+.squares,
+.squares::before,
+.squares::after {
+	-webkit-transition: all .3s;
+	transition: all .3s;
+}
+.squares-disabled {
+	color: #fff;
+	border: 1px solid;
+	cursor: default;
+}
+.squares-white {
+	background-color: #fff;
+}
+.squares-gray {
+	background-color: #f1f5fde0;
+}
+.squares-white:hover,
+.squares-gray:hover {
+	background-color: #ffffff8f;
+}
+@media screen and (max-width: 1025px) {
+	.squares {
+		width: 20%;
+	}
+}
+@media screen and (max-width: 740px) {
+	.squares {
+		width: 30%;
+	}
 }
 .squares:before {
 	content: "";
@@ -146,15 +140,15 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	border: 1px solid #000;
 }
 .box-header {
 	height: 20%;
-	border-bottom: 1px solid #000;
 	display: flex;
 	align-items: center;
-	color: #ffffff;
-	background: rgba(0, 0, 0, 0.6);
+	border-bottom: 1px solid #5f6f81;
+}
+.squares-disabled .box-header {
+	border-bottom: 0;
 }
 .box-header p {
 	margin: 0 auto;
@@ -166,30 +160,19 @@
 }
 .box-body p {
 	width: 100%;
-	word-wrap: break-word; //要素内で折り返し
+	word-wrap: break-word;
 	margin: 0;
-	font-size: 20px;
-}
-.mandala_submit {
-	margin-top: 5rem;
-	width: 20rem;
 }
 
 /* マンダラチャート 入力フォーム用*/
 #input-modal {
+	color: #34495e;
 	position: fixed;
 	width: 40%;
 	height: 40%;
 	margin: 1.5em auto 0;
 	padding: 1rem 1rem;
-	// border:2px solid #aaa;
 	background:#ffffff;
 	z-index: 2000;
 	display: none;
 }
-#input-modal input {
-	margin-top: 5rem;
-	margin-bottom: 5rem;
-}
-
-

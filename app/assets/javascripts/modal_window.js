@@ -10,7 +10,7 @@ $(function() {
 		gon.clear
 	}
 
-	$('.modal-open').on('click', function() {
+	$('.modal_open').on('click', function() {
 		var modal = $(this).attr('target');
 		$(this).blur(); //多重起動防止のため、フォーカスを外す
 		ModalOpen(modal);
@@ -28,7 +28,7 @@ function ModalOpen(modal) {
 		// モーダルをフェードイン
 		$(modal).fadeIn('slow');
 		// モーダルを閉じる
-		$('#modal-overlay,#modal-close').on('click', function() {
+		$('#modal-overlay,#modal_close').on('click', function() {
 			$(modal + ', #modal-overlay').fadeOut('slow', function() {
 				$('#modal-overlay').remove();
 			sessionStorage.removeItem('regist_fail');

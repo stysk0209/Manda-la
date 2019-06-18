@@ -20,56 +20,251 @@
 body {
 	font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro",
 				 メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-}
-a {
-	color: #ffffff;
-	text-decoration: none;
+	background: #65819e;
+	color: white;
 }
 
-/* ヘッダーの文字サイズ調整 */
-.navbar {
-	font-size: 20px;
-	color: #ffffff;
-	background: rgba(0, 0, 0, 0.6);
+*,
+*:after,
+*::before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
-/* ヘッダーメニューレイアウト調整 */
-.navbar-nav {
-	margin: 0 auto;
-	display: table;
-	table-layout: fixed;
-	float:none;
+/* メニュー - 共通 */
+.gn-menu-main,
+.gn-menu-main ul {
+	margin: 0;
+	padding: 0;
+	background: white;
+	color: #5f6f81;
+	list-style: none;
+	text-transform: none;
+	font-weight: 300;
+	line-height: 60px;
 }
-/* ヘッダーリンクホバーアクションの記述 */
-.nav .nav-btn {
-	margin: 0 1rem;
-	position: relative;
-	display: inline-block;
+.gn-menu-main {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 60px;
+	font-size: 13px;
+	z-index: 999;
+}
+.gn-menu-main a {
+	display: block;
+	height: 100%;
+	color: #5f6f81;
 	text-decoration: none;
 	cursor: pointer;
 }
-.nav .nav-btn::after {
+.gn-menu-main a:hover:not(.gn-menu-main > li:first-child) {
+	background: #5f6f81;
+	color: white !important;
+}
+.gn-menu-main > li {
+	display: block;
+	float: right;
+	height: 100%;
+	border-left: 1px solid #c6d0da;
+	text-align: center;
+}
+.gn-menu-main li img {
+	width: 12rem;
+}
+
+.gn-menu-main li.gn-trigger {
+	position: relative;
+	width: 60px;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.gn-menu-main > li:first-child {
+	float: left;
+	border-left: none;
+}
+.gn-menu-main > li > a {
+	padding: 0 30px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: bold;
+}
+.gn-menu-main:after {
+	display: table;
+	clear: both;
+	content: "";
+}
+.gn-menu {
+	border-bottom: 1px solid #c6d0da;
+	text-align: left;
+	font-size: 18px;
+}
+.gn-menu-main li a,
+.gn-menu-main li a::after {
+	-webkit-transition: all .3s;
+	transition: all .3s;
+}
+.gn-menu li:not(:first-child),
+.gn-menu li li {
+	box-shadow: inset 0 1px #c6d0da
+}
+.gn-menu-main li ul li {
+	display: none;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: bold;
+	-webkit-transition: all .3s;
+	transition: all .3s;
+}
+.gn-menu-main li:hover > ul > li {
+	display: block;
+	border-top: 1px solid #c6d0da;
+}
+
+/* メニュー - アイコン */
+.gn-icon::before {
+	font-family: 'Font Awesome 5 Free';
+	font-weight: 900;
+	margin: 0 5px;
+}
+.gn-icon-login::before {
+	content: '\f2f6';
+}
+.gn-icon-logout::before {
+	content: '\f2f5'
+}
+.gn-icon-user-regist::before {
+	content: '\f234';
+}
+.gn-icon-mypage::before {
+	content: '\f007'
+}
+.gn-icon-user-edit::before {
+	content: '\f4ff'
+}
+.gn-icon-graph::before {
+	content: '\f080'
+}
+@media screen and (max-width: 740px) {
+	.gn-menu-main .gn-icon {
+		font-size: 20px;
+	}
+	.gn-menu-main > li > a {
+		padding: 0 20px;
+	}
+	.gn-icon span {
+		display: none;
+	}
+}
+
+/* タイトル */
+.container-main > header {
+	margin: 0 auto;
+	padding: 8em 2em 3em;
+	padding-left: 370px;
+	background: rgba(0,0,0,0.1);
+}
+.container-main > header a {
+	color: #566473;
+	text-decoration: none;
+	outline: none;
+}
+.container-main > header a:hover {
+	color: #4f7bab;
+}
+.container-main > header h1 {
+	font-size: 2.6em;
+	line-height: 1.3;
+	margin: 0;
+	font-weight: 300;
+}
+.container-main > header span {
+	display: block;
+	font-size: 50%;
+	color: #ffffff8f;
+	padding: 0 0 0.6em 0.1em;
+}
+@media screen and (max-width: 1025px) {
+	.container-main > header {
+		margin: 0 auto;
+		padding: 120px 50px;
+		font-size: 70%;
+		text-align: right;
+	}
+}
+
+/* ボタン - 共通 */
+.button {
+	display: inline-block;
+	margin-bottom: 5px;
+	width: 200px;
+	height: 54px;
+	text-align: center;
+	text-decoration: none;
+	line-height: 54px;
+	outline: none;
+	cursor: pointer;
+}
+@media screen and (max-width: 740px) {
+	.button {
+		width: 100%;
+	}
+}
+.button::before,
+.button::after {
 	position: absolute;
-	bottom: -4px;
-	left: 0;
+	z-index: -1;
+	display: block;
 	content: '';
-	width: 100%;
-	height: 2px;
-	background: #ffffff;
-	transform: scale(0, 1);
-	transform-origin: center top;
-	transition: transform .3s;
 }
-.nav .nav-btn:hover {
-	background-color: transparent;
-	color: #ffffff;
-}
-.nav .nav-btn:hover::after {
-	transform: scale(1, 1);
+.button,
+.button::before,
+.button::after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	border: 0;
+	-webkit-transition: all .3s;
+	transition: all .3s;
 }
 
+/* ボタン - 青 */
+.button-blue {
+	background-color: #34495e;
+	color: #fff;
+}
+.button:focus,
+.button-blue:hover {
+	color: #fff;
+	text-decoration: none;
+	background-color: #337ab7;
+}
 
+/* ボタン - 白 */
+.button-white {
+	background-color: #fff;
+	color: #34495e;
+}
+.button:focus,
+.button-white:hover {
+	color: #fff;
+	text-decoration: none;
+	background-color: #34495e;
+}
 
+/* スペース */
+.margin-top {
+	margin-top: 3rem;
+}
+.margin-right {
+	margin-right: 100px;
+}
 
 /* 入力フォーム */
 .cp_iptxt {
