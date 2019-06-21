@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_14_075009) do
+ActiveRecord::Schema.define(version: 2019_06_20_104926) do
 
   create_table "activities", force: :cascade do |t|
     t.integer "element_id"
@@ -38,8 +38,18 @@ ActiveRecord::Schema.define(version: 2019_06_14_075009) do
   end
 
   create_table "points", force: :cascade do |t|
-    t.integer "activity_id"
-    t.integer "point"
+    t.integer "element_id"
+    t.integer "point", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "element_id"
+    t.text "content"
+    t.date "limit"
+    t.boolean "done", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

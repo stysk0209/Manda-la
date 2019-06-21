@@ -1,112 +1,96 @@
-<div class="container-fluid">
-	<div class="row">
-		<h1 class="mp_header_text text-center">目標：<%= @mandala.target %></h1>
-	</div>
-	<div class="col-md-5 col-md-offset-1">
-		<div class="row text-center">
-			<div class="mp_squares">
-				<div id="element1" class="box el_select" target="#input-modal">
-					<div class="box-header">
-						<p class="element_title"><%= @around_text %></p>
-					</div>
-					<div class="box-body">
-						<p class="text"><%= @element_text1 %></p>
-					</div>
-				</div>
-			</div>
-			<div class="mp_squares">
-				<div id="element2" class="box el_select" target="#input-modal">
-					<div class="box-header">
-						<p class="element_title"><%= @around_text %></p>
-					</div>
-					<div class="box-body">
-						<p class="text"><%= @element_text2 %></p>
-					</div>
-				</div>
-			</div>
-			<div class="mp_squares">
-				<div id="element3" class="box el_select" target="#input-modal">
-					<div class="box-header">
-						<p class="element_title"><%= @around_text %></p>
-					</div>
-					<div class="box-body">
-						<p class="text"><%= @element_text3 %></p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row text-center">
-			<div class="mp_squares">
-				<div id="element4" class="box el_select" target="#input-modal">
-					<div class="box-header">
-						<p class="element_title"><%= @around_text %></p>
-					</div>
-					<div class="box-body">
-						<p class="text"><%= @element_text4 %></p>
-					</div>
-				</div>
-			</div>
-			<div class="mp_squares">
-				<div id="element5" class="box" target="#input-modal">
-					<div class="box-header">
-						<p class="element_title"><%= @center_text %></p>
-					</div>
-					<div class="box-body">
-						<p class="text"><%= @element_text5 %></p>
-					</div>
-				</div>
-			</div>
-			<div class="mp_squares">
-				<div id="element6" class="box el_select" target="#input-modal">
-					<div class="box-header">
-						<p class="element_title"><%= @around_text %></p>
-					</div>
-					<div class="box-body">
-						<p class="text"><%= @element_text6 %></p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row text-center">
-			<div class="mp_squares">
-				<div id="element7" class="box el_select" target="#input-modal">
-					<div class="box-header">
-						<p class="element_title"><%= @around_text %></p>
-					</div>
-					<div class="box-body">
-						<p class="text"><%= @element_text7 %></p>
-					</div>
-				</div>
-			</div>
-			<div class="mp_squares">
-				<div id="element8" class="box el_select" target="#input-modal">
-					<div class="box-header">
-						<p class="element_title"><%= @around_text %></p>
-					</div>
-					<div class="box-body">
-						<p class="text"><%= @element_text8 %></p>
-					</div>
-				</div>
-			</div>
-			<div class="mp_squares">
-				<div id="element9" class="box el_select" target="#input-modal">
-					<div class="box-header">
-						<p class="element_title"><%= @around_text %></p>
-					</div>
-					<div class="box-body">
-						<p class="text"><%= @element_text9 %></p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row text-center">
-			<%= link_to "編集する", edit_mandala_path(@mandala_center.id), class: "btn btn-primary edit_btn" %>
+<div class="container-main">
+	<header>
+		<h1>あなたの目標<span><%= @mandala.target %></span></h1>
+	</header>
+	<div class="col-md-6">
+		<h3 class="bg-light">マンダラチャート</h3>
+		<% if @squares_overlooking == true %>
+			<!-- マンダラチャートを俯瞰図で表示 -->
+			<%= render '/users/mandala_overlooking', mandala_center: @mandala %>
+		<% else %>
+			<!-- マンダラチャートを 9マスで表示 -->
+			<%= render '/users/mypage_mandalachart', center_text: @center_text, around_text: @around_text, element_text1: @element_text1, element_text2: @element_text2,
+			element_text3: @element_text3, element_text4: @element_text4, element_text5: @element_text5, element_text6: @element_text6, element_text7: @element_text7,
+			element_text8: @element_text8, element_text9: @element_text9 %>
+		<% end %>
+		<div class="row text-center margin-top">
+			<%= link_to "編集する", edit_mandala_path(@mandala_center.id), class: "button button-min button-white margin-right-min" %>
+			<% if @squares_overlooking == true %>
+				<%= link_to "3×3表示に戻す", user_path(current_user.id), class: "button button-min button-white" %>
+			<% else %>
+				<%= link_to "俯瞰図で見る", user_path(current_user.id, overlooking: true), class: "button button-min button-white" %>
+			<% end %>
 		</div>
 	</div>
-		<div class="col-md-5">
+	<div class="col-md-6">
+		<h3 class="bg-light">TODOリスト</h3>
+		<%= form_for @task_new do |f| %>
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+			<div class="form-row">
+				<div class="form-group  col-sm-3">
+					<%= f.label '要素' %>
+					<div class="select_box">
+						<%= f.collection_select :element_id, @mandala.elements, :id, :target %>
+					</div>
+				</div>
+				<div class="form-group col-sm-6">
+					<%= f.label 'タスク' %>
+					<%= f.text_field :content, id: "inputTask", class: "form-control", :placeholder => "20文字以内で入力してください" %>
+				</div>
+				<div class="form-group col-sm-3">
+					<%= f.label '期限' %>
+					<%= f.date_field :limit, id: "inputLimit", class: "form-control", value: "", :placeholder => "" %>
+				</div>
+			</div>
+			<input type="button" id="btnAdd_chart" class="btn btn-primary " value="マンダラチャートから追加">
+			<%= f.submit "追加", id: "btnAdd", class: "btn btn-primary text-right pull-right" %>
+		<% end %>
+
+		<div class="message_area">
+			<% if flash[:errors] %>
+				<div class="alert alert-warning" role="alert" id="divAlert">
+					<i id="alert_close" class="fas fa-times pull-right fa-lg"></i>
+					<p>エラー<%= flash[:errors].count %>件発生！</p>
+					<% flash[:errors].each do |message| %>
+						<p>・<%= message %>!</p>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+
+		<div class="table-responsive">
+			<table class="table table-hover" id="todoList">
+				<thead>
+					<tr>
+						<th>要素</th>
+						<th>タスク内容</th>
+						<th>期限</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% unless @tasks.blank? %>
+						<% @tasks.each do |task| %>
+						<tr class="task_content">
+							<%= hidden_field_tag :task_id, task.id, id: "task_id" %>
+							<td><%= link_to "完了", task_done_path(task.id), id: "btnDone", class: "btn btn-primary btnDone" %></td>
+							<td><%= task.content %></td>
+							<td><%= task.limit %></td>
+							<td>
+								<%= link_to task_path(task.id), method: :delete, id: "btnDel", class: "btn btn-danger btnDel" do %>
+									<i class="fas fa-trash-alt"></i>
+								<% end %>
+							</td>
+						</tr>
+						<% end %>
+					<% end %>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>
 
 
+
 <%= javascript_include_tag "mandalas_new.js" %>
+<%= javascript_include_tag "todo_list.js" %>

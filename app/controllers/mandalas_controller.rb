@@ -32,11 +32,14 @@ class MandalasController < ApplicationController
 
   def edit
     @main_title = "マンダラチャート編集"
+    gon.form_edit = true
     if params[:element_edit]
+      gon.step ="el_edit"
+      @step = "el_edit"
       mandala = Mandala.find_by(user_id: current_user, achieved: false)
       @mandala_center = Element.find_by(mandala_id: mandala.id, number: params[:element_edit].to_i)
       @mandala_center.activities.build
-      square_text1
+      square_text2
       element_activity_text
     else
       @step = "edit"
@@ -46,11 +49,10 @@ class MandalasController < ApplicationController
       square_text1
       mandala_element_text
     end
-    render "new"
   end
 
   def update
-    if params[:element_edit]
+    if params[:step] == "el_edit"
       create_activity
     else
       create_step3
@@ -107,6 +109,7 @@ class MandalasController < ApplicationController
       element_activity_text
     end
     @mandala_center.activities.build
+    @element_text5 = @mandala_center.target
   end
 
 #-------------------- Mandalaチャートnewアクション用 --------------------#
@@ -174,7 +177,7 @@ class MandalasController < ApplicationController
     if mandala.update(mandala_params)
       redirect_to user_path(current_user.id)
     else
-      if request.path.include?(edit_mandala_path)
+      if request.path.include?(mandala_path(current_user.id))
         redirect_to edit_mandala_path
       else
         redirect_to new_mandala_path(step:3)
@@ -184,18 +187,18 @@ class MandalasController < ApplicationController
 
   def create_activity
     mandala = Mandala.find_by(user_id: current_user.id, achieved: false)
-    element = Element.find_by(mandala_id: mandala.id, number: params[:element_edit].to_i )
+    element = Element.find_by(mandala_id: mandala.id, number: params[:element][:number].to_i )
     if element.update(element_params)
-      if request.path.include?(edit_mandala_path) #リクエストURLが edit_mandala_path かどうかチェック
+      if request.path.include?(mandala_path(current_user.id)) #リクエストURLをチェック
         redirect_to edit_mandala_path(mandala.id)
       else
         redirect_to new_mandala_path(step: 3)
       end
     else
-      if request.path.include?(edit_mandala_path) #リクエストURLが edit_mandala_path かどうかチェック
-        redirect_to edit_mandala_path(element_edit: params[:element_edit].to_i)
+      if request.path.include?(mandala_path(current_user.id)) #リクエストURLをチェック
+        redirect_to edit_mandala_path(element_edit: params[:element][:number].to_i)
       else
-      redirect_to new_mandala_path(element_edit: params[:element_edit].to_i)
+      redirect_to new_mandala_path(element_edit: params[:element][:number].to_i)
       end
     end
   end

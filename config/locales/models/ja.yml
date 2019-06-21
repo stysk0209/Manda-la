@@ -1,0 +1,30 @@
+
+ja:
+  activerecord:
+    models:
+      user:
+    attributes:
+      user:
+        email: "メールアドレス"
+        name: "名前"
+
+      mandala:
+    attributes:
+      mandala:
+        target: "目標"
+
+      element:
+    attributes:
+      element:
+        target: "必要な要素"
+
+      activity:
+    attributes:
+      activity:
+        target: "必要な行動"
+
+      task:
+    attributes:
+      task:
+        content: "タスクの内容"
+        limit: "期限"

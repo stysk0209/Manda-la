@@ -5,6 +5,7 @@ class User < ApplicationRecord
 			:recoverable, :rememberable, :validatable
 
 	has_many :mandalas, :dependent => :destroy
+	has_many :tasks, :dependent => :destroy
 	accepts_nested_attributes_for :mandalas, allow_destroy: true
 
 end

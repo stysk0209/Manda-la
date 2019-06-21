@@ -16,6 +16,7 @@ module MandaLa
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.i18n.default_locale = :ja #デフォルト言語日本語化
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s] #モデルカラム名日本語化
     config.autoload_paths += %W(#{config.root}/lib) #/libを自動ロードするため？
   end
 

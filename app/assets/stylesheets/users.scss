@@ -16,16 +16,96 @@
 /* ---- チャートレイアウト用 ---- */
 .mp_squares {
     position: relative;
-    width: 25%;
+    width: 22%;
     height: auto;
-    background: #EEE;
     display: inline-block;
+    color: #5f6f81;
+    cursor: pointer;
 }
 .mp_squares:before {
 	content: "";
 	display: block;
 	padding-top: 100%;
 }
+.mp_ol_squares {
+    position: relative;
+    width: 31%;
+    height: auto;
+    display: inline-block;
+    color: #5f6f81;
+    cursor: pointer;
+}
+.mp_ol_squares:before {
+	content: "";
+	display: block;
+	padding-top: 100%;
+}
 .edit_btn {
 	margin-top: 2rem;
+}
+
+/* ---- TODOリスト用 ---- */
+.select_box {
+    overflow: hidden;
+    width: 90%;
+    text-align: center;
+}
+.select_box select {
+    width: 100%;
+    padding-right: 1em;
+    cursor: pointer;
+    text-indent: 0.01px;
+    text-overflow: ellipsis;
+    border: none;
+    outline: none;
+    background: transparent;
+    background-image: none;
+    box-shadow: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+.select_box select::-ms-expand {
+    display: none;
+}
+.select_box {
+    position: relative;
+    border: 1px solid #bbbbbb;
+    border-radius: 2px;
+    background: #ffffff;
+}
+.select_box::before {
+    position: absolute;
+    top: 0.8em;
+    right: 0.9em;
+    width: 0;
+    height: 0;
+    padding: 0;
+    content: '';
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #666666;
+    pointer-events: none;
+}
+.select_box select {
+    padding: 6px 38px 6px 6px;
+    color: #666666;
+}
+#btnAdd_chart {
+    margin-left: 15px;
+}
+#btnAdd {
+    margin-right: 15px;
+}
+.task_content {
+    background-color: #fff;
+}
+.alert {
+    margin-top: 1vw;
+}
+.alert p {
+    margin: 0;
+}
+#alert_close {
+    font-size: 2rem;
+    cursor: pointer;
 }

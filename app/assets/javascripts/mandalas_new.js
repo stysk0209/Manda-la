@@ -1,14 +1,18 @@
 $(function() {
 
 	if ( gon.step == 1 ) {
-		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').removeClass('modal-open');
+		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').removeClass('modal_open');
+		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').parent().removeClass('squares-gray');
+		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').parent().addClass('squares-disabled');
 		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').find('.element_val,.element_num').prop('disabled', true);
 	} else if ( gon.step == 3 || gon.step == "edit" ) {
 		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').removeClass('modal-open');
 		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').addClass('element_link');
 	}
 
-	$('.modal-open').on('click', function() {
+
+	// モーダルを開く
+	$('.modal_open').on('click', function() {
 		let title = $(this).find('.element_title').text();
 		$('#header-text').text(title);
 		let modal = $(this).attr('target');
@@ -19,7 +23,7 @@ $(function() {
 		ModalOpen(modal);
 
 		// モーダルを閉じる
-		$('#modal-overlay,#modal-close').on('click', function() {
+		$('#modal-overlay,#modal_close').on('click', function() {
 			$(modal + ', #modal-overlay').fadeOut('slow', function() {
 				$('#modal-overlay').remove();
 			});
@@ -41,7 +45,7 @@ $(function() {
 	$('.element_link').off('click');
 	$('.element_link').on('click', function() {
 		let id = $(this).find('.element_num').val();
-		let url = $(location).attr('href');
+		let url = $(location).attr('pathname');
 	window.location.href = url + "?element_edit=" + id
 	});
 
