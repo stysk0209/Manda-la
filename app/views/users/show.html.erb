@@ -24,7 +24,7 @@
 	</div>
 	<div class="col-md-6">
 		<h3 class="bg-light">TODOリスト</h3>
-		<%= form_for @task_new do |f| %>
+		<%= form_for @task_new, remote: true do |f| %>
 		<%= f.hidden_field :user_id, :value => current_user.id %>
 			<div class="form-row">
 				<div class="form-group  col-sm-3">
@@ -46,47 +46,8 @@
 			<%= f.submit "追加", id: "btnAdd", class: "btn btn-primary text-right pull-right" %>
 		<% end %>
 
-		<div class="message_area">
-			<% if flash[:errors] %>
-				<div class="alert alert-warning" role="alert" id="divAlert">
-					<i id="alert_close" class="fas fa-times pull-right fa-lg"></i>
-					<p>エラー<%= flash[:errors].count %>件発生！</p>
-					<% flash[:errors].each do |message| %>
-						<p>・<%= message %>!</p>
-					<% end %>
-				</div>
-			<% end %>
-		</div>
+		<div id="todo_content"><%= render'users/todo_content', tasks: @tasks %></div>
 
-		<div class="table-responsive">
-			<table class="table table-hover" id="todoList">
-				<thead>
-					<tr>
-						<th>要素</th>
-						<th>タスク内容</th>
-						<th>期限</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<% unless @tasks.blank? %>
-						<% @tasks.each do |task| %>
-						<tr class="task_content">
-							<%= hidden_field_tag :task_id, task.id, id: "task_id" %>
-							<td><%= link_to "完了", task_done_path(task.id), id: "btnDone", class: "btn btn-primary btnDone" %></td>
-							<td><%= task.content %></td>
-							<td><%= task.limit %></td>
-							<td>
-								<%= link_to task_path(task.id), method: :delete, id: "btnDel", class: "btn btn-danger btnDel" do %>
-									<i class="fas fa-trash-alt"></i>
-								<% end %>
-							</td>
-						</tr>
-						<% end %>
-					<% end %>
-				</tbody>
-			</table>
-		</div>
 	</div>
 </div>
 

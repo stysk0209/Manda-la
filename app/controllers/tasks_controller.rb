@@ -4,9 +4,11 @@ class TasksController < ApplicationController
 	def create
 		@task_new = Task.new(task_params)
 		unless @task_new.save
-			flash[:errors] = @task_new.errors.full_messages
+			flash.now[:errors] = @task_new.errors.full_messages
 		end
-		redirect_to user_path(current_user)
+		# redirect_to user_path(current_user)
+		@tasks = Task.where(user_id: current_user.id, done: false)
+		render 'todo'
 	end
 
 	def done
@@ -14,14 +16,14 @@ class TasksController < ApplicationController
 		task.update(done: true)
 		point = Point.new(element_id: task.element_id)
 		point.save!
-		redirect_to user_path(current_user.id)
+		render 'todo'
 	end
 
 
 	def destroy
 		task = Task.find(params[:id])
 		task.destroy
-		redirect_to user_path(current_user.id)
+		render 'todo'
 	end
 
 
