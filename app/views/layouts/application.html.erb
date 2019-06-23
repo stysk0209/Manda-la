@@ -10,6 +10,7 @@
     <%= stylesheet_link_tag    'normalize' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript" src="https://github.com/nagix/chartjs-plugin-colorschemes/releases/download/v0.2.0/chartjs-plugin-colorschemes.min.js"></script>
   </head>
 
   <body>
@@ -37,7 +38,11 @@
                   <span>ユーザ情報編集</span>
                 <% end %>
               </li>
-              <li><a class="gn-icon gn-icon-graph" href="./new.html"><span>グラフを見る</span></a></li>
+              <li>
+                <%= link_to user_graph_path(current_user.id), class: "gn-icon gn-icon-graph" do %>
+                  <span>グラフを見る</span>
+                <% end %>
+              </li>
             </ul>
           </li>
         <% else %>

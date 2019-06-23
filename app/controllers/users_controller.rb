@@ -26,7 +26,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def create
+  def graph
+    @mandala = Mandala.find_by(user_id: current_user.id, achieved: false)
+    gon.element = @mandala.elements.pluck(:target)
+    gon.scores_this_week = score_this_week(@mandala)
+    gon.scores_last_week = score_last_week(@mandala)
+    gon.task_comp_this_week = task_comp_this_week(@mandala)
+    gon.task_comp_last_week = task_comp_last_week(@mandala)
   end
 
   def edit

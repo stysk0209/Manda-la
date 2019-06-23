@@ -12,6 +12,26 @@
 	margin-bottom: 4rem;
 }
 
+/* 見出しデザイン用 */
+.container-main h3 {
+    position: relative;
+    width: 30rem;
+    background: #f1f8ff;
+    padding: 0.25em 0.5em;
+    border-left: solid 2em #5c9ee7;
+}
+
+.container-main h3:before {
+    position: absolute;
+    padding: 0em;
+    color: white;
+    font-weight: normal;
+    left: -1.35em;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
 
 /* ---- チャートレイアウト用 ---- */
 .mp_squares {
@@ -108,4 +128,10 @@
 #alert_close {
     font-size: 2rem;
     cursor: pointer;
+}
+
+/* グラフレイアウト用 */
+
+.barchart {
+    margin-top: 5rem;
 }

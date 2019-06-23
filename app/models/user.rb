@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
 	has_many :mandalas, :dependent => :destroy
 	has_many :tasks, :dependent => :destroy
+	has_many :points, :dependent => :destroy
 	accepts_nested_attributes_for :mandalas, allow_destroy: true
 
 end
