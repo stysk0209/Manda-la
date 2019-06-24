@@ -9,4 +9,11 @@ class User < ApplicationRecord
 	has_many :points, :dependent => :destroy
 	accepts_nested_attributes_for :mandalas, allow_destroy: true
 
+	validates :name,		presence: true,
+							length: { maximum: 20 }
+	validates :email,		presence: true,
+							length: { maximum: 20 }
+	validates :email,		presence: true,
+							length: { maximum: 20 }
+
 end

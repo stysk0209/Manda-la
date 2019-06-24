@@ -25,6 +25,8 @@ function ModalOpen(modal) {
 		$('#modal-overlay').fadeIn('slow');
 		// モーダルをセンタリング
 		centeringModelSyncer(modal);
+		// 非表示を解除
+		$(modal).css({'display': ''});
 		// モーダルをフェードイン
 		$(modal).fadeIn('slow');
 		// モーダルを閉じる

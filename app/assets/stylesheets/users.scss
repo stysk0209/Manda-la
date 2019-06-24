@@ -143,3 +143,18 @@
     left: 0;
     top: -2rem;
 }
+.error_messages {
+    position: relative;
+    top: 40%;
+}
+.withdraw {
+    cursor: pointer;
+}
+#withdraw_field {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    width: 40%;
+    padding: 2rem;
+    background-color: #fff;
+}
