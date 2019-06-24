@@ -69,13 +69,11 @@
 		<div class="text-center">
 		<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 			<div class="field cp_iptxt">
-				<!-- <%= f.label :メールアドレス, class: "text-left" %><br /> -->
 				<%= f.email_field :email, placeholder: "メールアドレス", autofocus: true, autocomplete: "email", class: "email" %>
 				<i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
 			</div>
 
 			<div class="field cp_iptxt">
-				<!-- <%= f.label :パスワード, class: "text-left" %><br /> -->
 				<%= f.password_field :password, placeholder: "パスワード", autocomplete: "current-password", class: "password" %>
 				<i class="fas fa-unlock-alt fa-lg fa-fw" aria-hidden="true"></i>
 			</div>

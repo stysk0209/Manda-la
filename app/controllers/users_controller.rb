@@ -1,8 +1,5 @@
 class UsersController < ApplicationController
 
-  def index
-  end
-
   def show
     @mandala = Mandala.find_by(user_id: current_user.id, achieved: false)
     @task_new = Task.new
@@ -36,9 +33,16 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
   end
 
   def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to user_path
+    else
+      render 'edit'
+    end
   end
 
 
@@ -64,6 +68,13 @@ class UsersController < ApplicationController
       @element_text7 = Activity.find_by(element_id: @mandala_center.id, number: 6).target
       @element_text8 = Activity.find_by(element_id: @mandala_center.id, number: 7).target
       @element_text9 = Activity.find_by(element_id: @mandala_center.id, number: 8).target
+  end
+
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email)
   end
 
 end
