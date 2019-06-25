@@ -1,0 +1,128 @@
+<div class="row text-center">
+	<div class="mp_squares squares-gray">
+		<div id="element1" class="box el_select" target="#input-modal">
+			<div class="box-header">
+				<p class="element_title"><%= around_text %></p>
+			</div>
+			<div class="box-body">
+				<p class="text"><%= element_text1 %></p>
+			</div>
+			<% if @element_select %>
+				<%= hidden_field_tag :element_id, Activity.find_by(target: element_text1).element_id %>
+				<%= hidden_field_tag :user_id, current_user.id %>
+			<% end %>
+		</div>
+	</div>
+	<div class="mp_squares squares-gray">
+		<div id="element2" class="box el_select" target="#input-modal">
+			<div class="box-header">
+				<p class="element_title"><%= around_text %></p>
+			</div>
+			<div class="box-body">
+				<p class="text"><%= element_text2 %></p>
+			</div>
+			<%if @element_select %>
+				<%= hidden_field_tag :element_id, Activity.find_by(target: element_text2).element_id %>
+				<%= hidden_field_tag :user_id, current_user.id %>
+			<% end %>
+		</div>
+	</div>
+	<div class="mp_squares squares-gray">
+		<div id="element3" class="box el_select" target="#input-modal">
+			<div class="box-header">
+				<p class="element_title"><%= around_text %></p>
+			</div>
+			<div class="box-body">
+				<p class="text"><%= element_text3 %></p>
+			</div>
+			<%if @element_select %>
+				<%= hidden_field_tag :element_id, Activity.find_by(target: element_text3).element_id %>
+				<%= hidden_field_tag :user_id, current_user.id %>
+			<% end %>
+		</div>
+	</div>
+</div>
+<div class="row text-center">
+	<div class="mp_squares squares-gray">
+		<div id="element4" class="box el_select" target="#input-modal">
+			<div class="box-header">
+				<p class="element_title"><%= around_text %></p>
+			</div>
+			<div class="box-body">
+				<p class="text"><%= element_text4 %></p>
+			</div>
+			<%if @element_select %>
+				<%= hidden_field_tag :element_id, Activity.find_by(target: element_text4).element_id %>
+				<%= hidden_field_tag :user_id, current_user.id %>
+			<% end %>
+		</div>
+	</div>
+	<div class="mp_squares squares-white">
+		<div id="element_center" class="box" target="#input-modal">
+			<div class="box-header">
+				<p class="element_title"><%= center_text %></p>
+			</div>
+			<div class="box-body">
+				<p class="text"><%= element_text5 %></p>
+			</div>
+		</div>
+	</div>
+	<div class="mp_squares squares-gray">
+		<div id="element5" class="box el_select" target="#input-modal">
+			<div class="box-header">
+				<p class="element_title"><%= around_text %></p>
+			</div>
+			<div class="box-body">
+				<p class="text"><%= element_text6 %></p>
+			</div>
+			<%if @element_select %>
+				<%= hidden_field_tag :element_id, Activity.find_by(target: element_text6).element_id %>
+				<%= hidden_field_tag :user_id, current_user.id %>
+			<% end %>
+		</div>
+	</div>
+</div>
+<div class="row text-center">
+	<div class="mp_squares squares-gray">
+		<div id="element6" class="box el_select" target="#input-modal">
+			<div class="box-header">
+				<p class="element_title"><%= around_text %></p>
+			</div>
+			<div class="box-body">
+				<p class="text"><%= element_text7 %></p>
+			</div>
+			<%if @element_select %>
+				<%= hidden_field_tag :element_id, Activity.find_by(target: element_text7).element_id %>
+				<%= hidden_field_tag :user_id, current_user.id %>
+			<% end %>
+		</div>
+	</div>
+	<div class="mp_squares squares-gray">
+		<div id="element7" class="box el_select" target="#input-modal">
+			<div class="box-header">
+				<p class="element_title"><%= around_text %></p>
+			</div>
+			<div class="box-body">
+				<p class="text"><%= element_text8 %></p>
+			</div>
+			<%if @element_select %>
+				<%= hidden_field_tag :element_id, Activity.find_by(target: element_text8).element_id %>
+				<%= hidden_field_tag :user_id, current_user.id %>
+			<% end %>
+		</div>
+	</div>
+	<div class="mp_squares squares-gray">
+		<div id="element8" class="box el_select" target="#input-modal">
+			<div class="box-header">
+				<p class="element_title"><%= around_text %></p>
+			</div>
+			<div class="box-body">
+				<p class="text"><%= element_text9 %></p>
+			</div>
+			<%if @element_select %>
+				<%= hidden_field_tag :element_id, Activity.find_by(target: element_text9).element_id %>
+				<%= hidden_field_tag :user_id, current_user.id %>
+			<% end %>
+		</div>
+	</div>
+</div>

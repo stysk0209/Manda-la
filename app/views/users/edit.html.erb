@@ -1,2 +1,47 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="container-main">
+	<header>
+		<h2>ユーザ情報編集ページ</h2>
+		<div class="error_messages text-center text-danger">
+			<% if @user.errors.any? %>
+				<p><%= @user.errors.count %>件のエラー</p>
+				<% @user.errors.full_messages.each do |message| %>
+					<p><%= message %></p>
+				<% end %>
+			<% end %>
+		</div>
+	</header>
+	<div class="col-md-8 col-md-offset-2 text-right">
+		<%= form_for @user do |f| %>
+			<div class="field cp_iptxt">
+				<%= f.label :name, "名前", class: "edit_label" %>
+				<%= f.text_field :name, placeholder: "名前", autofocus: true, autocomplete: "name", class: "name", :size => "" %>
+				<i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+			</div>
+			<div class="field cp_iptxt">
+				<%= f.label :email, "メールアドレス", class: "edit_label" %>
+				<%= f.email_field :email, placeholder: "メールアドレス", autofocus: true, autocomplete: "email", class: "email" %>
+				<i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+			</div>
+			<div class="submit_field  text-center">
+				<%= f.submit "変更する", class: "button button-blue submit-btn" %>
+			</div>
+			<a class="withdraw modal_open" target="#withdraw_field">退会する方はこちら</a>
+		<% end %>
+	</div>
+</div>
+
+<div id="withdraw_field">
+	<i id="modal_close" class="fas fa-times pull-right fa-lg"></i>
+	<div class="text-center">
+		<p class="h4"><i class="fas fa-exclamation-circle"></i>退会するとすべての機能が使用できなくなります！</p>
+		<p class="h4">それでもよろしいですか？</p>
+	</div>
+	<div class="row text-center">
+		<%= link_to "退会する", user_registration_path, method: :delete, class: "button button-blue margin-top", data:{confirm:"退会処理を行います。よろしいですか?"} %>
+	</div>
+
+</div>
+
+<%= javascript_include_tag "modal_window.js" %>
+
+

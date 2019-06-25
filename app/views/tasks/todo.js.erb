@@ -1,0 +1,6 @@
+$('#todo_content').html('<%= j(render partial: 'users/todo_content', locals: { tasks: @tasks }) %>')
+
+<% unless flash[:errors] %>
+	$('#inputTask').val('');
+	$('#inputLimit').val('');
+<% end %>

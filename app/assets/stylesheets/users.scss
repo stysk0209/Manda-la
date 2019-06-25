@@ -1,3 +1,164 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+
+/* -- Mandalaチャート用のCSSは、[mandalas.css]での記述が適用しています -- */
+
+.mp_header_text {
+	margin-top: 10rem;
+	margin-bottom: 4rem;
+}
+
+/* 見出しデザイン用 */
+.container-main h3 {
+    position: relative;
+    width: 30rem;
+    background: #f1f8ff;
+    padding: 0.25em 0.5em;
+    border-left: solid 2em #5c9ee7;
+}
+
+.container-main h3:before {
+    position: absolute;
+    padding: 0em;
+    color: white;
+    font-weight: normal;
+    left: -1.35em;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+
+/* ---- チャートレイアウト用 ---- */
+.mp_squares {
+    position: relative;
+    width: 22%;
+    height: auto;
+    display: inline-block;
+    color: #5f6f81;
+    border: 1px solid rgba(95, 111, 129, 0.2);
+    cursor: pointer;
+}
+.mp_squares:before {
+	content: "";
+	display: block;
+	padding-top: 100%;
+}
+.mp_ol_squares {
+    position: relative;
+    width: 31%;
+    height: auto;
+    display: inline-block;
+    color: #5f6f81;
+    border: 1px solid rgba(95, 111, 129, 0.2);
+    cursor: pointer;
+}
+.mp_ol_squares:before {
+	content: "";
+	display: block;
+	padding-top: 100%;
+}
+.edit_btn {
+	margin-top: 2rem;
+}
+
+/* ---- TODOリスト用 ---- */
+.select_box {
+    overflow: hidden;
+    width: 90%;
+    text-align: center;
+}
+.select_box select {
+    width: 100%;
+    padding-right: 1em;
+    cursor: pointer;
+    text-indent: 0.01px;
+    text-overflow: ellipsis;
+    border: none;
+    outline: none;
+    background: transparent;
+    background-image: none;
+    box-shadow: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+.select_box select::-ms-expand {
+    display: none;
+}
+.select_box {
+    position: relative;
+    border: 1px solid #bbbbbb;
+    border-radius: 2px;
+    background: #ffffff;
+}
+.select_box::before {
+    position: absolute;
+    top: 0.8em;
+    right: 0.9em;
+    width: 0;
+    height: 0;
+    padding: 0;
+    content: '';
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #666666;
+    pointer-events: none;
+}
+.select_box select {
+    padding: 6px 38px 6px 6px;
+    color: #666666;
+}
+#btnAdd_chart {
+    margin-left: 15px;
+}
+#btnAdd {
+    margin-right: 15px;
+}
+.task_content {
+    background-color: #fff;
+}
+.alert {
+    margin-top: 1vw;
+}
+.alert p {
+    margin: 0;
+}
+#alert_close {
+    font-size: 2rem;
+    cursor: pointer;
+}
+#add_task_messages {
+    display: none;
+}
+
+/* グラフレイアウト用 */
+
+.barchart {
+    margin-top: 5rem;
+}
+
+/* ユーザ情報編集ページ用 */
+.edit_label {
+    position: absolute;
+    left: 0;
+    top: -2rem;
+}
+.error_messages {
+    position: relative;
+    top: 40%;
+}
+.withdraw {
+    cursor: pointer;
+}
+#withdraw_field {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    width: 40%;
+    padding: 2rem;
+    background-color: #fff;
+}

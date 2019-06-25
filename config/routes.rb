@@ -1,16 +1,19 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  devise_for :users, :controllers => {
- :registrations => 'users/registrations',
- :sessions => 'users/sessions'
- }
+	root to: 'mandalas#top'
 
-  root to: 'mandalas#top'
+	devise_for :users, :controllers => {
+	:registrations => 'users/registrations',
+	:sessions => 'users/sessions'
+	}
 
-  resources :users, only: [:index, :show, :create, :edit, :update, :destroy]
+	get 'users/:id/graph' => 'users#graph', as: 'user_graph'
+	resources :users, only: [:show, :edit, :update, :destroy]
 
-  get 'mandalas/about', as: 'mandala_about'
-  resources :mandalas
+	resources :mandalas
+
+	get 'tasks/:id/done' => 'tasks#done', as: 'task_done'
+	resources :tasks, only: [:create, :destroy]
 
 end

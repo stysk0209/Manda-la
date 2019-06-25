@@ -1,5 +1,6 @@
 class Point < ApplicationRecord
 
-	belongs_to :activity
+	belongs_to :user
+	belongs_to :element
 
 end

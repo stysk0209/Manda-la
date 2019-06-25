@@ -1,8 +1,13 @@
 
 <div class="container-main">
-	<header><h1>マンダラチャートを作成しよう！<span><%= @main_text %></span></h1></header>
+	<header>
+		<h1>
+			マンダラチャートを作成しよう!
+			<span><%= @main_text %></span>
+		</h1>
+	</header>
 	<div class="container-mandalas text-center">
-	<%= form_for @mandala_center, url: mandalas_path, method: :post do |f| %>
+		<%= form_for @mandala_center, url: mandalas_path, method: :post do |f| %>
 		<%= hidden_field_tag :step, @step %>
 			<div class="mandalas-row">
 				<div class="squares squares-gray">

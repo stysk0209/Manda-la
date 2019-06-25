@@ -5,11 +5,18 @@ $(function() {
 		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').parent().removeClass('squares-gray');
 		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').parent().addClass('squares-disabled');
 		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').find('.element_val,.element_num').prop('disabled', true);
-	}else if ( gon.step == 3 ) {
-		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').removeClass('modal_open');
-		$('#element1,#element2,#element3,#element4,#element6,#element7,#element8,#element9').addClass('edit_link');
+	} else if ( gon.step == 3 || gon.step == "edit" ) {
+		$('#element1,#element2,#element3,#element4,#element5,#element6,#element7,#element8').removeClass('modal-open');
+		$('#element1,#element2,#element3,#element4,#element5,#element6,#element7,#element8').addClass('element_link');
+	} else if (gon.step == "element_select") {
+		$('#element1,#element2,#element3,#element4,#element5,#element6,#element7,#element8').removeClass('el_select');
+		$('#element1,#element2,#element3,#element4,#element5,#element6,#element7,#element8').addClass('task_select');
+		$('#element_center').addClass('el_select_center');
+	} else { // (gon.step == "element_overlooking")
 	}
 
+
+	// モーダルを開く
 	$('.modal_open').on('click', function() {
 		let title = $(this).find('.element_title').text();
 		$('#header-text').text(title);
@@ -39,11 +46,27 @@ $(function() {
 		});
 	});
 
-	$('.edit_link').off('click');
-	$('.edit_link').on('click', function() {
+	// マンダラチャート作成画面用
+	$('.element_link').off('click');
+	$('.element_link').on('click', function() {
 		let id = $(this).find('.element_num').val();
-	window.location.href = "/mandalas/new?element_edit=" + id
+		let url = $(location).attr('pathname');
+	window.location.href = url + "?element_edit=" + id
 	});
+
+	// Userマイページ マンダラチャート用(各要素の詳細へ遷移)
+	$('.el_select').off('click');
+	$('.el_select').on('click', function() {
+		let id = $(this).attr('id').replace('element', "");
+		let url = $(location).attr('href');
+		window.location.href = url + "?element_select=" + id;
+	});
+	// Userマイページ マンダラチャート用(中心の要素をクリックで戻る)
+	$('.el_select_center').off('click');
+	$('.el_select_center').on('click', function() {
+		window.location.href = $(location).attr('pathname');
+	});
+
 });
 
 
