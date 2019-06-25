@@ -1,10 +1,6 @@
-
 <div class="container-main">
-	<header>
-		<h1>
-			マンダラチャート編集
-			<span><%= @main_text %></span>
-		</h1>
+	<header class="text-center">
+		<h2>マンダラチャート編集ページ</h2>
 	</header>
 	<div class="container-mandalas text-center">
 		<%= form_for @mandala_center, url: mandala_path, method: :patch do |f| %>
@@ -57,7 +53,7 @@
 					</div>
 				</div>
 				<div class="squares squares-white">
-					<div id="element5" class="box modal_open" target="#input-modal">
+					<div id="element_center" class="box modal_open" target="#input-modal">
 						<div class="box-header">
 							<p class="element_title"><%= @center_text %></p>
 						</div>
@@ -69,7 +65,7 @@
 					</div>
 				</div>
 				<div class="squares squares-gray">
-					<div id="element6" class="box modal_open" target="#input-modal">
+					<div id="element5" class="box modal_open" target="#input-modal">
 						<div class="box-header">
 							<p class="element_title"><%= @around_text %></p>
 						</div>
@@ -82,7 +78,7 @@
 			</div>
 			<div class="mandalas-row">
 				<div class="squares squares-gray">
-					<div id="element7" class="box modal_open" target="#input-modal">
+					<div id="element6" class="box modal_open" target="#input-modal">
 						<div class="box-header">
 							<p class="element_title"><%= @around_text %></p>
 						</div>
@@ -93,7 +89,7 @@
 					</div>
 				</div>
 				<div class="squares squares-gray">
-					<div id="element8" class="box modal_open" target="#input-modal">
+					<div id="element7" class="box modal_open" target="#input-modal">
 						<div class="box-header">
 							<p class="element_title"><%= @around_text %></p>
 						</div>
@@ -104,7 +100,7 @@
 					</div>
 				</div>
 				<div class="squares squares-gray">
-					<div id="element9" class="box modal_open" target="#input-modal">
+					<div id="element8" class="box modal_open" target="#input-modal">
 						<div class="box-header">
 							<p class="element_title"><%= @around_text %></p>
 						</div>
