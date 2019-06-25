@@ -1,51 +1,69 @@
 <div class="row text-center">
 	<div class="mp_ol_squares squares-gray">
-		<div id="element1" class="box modal-open" target="#input-modal">
+		<div id="element1" class="box task_select">
 			<p class="text"><%= Activity.find_by(element_id: element.id, number: 1).target %></p>
+			<%= hidden_field_tag :element_id, element.id %>
+			<%= hidden_field_tag :user_id, current_user.id %>
 		</div>
 	</div>
 	<div class="mp_ol_squares squares-gray">
-		<div id="element2" class="box modal-open" target="#input-modal">
+		<div id="element2" class="box task_select">
 			<p class="text"><%= Activity.find_by(element_id: element.id, number: 2).target %></p>
+			<%= hidden_field_tag :element_id, element.id %>
+			<%= hidden_field_tag :user_id, current_user.id %>
 		</div>
 	</div>
 	<div class="mp_ol_squares squares-gray">
-		<div id="element3" class="box modal-open" target="#input-modal">
+		<div id="element3" class="box task_select">
 			<p class="text"><%= Activity.find_by(element_id: element.id, number: 3).target %></p>
+			<%= hidden_field_tag :element_id, element.id %>
+			<%= hidden_field_tag :user_id, current_user.id %>
 		</div>
 	</div>
 </div>
 <div class="row text-center">
 	<div class="mp_ol_squares squares-gray">
-		<div id="element4" class="box modal-open" target="#input-modal">
+		<div id="element4" class="box task_select">
 			<p class="text"><%= Activity.find_by(element_id: element.id, number: 4).target %></p>
+			<%= hidden_field_tag :element_id, element.id %>
+			<%= hidden_field_tag :user_id, current_user.id %>
 		</div>
 	</div>
 	<div class="mp_ol_squares squares-white">
-		<div id="element5" class="box modal-open" target="#input-modal">
+		<div id="element_center" class="box">
 			<p class="text"><%= element.target %></p>
+			<%= hidden_field_tag :element_id, element.id %>
+			<%= hidden_field_tag :user_id, current_user.id %>
 		</div>
 	</div>
 	<div class="mp_ol_squares squares-gray">
-		<div id="element6" class="box modal-open" target="#input-modal">
+		<div id="element5" class="box task_select">
 			<p class="text"><%= Activity.find_by(element_id: element.id, number: 5).target %></p>
+			<%= hidden_field_tag :element_id, element.id %>
+			<%= hidden_field_tag :user_id, current_user.id %>
 		</div>
 	</div>
 </div>
 <div class="row text-center">
 	<div class="mp_ol_squares squares-gray">
-		<div id="element7" class="box modal-open" target="#input-modal">
+		<div id="element6" class="box task_select">
 			<p class="text"><%= Activity.find_by(element_id: element.id, number: 6).target %></p>
+			<%= hidden_field_tag :element_id, element.id %>
+			<%= hidden_field_tag :user_id, current_user.id %>
 		</div>
 	</div>
 	<div class="mp_ol_squares squares-gray">
-		<div id="element8" class="box modal-open" target="#input-modal">
+		<div id="element7" class="box task_select">
 			<p class="text"><%= Activity.find_by(element_id: element.id, number: 7).target %></p>
+			<%= hidden_field_tag :element_id, element.id %>
+			<%= hidden_field_tag :user_id, current_user.id %>
 		</div>
 	</div>
 	<div class="mp_ol_squares squares-gray">
-		<div id="element9" class="box modal-open" target="#input-modal">
+		<div id="element8" class="box task_select">
 			<p class="text"><%= Activity.find_by(element_id: element.id, number: 8).target %></p>
+			<%= hidden_field_tag :element_id, element.id %>
+			<%= hidden_field_tag :user_id, current_user.id %>
 		</div>
 	</div>
 </div>

@@ -5,16 +5,18 @@
 	</header>
 	<div class="col-md-6">
 		<h3 class="bg-light">マンダラチャート</h3>
-		<% if @squares_overlooking == true %>
-			<!-- マンダラチャートを俯瞰図で表示 -->
-			<%= render '/users/mandala_overlooking', mandala_center: @mandala %>
-		<% else %>
-			<!-- マンダラチャートを 9マスで表示 -->
-			<%= render '/users/mypage_mandalachart', center_text: @center_text, around_text: @around_text, element_text1: @element_text1, element_text2: @element_text2,
-			element_text3: @element_text3, element_text4: @element_text4, element_text5: @element_text5, element_text6: @element_text6, element_text7: @element_text7,
-			element_text8: @element_text8, element_text9: @element_text9 %>
-		<% end %>
-		<div class="row text-center margin-top">
+		<div id="mandala_field">
+			<% if @squares_overlooking == true %>
+				<!-- マンダラチャートを俯瞰図で表示 -->
+				<%= render '/users/mandala_overlooking', mandala_center: @mandala %>
+			<% else %>
+				<!-- マンダラチャートを 9マスで表示 -->
+				<%= render '/users/mypage_mandalachart', center_text: @center_text, around_text: @around_text, element_text1: @element_text1, element_text2: @element_text2,
+				element_text3: @element_text3, element_text4: @element_text4, element_text5: @element_text5, element_text6: @element_text6, element_text7: @element_text7,
+				element_text8: @element_text8, element_text9: @element_text9 %>
+			<% end %>
+		</div>
+		<div class="row text-center margin-top margin-bottom">
 			<%= link_to "編集する", edit_mandala_path(@mandala_center.id), class: "button button-min button-white margin-right-min" %>
 			<% if @squares_overlooking == true %>
 				<%= link_to "3×3表示に戻す", user_path(current_user.id), class: "button button-min button-white" %>
@@ -36,7 +38,7 @@
 				</div>
 				<div class="form-group col-sm-6">
 					<%= f.label 'タスク' %>
-					<%= f.text_field :content, id: "inputTask", class: "form-control", :placeholder => "20文字以内で入力してください" %>
+					<%= f.text_field :content, id: "inputTask", class: "form-control", :placeholder => "20文字以内で入力してください", :maxlength => "30" %>
 				</div>
 				<div class="form-group col-sm-3">
 					<%= f.label '期限' %>
@@ -46,8 +48,15 @@
 			<input type="button" id="btnAdd_chart" class="btn btn-primary " value="マンダラチャートから追加">
 			<%= f.submit "追加", id: "btnAdd", class: "btn btn-primary text-right pull-right" %>
 		<% end %>
-
-		<div id="todo_content"><%= render'users/todo_content', tasks: @tasks %></div>
+		<div class="todo_area">
+			<div id="add_task_messages" class="alert alert-info">
+				<i id="message_close" class="fas fa-times pull-right fa-lg"></i>
+				<p>チャートから「必要な行動」を選択することで、タスクに登録することが出来ます!</p>
+			</div>
+			<div id="todo_content">
+				<%= render'users/todo_content', tasks: @tasks %>
+			</div>
+		</div>
 
 	</div>
 </div>

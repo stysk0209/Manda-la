@@ -54,6 +54,7 @@
     height: auto;
     display: inline-block;
     color: #5f6f81;
+    border: 1px solid rgba(95, 111, 129, 0.2);
     cursor: pointer;
 }
 .mp_ol_squares:before {
@@ -129,6 +130,9 @@
 #alert_close {
     font-size: 2rem;
     cursor: pointer;
+}
+#add_task_messages {
+    display: none;
 }
 
 /* グラフレイアウト用 */

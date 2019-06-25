@@ -6,10 +6,13 @@ class UsersController < ApplicationController
     @tasks = Task.where(user_id: current_user.id, done: false)
     gon.step = 3 #jQuery分岐用
     if params[:overlooking]
+      gon.step = "element_overlooking"
       @squares_overlooking = true
       @mandala_center = @mandala
     else
       if params[:element_select]
+        gon.step = "element_select"
+        @element_select = true
         @around_text = "必要な行動"
         @center_text = "必要な要素"
         @mandala_center = Element.find_by(Mandala_id: @mandala.id, number: params[:element_select])

@@ -1,83 +1,83 @@
 <div class="row">
 	<div class="col-md-4 mp_element">
-		<%= render 'users/mandala_mypage', element: Element.find_by(mandala_id: mandala_center.id, number: 1) %>
+		<%= render 'users/mandala_overlooking_element', element: Element.find_by(mandala_id: mandala_center.id, number: 1) %>
 	</div>
 	<div class="col-md-4 mp_element">
-		<%= render 'users/mandala_mypage', element: Element.find_by(mandala_id: mandala_center.id, number: 2) %>
+		<%= render 'users/mandala_overlooking_element', element: Element.find_by(mandala_id: mandala_center.id, number: 2) %>
 	</div>
 	<div class="col-md-4 mp_element">
-		<%= render 'users/mandala_mypage', element: Element.find_by(mandala_id: mandala_center.id, number: 3) %>
+		<%= render 'users/mandala_overlooking_element', element: Element.find_by(mandala_id: mandala_center.id, number: 3) %>
 	</div>
 </div>
 <div class="row">
 	<div class="col-md-4 mp_element">
-		<%= render 'users/mandala_mypage', element: Element.find_by(mandala_id: mandala_center.id, number: 4) %>
+		<%= render 'users/mandala_overlooking_element', element: Element.find_by(mandala_id: mandala_center.id, number: 4) %>
 	</div>
 	<div class="col-md-4 mp_element">
 		<div class="row text-center">
 			<div class="mp_ol_squares squares-gray">
-				<div id="element1" class="box modal-open" target="#input-modal">
+				<div id="element1" class="box">
 					<p class="text"><%= Element.find_by(mandala_id: mandala_center.id, number: 1).target %></p>
 				</div>
 			</div>
 			<div class="mp_ol_squares squares-gray">
-				<div id="element2" class="box modal-open" target="#input-modal">
+				<div id="element2" class="box">
 					<p class="text"><%= Element.find_by(mandala_id: mandala_center.id, number: 2).target %></p>
 				</div>
 			</div>
 			<div class="mp_ol_squares squares-gray">
-				<div id="element3" class="box modal-open" target="#input-modal">
+				<div id="element3" class="box">
 					<p class="text"><%= Element.find_by(mandala_id: mandala_center.id, number: 3).target %></p>
 				</div>
 			</div>
 		</div>
 		<div class="row text-center">
 			<div class="mp_ol_squares squares-gray">
-				<div id="element4" class="box modal-open" target="#input-modal">
+				<div id="element4" class="box">
 					<p class="text"><%= Element.find_by(mandala_id: mandala_center.id, number: 4).target %></p>
 				</div>
 			</div>
 			<div class="mp_ol_squares squares-white">
-				<div id="element5" class="box modal-open" target="#input-modal">
+				<div id="element5" class="box">
 					<p class="text"><%= @mandala_center.target %></p>
 				</div>
 			</div>
 			<div class="mp_ol_squares squares-gray">
-				<div id="element6" class="box modal-open" target="#input-modal">
+				<div id="element6" class="box">
 					<p class="text"><%= Element.find_by(mandala_id: mandala_center.id, number: 5).target %></p>
 				</div>
 			</div>
 		</div>
 		<div class="row text-center">
 			<div class="mp_ol_squares squares-gray">
-				<div id="element7" class="box modal-open" target="#input-modal">
+				<div id="element7" class="box">
 					<p class="text"><%= Element.find_by(mandala_id: mandala_center.id, number: 6).target %></p>
 				</div>
 			</div>
 			<div class="mp_ol_squares squares-gray">
-				<div id="element8" class="box modal-open" target="#input-modal">
+				<div id="element8" class="box">
 					<p class="text"><%= Element.find_by(mandala_id: mandala_center.id, number: 7).target %></p>
 				</div>
 			</div>
 			<div class="mp_ol_squares squares-gray">
-				<div id="element9" class="box modal-open" target="#input-modal">
+				<div id="element9" class="box">
 					<p class="text"><%= Element.find_by(mandala_id: mandala_center.id, number: 8).target %></p>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="col-md-4 mp_element">
-		<%= render 'users/mandala_mypage', element: Element.find_by(mandala_id: mandala_center.id, number: 5) %>
+		<%= render 'users/mandala_overlooking_element', element: Element.find_by(mandala_id: mandala_center.id, number: 5) %>
 	</div>
 </div>
 <div class="row">
 	<div class="col-md-4 mp_element">
-		<%= render 'users/mandala_mypage', element: Element.find_by(mandala_id: mandala_center.id, number: 6) %>
+		<%= render 'users/mandala_overlooking_element', element: Element.find_by(mandala_id: mandala_center.id, number: 6) %>
 	</div>
 	<div class="col-md-4 mp_element">
-		<%= render 'users/mandala_mypage', element: Element.find_by(mandala_id: mandala_center.id, number: 7) %>
+		<%= render 'users/mandala_overlooking_element', element: Element.find_by(mandala_id: mandala_center.id, number: 7) %>
 	</div>
 	<div class="col-md-4 mp_element">
-		<%= render 'users/mandala_mypage', element: Element.find_by(mandala_id: mandala_center.id, number: 8) %>
+		<%= render 'users/mandala_overlooking_element', element: Element.find_by(mandala_id: mandala_center.id, number: 8) %>
 	</div>
 </div>

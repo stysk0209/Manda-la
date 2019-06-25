@@ -1,9 +1,9 @@
 
-<div class="message_area">
+<div id="message_area">
 	<% if flash[:errors] %>
 		<div class="alert alert-warning" role="alert" id="divAlert">
 			<i id="alert_close" class="fas fa-times pull-right fa-lg"></i>
-			<p>エラー<%= flash[:errors].count %>件発生！</p>
+			<p>エラー<%= flash[:errors].count %>件発生</p>
 			<% flash[:errors].each do |message| %>
 				<p>・<%= message %>!</p>
 			<% end %>
@@ -15,7 +15,7 @@
 	<table class="table table-hover" id="todoList">
 		<thead>
 			<tr>
-				<th>要素</th>
+				<th></th>
 				<th>タスク内容</th>
 				<th>期限</th>
 				<th></th>

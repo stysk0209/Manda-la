@@ -1,24 +1,43 @@
-// TODOリストの処理
 $(function() {
 
-});
-
-// 追加ボタンを押した時の処理
-$("#btnAdd").on("click", function() {
-
-
-});
-
-// マンダラチャートからTODOリストを追加する処理
-$("#btnAdd_chart").on('click', function() {
-
-    $('').append('<div id="modal-overlay"></div>');
+    // マンダラチャートからTODOリストを追加する処理
+    $('#btnAdd_chart').on('click', function () {
+        $('#add_task_messages').show();
+        $('.task_select').off('click');
+        $('.task_select').on('click', function() {
+            $.ajax({
+                url: "/tasks",
+                type: "POST",
+                dataType: 'html', // 受信時のデータ形式
+                contentType: 'application/json', //送信時のデータ形式
+                data: JSON.stringify({
+                    task: {
+                        user_id: $(this).find('#user_id').val(),
+                        element_id: $(this).find('#element_id').val(),
+                        content: $(this).find('.text').text(),
+                        limit: new Date()
+                    },
+                    ajax: true
+                })
+            })
+            .done(function(data) {
+                $('#todo_content').html(data);
+            })
+            .fail(function(data) {
+                alert('通信に失敗しました')
+            });
+        });
+    });
 
 });
 
 // エラー表示を消す(Ajaxで動的に表現する為,documentに対してイベントハンドラを登録)
 $(document).on('click', '#alert_close', function() {
-    $('#divAlert').css('display', 'none');
+    $('#divAlert').hide();
+});
+$(document).on('click', '#message_close', function() {
+    $('#add_task_messages').hide();
+    $('.task_select').off('click');
 });
 
 // 警告部の初期化

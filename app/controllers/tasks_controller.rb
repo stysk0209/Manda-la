@@ -6,16 +6,20 @@ class TasksController < ApplicationController
 		unless @task_new.save
 			flash.now[:errors] = @task_new.errors.full_messages
 		end
-		# redirect_to user_path(current_user)
 		@tasks = Task.where(user_id: current_user.id, done: false)
-		render 'todo'
+		if params[:ajax]
+			render partial: 'users/todo_content', locals: { :tasks => @tasks }, :layout => false
+		else
+			render 'todo'
+		end
 	end
 
 	def done
 		task = Task.find(params[:id])
 		task.update(done: true)
-		point = Point.new(element_id: task.element_id)
+		point = Point.new(user_id: current_user.id, element_id: task.element_id)
 		point.save!
+		@tasks = Task.where(user_id: current_user.id, done: false)
 		render 'todo'
 	end
 
@@ -23,6 +27,7 @@ class TasksController < ApplicationController
 	def destroy
 		task = Task.find(params[:id])
 		task.destroy
+		@tasks = Task.where(user_id: current_user.id, done: false)
 		render 'todo'
 	end
 
