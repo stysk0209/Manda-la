@@ -76,7 +76,7 @@ class MandalasController < ApplicationController
     @mandala_center = Mandala.new
     @mandala_center.elements.build
     @main_text = "STEP1. まずは達成したい目標を中心のマスに入力しましょう！"
-    square_text1
+    @center_text = "達成したい目標"
   end
 
   def new_step2
