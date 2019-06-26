@@ -1,16 +1,41 @@
 <div class="container-main">
-	<header>
+	<header class="text-center">
+		<h2>あなたの頑張り度</h2>
 		<h1><%= @mandala.target %></h1>
 	</header>
-	<div class="col-md-6">
-		<h3 class="bg-light">要素別 達成数</h3>
-		<canvas id="Radar_chart"></canvas>
-	</div>
 
-	<div class="col-md-5">
-		<h3 class="bg-light">週別 達成数</h3>
-		<canvas id="Task_complete_graph", class="barchart"></canvas>
-	</div>
+	<% if @weekly %>
+		<div class="graph_weekly row">
+			<div class="col-md-6">
+				<h3 class="bg-light">要素別 達成数</h3>
+				<canvas id="Radarchart_weekly"></canvas>
+			</div>
+
+			<div class="col-md-5">
+				<h3 class="bg-light">週別 達成数</h3>
+				<canvas id="Achieved_weekly" class="graph_right"></canvas>
+			</div>
+		</div>
+		<div class="link_field col-md-4 col-md-offset-4">
+			<%= link_to "総計で表示", user_graph_path(total: true), class: "button button-white graph_link margin-top margin-bottom" %>
+		</div>
+	<% else %>
+		<div class="graph_comp row">
+			<div class="col-md-6">
+				<h3 class="bg-light">要素別 達成数</h3>
+				<canvas id="Radarchart_comp"></canvas>
+			</div>
+
+			<div class="col-md-5">
+				<h3 class="bg-light">総計 達成数</h3>
+				<canvas id="Achieved_comp" class="graph_right"></canvas>
+			</div>
+		</div>
+
+		<div class="link_field col-md-4 col-md-offset-4">
+			<%= link_to "週別で表示", user_graph_path, class: "button button-white graph_link margin-top margin-bottom" %>
+		</div>
+	<% end %>
 
 </div>
 

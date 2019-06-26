@@ -1,38 +1,45 @@
 class UsersController < ApplicationController
 
   def show
-    @mandala = Mandala.find_by(user_id: current_user.id, achieved: false)
-    @task_new = Task.new
-    @tasks = Task.where(user_id: current_user.id, done: false)
-    gon.step = 3 #jQuery分岐用
-    if params[:overlooking]
-      gon.step = "element_overlooking"
-      @squares_overlooking = true
-      @mandala_center = @mandala
-    else
-      if params[:element_select]
-        gon.step = "element_select"
-        @element_select = true
-        @around_text = "必要な行動"
-        @center_text = "必要な要素"
-        @mandala_center = Element.find_by(Mandala_id: @mandala.id, number: params[:element_select])
-        text_element #viewに反映させるテキスト情報
+    if @mandala = Mandala.find_by(user_id: current_user.id, achieved: false)
+      @task_new = Task.new
+      @tasks = Task.where(user_id: current_user.id, done: false)
+      gon.step = 3 #jQuery分岐用
+      if params[:overlooking]
+        gon.step = "element_overlooking"
+        @squares_overlooking = true
+        @mandala_center = @mandala
       else
-        @around_text = "必要な要素"
-        @center_text = "達成したい目標"
-        @mandala_center = Mandala.find_by(user_id: current_user.id, achieved: false)
-        text_mandala #viewに反映させるテキスト情報
+        if params[:element_select]
+          gon.step = "element_select"
+          @element_select = true
+          @around_text = "必要な行動"
+          @center_text = "必要な要素"
+          @mandala_center = Element.find_by(Mandala_id: @mandala.id, number: params[:element_select])
+          text_element #viewに反映させるテキスト情報
+        else
+          @around_text = "必要な要素"
+          @center_text = "達成したい目標"
+          @mandala_center = Mandala.find_by(user_id: current_user.id, achieved: false)
+          text_mandala #viewに反映させるテキスト情報
+        end
       end
     end
   end
 
   def graph
     @mandala = Mandala.find_by(user_id: current_user.id, achieved: false)
-    gon.element = @mandala.elements.pluck(:target)
-    gon.scores_this_week = score_this_week(@mandala)
-    gon.scores_last_week = score_last_week(@mandala)
-    gon.task_comp_this_week = task_comp_this_week(@mandala)
-    gon.task_comp_last_week = task_comp_last_week(@mandala)
+    gon.element = @mandala.elements.pluck(:target) #グラフのラベル用
+    if params[:total] #総計表示
+      gon.score_all = score_comp(@mandala)
+      gon.achieved_comp = achieved_comp #月ごとのタスク実行数
+    else
+      @weekly = true
+      gon.scores_this_week = score_this_week(@mandala) #今週のデータ
+      gon.scores_last_week = score_last_week(@mandala) #先週のデータ
+      gon.task_comp_this_week = achieved_this_week(@mandala) #今週のデータ
+      gon.task_comp_last_week = achieved_last_week(@mandala) #先週のデータ
+    end
   end
 
   def edit

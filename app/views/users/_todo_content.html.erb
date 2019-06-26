@@ -15,10 +15,10 @@
 	<table class="table table-hover" id="todoList">
 		<thead>
 			<tr>
-				<th></th>
-				<th>タスク内容</th>
-				<th>期限</th>
-				<th></th>
+				<th width="10%"></th>
+				<th class="text-center" width="50%">タスク内容</th>
+				<th class="text-center" width="30%">期限</th>
+				<th width="10%"></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -27,8 +27,8 @@
 				<tr class="task_content">
 					<%= hidden_field_tag :task_id, task.id, id: "task_id" %>
 					<td><%= link_to "完了", task_done_path(task.id), id: "btnDone", class: "btn btn-primary btnDone", remote: true %></td>
-					<td><%= task.content %></td>
-					<td><%= task.limit %></td>
+					<td class="text-center"><%= task.content %></td>
+					<td class="text-center"><%= task.limit %></td>
 					<td>
 						<%= link_to task_path(task.id), method: :delete, id: "btnDel", class: "btn btn-danger btnDel", remote: true do %>
 							<i class="fas fa-trash-alt"></i>

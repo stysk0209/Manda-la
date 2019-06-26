@@ -12,6 +12,17 @@
 	margin-bottom: 4rem;
 }
 
+/* マンダラチャート未作成時の表示レイアウト */
+.mandala_not_created {
+    width: 100%;
+}
+.mandala_not_created p {
+    font-size: 2vw;
+    padding-top: 2vw;
+    padding-bottom: 4vw;
+}
+
+
 /* 見出しデザイン用 */
 .container-main h3 {
     position: relative;
@@ -135,10 +146,12 @@
     display: none;
 }
 
-/* グラフレイアウト用 */
-
-.barchart {
+/* グラフ画面レイアウト用 */
+.graph_right {
     margin-top: 5rem;
+}
+.link_field > .button {
+    width: 100%;
 }
 
 /* ユーザ情報編集ページ用 */

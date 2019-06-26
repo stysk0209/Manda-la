@@ -1,8 +1,11 @@
 class MandalasController < ApplicationController
 
+before_action :user_signed_in?, only:[:new, :create,]
+before_action :authenticate, only:[:edit, :update, :destroy]
+
   def top
-      gon.registfail = regist_params[:regist]
-      gon.log_in_fail = log_in_params[:log_in]
+      gon.registfail = regist_params[:regist] #会員登録認証失敗時のパラメータ
+      gon.log_in_fail = log_in_params[:log_in] #ログイン失敗時のパラメータ
   end
 
   def new
@@ -31,13 +34,13 @@ class MandalasController < ApplicationController
   end
 
   def edit
+    @mandala = Mandala.find_by(user_id: current_user, achieved: false)
     @main_title = "マンダラチャート編集"
     gon.form_edit = true
     if params[:element_edit]
       gon.step ="el_edit"
       @step = "el_edit"
-      mandala = Mandala.find_by(user_id: current_user, achieved: false)
-      @mandala_center = Element.find_by(mandala_id: mandala.id, number: params[:element_edit].to_i)
+      @mandala_center = Element.find_by(mandala_id: @mandala.id, number: params[:element_edit].to_i)
       @mandala_center.activities.build
       square_text2
       element_activity_text
@@ -53,7 +56,7 @@ class MandalasController < ApplicationController
 
   def update
     if params[:step] == "el_edit"
-      create_activity
+      create_activiあうてぇんちかてty
     else
       create_step3
     end
@@ -67,6 +70,8 @@ class MandalasController < ApplicationController
 
 
 
+  private
+
 
 #-------------------- Mandalaチャートnewアクション用 --------------------#
 
@@ -76,7 +81,7 @@ class MandalasController < ApplicationController
     @mandala_center = Mandala.new
     @mandala_center.elements.build
     @main_text = "STEP1. まずは達成したい目標を中心のマスに入力しましょう！"
-    square_text1
+    @center_text = "達成したい目標"
   end
 
   def new_step2
@@ -205,9 +210,18 @@ class MandalasController < ApplicationController
 
 #---------------- Mandalaチャートcreateアクション用 ----------------#
 
-#-------------------- 以下ストロングパラメータの定義 --------------------#
 
-  private
+   def authenticate #ログインしているか、マンダラチャートを作成済みかチェック
+    if user_signed_in?
+      if current_user.mandala.present?
+        #認証OK、各アクションへ
+      else
+        redirect_to user_path(current_user.id)
+      end
+    end
+    redirect_to root_path
+   end
+#-------------------- 以下ストロングパラメータの定義 --------------------#
 
   def mandala_params
     params.require(:mandala).permit(:user_id, :target, :achieved,
