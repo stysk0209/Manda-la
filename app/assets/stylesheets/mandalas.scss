@@ -19,6 +19,19 @@
 	background-image: url('/images/dream.jpg');
 	background-size: cover;
 }
+.content1_field {
+	z-index: 1;
+	margin-top: 6rem;
+}
+.content-1 h1,
+.content-2 h1 {
+	font-size: 4vw;
+	margin-top: 4vw;
+}
+.content-1 p,
+.content-2 p {
+	font-size: 2vw;
+}
 .content-2 {
 	position: relative;
 	background-image: url('/images/checklist.jpg');
