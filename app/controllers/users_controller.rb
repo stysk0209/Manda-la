@@ -29,11 +29,17 @@ class UsersController < ApplicationController
 
   def graph
     @mandala = Mandala.find_by(user_id: current_user.id, achieved: false)
-    gon.element = @mandala.elements.pluck(:target)
-    gon.scores_this_week = score_this_week(@mandala)
-    gon.scores_last_week = score_last_week(@mandala)
-    gon.task_comp_this_week = task_comp_this_week(@mandala)
-    gon.task_comp_last_week = task_comp_last_week(@mandala)
+    gon.element = @mandala.elements.pluck(:target) #グラフのラベル用
+    if params[:total] #総計表示
+      gon.score_all = score_comp(@mandala)
+      gon.achieved_comp = achieved_comp #月ごとのタスク実行数
+    else
+      @weekly = true
+      gon.scores_this_week = score_this_week(@mandala) #今週のデータ
+      gon.scores_last_week = score_last_week(@mandala) #先週のデータ
+      gon.task_comp_this_week = achieved_this_week(@mandala) #今週のデータ
+      gon.task_comp_last_week = achieved_last_week(@mandala) #先週のデータ
+    end
   end
 
   def edit

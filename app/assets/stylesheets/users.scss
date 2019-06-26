@@ -146,10 +146,12 @@
     display: none;
 }
 
-/* グラフレイアウト用 */
-
-.barchart {
+/* グラフ画面レイアウト用 */
+.graph_right {
     margin-top: 5rem;
+}
+.link_field > .button {
+    width: 100%;
 }
 
 /* ユーザ情報編集ページ用 */
