@@ -111,9 +111,14 @@
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="margin-top col-md-4 col-md-offset-4">
-					<%= f.submit "登 録", class: "button button-white" %>
+			<div class="row margin-top center-block">
+				<div class="col-md-4">
+					<% if @step == "el_edit" %>
+						<%= link_to "前に戻る", edit_mandala_path(@mandala.id), class: "button button-blue" %>
+					<% end %>
+				</div>
+				<div class="col-md-4">
+					<%= f.submit "保存する", class: "button button-blue" %>
 				</div>
 				<div class="col-md-2 delete_link">
 					<a class="delete_mandala modal_open" target="#delete_field">チャートを削除する</a>
@@ -142,11 +147,11 @@
 <div id="delete_field">
 	<i id="modal_close" class="fas fa-times pull-right fa-lg"></i>
 	<div class="text-center">
-		<p class="h4"><i class="fas fa-exclamation-circle"></i>退会するとすべての機能が使用できなくなります！</p>
+		<p class="h4"><i class="fas fa-exclamation-circle"></i> 一度削除してしまうと元に戻せません。</p>
 		<p class="h4">それでもよろしいですか？</p>
 	</div>
 	<div class="row text-center">
-		<%= link_to "削除する", mandala_path(@mandala.id), method: :delete, class: "button button-blue margin-top", data:{confirm:"退会処理を行います。よろしいですか?"} %>
+		<%= link_to "削除する", mandala_path(@mandala.id), method: :delete, class: "button button-red margin-top", data:{confirm:"退会処理を行います。よろしいですか?"} %>
 	</div>
 </div>
 

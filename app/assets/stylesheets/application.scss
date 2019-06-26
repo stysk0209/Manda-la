@@ -209,14 +209,25 @@ body {
 
 /* ボタン - 青 */
 .button-blue {
-	background-color: #34495e;
 	color: #fff;
+	background-color: #337ab7;
 }
-.button:focus,
+.button-blue:focus,
 .button-blue:hover {
 	color: #fff;
 	text-decoration: none;
-	background-color: #337ab7;
+	background-color: #34495e;
+}
+/* ボタン - 青 */
+.button-red {
+	color: #fff;
+	background-color: #e52325;
+}
+.button-red:focus,
+.button-red:hover {
+	color: #fff;
+	text-decoration: none;
+	background-color: #bc1339;
 }
 
 /* ボタン - 白 */
@@ -225,7 +236,7 @@ body {
 	color: #34495e;
 	border: 1px solid #34495e5c;
 }
-.button:focus,
+.button-white:focus,
 .button-white:hover {
 	color: #fff;
 	text-decoration: none;

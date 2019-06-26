@@ -3,11 +3,15 @@ class MandalasController < ApplicationController
 before_action :user_signed_in?, only:[:new, :create,]
 before_action :authenticate, only:[:edit, :update, :destroy]
 
+  #GET / (root_path)
   def top
       gon.registfail = regist_params[:regist] #会員登録認証失敗時のパラメータ
       gon.log_in_fail = log_in_params[:log_in] #ログイン失敗時のパラメータ
   end
 
+  #GET /mandalas/new (new_mandala_path)
+  #params[:step]のvalueで、処理を分岐します。
+  #params[:element_edit] trueで、必要な要素を中心とした、行動入力画面へ
   def new
     @main_title = "マンダラチャートを作成しよう！"
     if params[:step] == "2"
@@ -16,11 +20,13 @@ before_action :authenticate, only:[:edit, :update, :destroy]
       new_step3
     elsif params[:element_edit]
       new_activity
-    else #必要な行動を入力する画面へ
+    else
       new_step1
     end
   end
 
+  #POST /mandalas (mandalas_path)
+  #params[:step]のvalueで、処理を分岐します。
   def create
     if params[:step] == "1" #達成したい目標を保存する
       create_step1
@@ -33,6 +39,7 @@ before_action :authenticate, only:[:edit, :update, :destroy]
     end
   end
 
+  #GET /mandala/:id/edit (edit_mandala_path)
   def edit
     @mandala = Mandala.find_by(user_id: current_user, achieved: false)
     @main_title = "マンダラチャート編集"
@@ -54,24 +61,26 @@ before_action :authenticate, only:[:edit, :update, :destroy]
     end
   end
 
+  #POST /mandala/:id (mandala_path)
   def update
     if params[:step] == "el_edit"
-      create_activiあうてぇんちかてty
+      create_activity
     else
       create_step3
     end
   end
 
+  #DELETE /mandala/:id (mandala_path)
   def destroy
     mandala = Mandala.find(params[:id])
     mandala.destroy
+    redirect_to user_path(current_user.id)
   end
 
 
 
 
   private
-
 
 #-------------------- Mandalaチャートnewアクション用 --------------------#
 
@@ -131,7 +140,7 @@ before_action :authenticate, only:[:edit, :update, :destroy]
     @around_text = "必要な行動"
   end
 
-  def mandala_element_text
+  def mandala_element_text #viewで表示するテキスト
     @element_text1 = Element.find_by(mandala_id: @mandala_center.id, number: 1).target
     @element_text2 = Element.find_by(mandala_id: @mandala_center.id, number: 2).target
     @element_text3 = Element.find_by(mandala_id: @mandala_center.id, number: 3).target
@@ -143,7 +152,7 @@ before_action :authenticate, only:[:edit, :update, :destroy]
     @element_text9 = Element.find_by(mandala_id: @mandala_center.id, number: 8).target
   end
 
-  def element_activity_text
+  def element_activity_text #viewで表示するテキスト
     @element_text1 = Activity.find_by(element_id: @mandala_center.id, number: 1).target
     @element_text2 = Activity.find_by(element_id: @mandala_center.id, number: 2).target
     @element_text3 = Activity.find_by(element_id: @mandala_center.id, number: 3).target
@@ -165,6 +174,7 @@ before_action :authenticate, only:[:edit, :update, :destroy]
       redirect_to new_mandala_path(step: 2)
     else
       redirect_to new_mandala_path
+      flash[:errors] = mandala.errors.full_messages
     end
   end
 
@@ -173,7 +183,8 @@ before_action :authenticate, only:[:edit, :update, :destroy]
     if mandala.update(mandala_params)
       redirect_to new_mandala_path(step: 3)
     else
-      redirect_to new_mandala_path(step:2)
+      redirect_to new_mandala_path(step:2, mandala: mandala_params[:mandala])
+      flash[:errors] = mandala.errors.full_messages
     end
   end
 
@@ -186,6 +197,7 @@ before_action :authenticate, only:[:edit, :update, :destroy]
         redirect_to edit_mandala_path
       else
         redirect_to new_mandala_path(step:3)
+        flash[:errors] = mandala.errors.full_messages
       end
     end
   end
@@ -194,16 +206,18 @@ before_action :authenticate, only:[:edit, :update, :destroy]
     mandala = Mandala.find_by(user_id: current_user.id, achieved: false)
     element = Element.find_by(mandala_id: mandala.id, number: params[:element][:number].to_i )
     if element.update(element_params)
-      if request.path.include?(mandala_path(current_user.id)) #リクエストURLをチェック
+      if request.path.include?(mandala_path(current_user.id)) #リクエストURLをチェック(mandala/:id/editから来たらtrue)
         redirect_to edit_mandala_path(mandala.id)
       else
         redirect_to new_mandala_path(step: 3)
       end
-    else
-      if request.path.include?(mandala_path(current_user.id)) #リクエストURLをチェック
+    else #update失敗時
+      if request.path.include?(mandala_path(current_user.id)) #リクエストURLをチェック(mandala/:id/editから来たらtrue)
         redirect_to edit_mandala_path(element_edit: params[:element][:number].to_i)
+        flash[:errors] = element.errors.full_messages
       else
-      redirect_to new_mandala_path(element_edit: params[:element][:number].to_i)
+        redirect_to new_mandala_path(element_edit: params[:element][:number].to_i)
+        flash[:errors] = element.errors.full_messages
       end
     end
   end
@@ -213,13 +227,14 @@ before_action :authenticate, only:[:edit, :update, :destroy]
 
    def authenticate #ログインしているか、マンダラチャートを作成済みかチェック
     if user_signed_in?
-      if current_user.mandala.present?
+      if Mandala.find_by(user_id: current_user.id, achieved: false)
         #認証OK、各アクションへ
       else
         redirect_to user_path(current_user.id)
       end
+    else
+      redirect_to root_path
     end
-    redirect_to root_path
    end
 #-------------------- 以下ストロングパラメータの定義 --------------------#
 

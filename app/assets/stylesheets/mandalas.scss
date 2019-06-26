@@ -179,7 +179,20 @@
 	word-wrap: break-word;
 	margin: 0;
 }
-
+.info_field {
+	position: absolute;
+	top: 25rem;
+	left: 1vw;
+	width: 25vw;
+	height: 10vw;
+	background-color: #5dbede;
+	border-radius : 10px;
+}
+.info_field p {
+	font-size: 1vw;
+	margin-left: 0.4vw;
+	margin-top: 1rem;
+}
 /* マンダラチャート 入力フォーム用*/
 #input-modal {
 	color: #34495e;
@@ -194,6 +207,13 @@
 }
 
 /* マンダラチャート作成画面タイトル */
+.error_message_area {
+	position: absolute;
+	top: 22rem;
+	width: 100%;
+	background-color: #f35c5c;
+	color: #fff;
+}
 .container-main > header {
 	margin: 0 auto;
 	width: 100%;
@@ -278,5 +298,5 @@
 	cursor: pointer;
 }
 .delete_link {
-	padding-top: 6rem;
+	padding-top: 3rem;
 }

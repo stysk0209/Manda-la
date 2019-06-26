@@ -1,9 +1,27 @@
 
 <div class="container-main">
 	<header class="text-center">
+		<div class="error_message_area">
+			<% if flash[:errors] %>
+				<span>エラー発生:</span>
+				<% flash[:errors].each do |message| %>
+					<span><%= message %></span>
+				<% end %>
+			<% end %>
+		</div>
 		<h1>マンダラチャートを作成しよう!</h1>
 		<p><%= @main_text %></p>
 	</header>
+	<% if @step == 3 %>
+		<div class="info_field">
+			<p><i class="fas fa-info-circle"></i> Info</p>
+			<p>
+				必ずしもすべての行動を入力する必要はありません。<br>
+				思いつく限り入力したら、保存してしまいましょう！
+				(後から編集することが出来ます。)
+			</p>
+		</div>
+	<% end %>
 	<div class="container-mandalas text-center">
 		<%= form_for @mandala_center, url: mandalas_path, method: :post do |f| %>
 		<%= hidden_field_tag :step, @step %>
@@ -121,9 +139,9 @@
 				</div>
 				<div class="col-md-4">
 					<% if @step == 3 %>
-						<%= f.submit "完成！", class: "button button-white" %>
+						<%= f.submit "完成！", class: "button button-blue" %>
 					<% else %>
-						<%= f.submit "保存して次へ", class: "button button-white" %>
+						<%= f.submit "保存して次へ", class: "button button-blue" %>
 					<% end %>
 				</div>
 			</div>
@@ -140,7 +158,7 @@
 		</div>
 	</div>
 	<div class="row cp_iptxt">
-		<input id="input" class="" type="text" maxlength='30' placeholder="入力してください">
+		<input id="input" class="" type="text" maxlength='20' placeholder="入力してください(20文字以内)">
 	</div>
 	<div class="row text-center">
 		<button id="done" class="button button-blue margin-top">入力OK</button>
