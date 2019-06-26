@@ -1,11 +1,27 @@
 
 <div class="container-main">
-	<header>
-		<h1>
-			マンダラチャートを作成しよう!
-			<span><%= @main_text %></span>
-		</h1>
+	<header class="text-center">
+		<div class="error_message_area">
+			<% if flash[:errors] %>
+				<span>エラー発生:</span>
+				<% flash[:errors].each do |message| %>
+					<span><%= message %></span>
+				<% end %>
+			<% end %>
+		</div>
+		<h1>マンダラチャートを作成しよう!</h1>
+		<p><%= @main_text %></p>
 	</header>
+	<% if @step == 3 %>
+		<div class="info_field">
+			<p><i class="fas fa-info-circle"></i> Info</p>
+			<p>
+				必ずしもすべての行動を入力する必要はありません。<br>
+				思いつく限り入力したら、保存してしまいましょう！
+				(後から編集することが出来ます。)
+			</p>
+		</div>
+	<% end %>
 	<div class="container-mandalas text-center">
 		<%= form_for @mandala_center, url: mandalas_path, method: :post do |f| %>
 		<%= hidden_field_tag :step, @step %>
@@ -57,7 +73,7 @@
 					</div>
 				</div>
 				<div class="squares squares-white">
-					<div id="element5" class="box modal_open" target="#input-modal">
+					<div id="element_center" class="box modal_open" target="#input-modal">
 						<div class="box-header">
 							<p class="element_title"><%= @center_text %></p>
 						</div>
@@ -69,7 +85,7 @@
 					</div>
 				</div>
 				<div class="squares squares-gray">
-					<div id="element6" class="box modal_open" target="#input-modal">
+					<div id="element5" class="box modal_open" target="#input-modal">
 						<div class="box-header">
 							<p class="element_title"><%= @around_text %></p>
 						</div>
@@ -82,7 +98,7 @@
 			</div>
 			<div class="mandalas-row">
 				<div class="squares squares-gray">
-					<div id="element7" class="box modal_open" target="#input-modal">
+					<div id="element6" class="box modal_open" target="#input-modal">
 						<div class="box-header">
 							<p class="element_title"><%= @around_text %></p>
 						</div>
@@ -93,7 +109,7 @@
 					</div>
 				</div>
 				<div class="squares squares-gray">
-					<div id="element8" class="box modal_open" target="#input-modal">
+					<div id="element7" class="box modal_open" target="#input-modal">
 						<div class="box-header">
 							<p class="element_title"><%= @around_text %></p>
 						</div>
@@ -104,7 +120,7 @@
 					</div>
 				</div>
 				<div class="squares squares-gray">
-					<div id="element9" class="box modal_open" target="#input-modal">
+					<div id="element8" class="box modal_open" target="#input-modal">
 						<div class="box-header">
 							<p class="element_title"><%= @around_text %></p>
 						</div>
@@ -115,8 +131,19 @@
 					</div>
 				</div>
 			</div>
-			<div class="margin-top">
-				<%= f.submit "登 録", class: "button button-white" %>
+			<div class="margin-top row">
+				<div class="col-md-4">
+					<% if @step == 4 %>
+						<%= link_to "前に戻る", new_mandala_path(step: 3), class: "button button-white" %>
+					<% end %>
+				</div>
+				<div class="col-md-4">
+					<% if @step == 3 %>
+						<%= f.submit "完成！", class: "button button-blue" %>
+					<% else %>
+						<%= f.submit "保存して次へ", class: "button button-blue" %>
+					<% end %>
+				</div>
 			</div>
 	<% end %>
 	</div>
@@ -131,7 +158,7 @@
 		</div>
 	</div>
 	<div class="row cp_iptxt">
-		<input id="input" class="" type="text" maxlength='30' placeholder="入力してください">
+		<input id="input" class="" type="text" maxlength='20' placeholder="入力してください(20文字以内)">
 	</div>
 	<div class="row text-center">
 		<button id="done" class="button button-blue margin-top">入力OK</button>

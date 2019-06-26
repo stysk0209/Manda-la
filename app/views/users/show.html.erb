@@ -1,8 +1,11 @@
 <div class="container-main">
 	<header class="text-center">
 		<h2>マイページ</h2>
-		<h1><%= @mandala.target %></h1>
+		<% if @mandala %>
+			<h1><%= @mandala.target %></h1>
+		<% end %>
 	</header>
+
 	<div class="col-md-6">
 		<h3 class="bg-light">マンダラチャート</h3>
 		<div id="mandala_field">
@@ -24,41 +27,48 @@
 				<%= link_to "俯瞰図で見る", user_path(current_user.id, overlooking: true), class: "button button-min button-white" %>
 			<% end %>
 		</div>
-	</div>
-	<div class="col-md-6">
-		<h3 class="bg-light">TODOリスト</h3>
-		<%= form_for @task_new, remote: true do |f| %>
-		<%= f.hidden_field :user_id, :value => current_user.id %>
-			<div class="form-row">
-				<div class="form-group  col-sm-3">
-					<%= f.label '要素' %>
-					<div class="select_box">
-						<%= f.collection_select :element_id, @mandala.elements, :id, :target %>
+		<div class="col-md-6">
+			<h3 class="bg-light">TODOリスト</h3>
+			<%= form_for @task_new, remote: true do |f| %>
+			<%= f.hidden_field :user_id, :value => current_user.id %>
+				<div class="form-row">
+					<div class="form-group  col-sm-3">
+						<%= f.label '要素' %>
+						<div class="select_box">
+							<%= f.collection_select :element_id, @mandala.elements, :id, :target %>
+						</div>
+					</div>
+					<div class="form-group col-sm-6">
+						<%= f.label 'タスク' %>
+						<%= f.text_field :content, id: "inputTask", class: "form-control", :placeholder => "20文字以内で入力してください", :maxlength => "30" %>
+					</div>
+					<div class="form-group col-sm-3">
+						<%= f.label '期限' %>
+						<%= f.date_field :limit, id: "inputLimit", class: "form-control", value: "", :placeholder => "" %>
 					</div>
 				</div>
-				<div class="form-group col-sm-6">
-					<%= f.label 'タスク' %>
-					<%= f.text_field :content, id: "inputTask", class: "form-control", :placeholder => "20文字以内で入力してください", :maxlength => "30" %>
+				<input type="button" id="btnAdd_chart" class="btn btn-primary " value="マンダラチャートから追加">
+				<%= f.submit "追加", id: "btnAdd", class: "btn btn-primary text-right pull-right" %>
+			<% end %>
+			<div class="todo_area">
+				<div id="add_task_messages" class="alert alert-info">
+					<i id="message_close" class="fas fa-times pull-right fa-lg"></i>
+					<p>チャートから「必要な行動」を選択することで、タスクに登録することが出来ます!</p>
 				</div>
-				<div class="form-group col-sm-3">
-					<%= f.label '期限' %>
-					<%= f.date_field :limit, id: "inputLimit", class: "form-control", value: "", :placeholder => "" %>
+				<div id="todo_content">
+					<%= render'users/todo_content', tasks: @tasks %>
 				</div>
-			</div>
-			<input type="button" id="btnAdd_chart" class="btn btn-primary " value="マンダラチャートから追加">
-			<%= f.submit "追加", id: "btnAdd", class: "btn btn-primary text-right pull-right" %>
-		<% end %>
-		<div class="todo_area">
-			<div id="add_task_messages" class="alert alert-info">
-				<i id="message_close" class="fas fa-times pull-right fa-lg"></i>
-				<p>チャートから「必要な行動」を選択することで、タスクに登録することが出来ます!</p>
-			</div>
-			<div id="todo_content">
-				<%= render'users/todo_content', tasks: @tasks %>
 			</div>
 		</div>
-
-	</div>
+	<% else %> <!-- マンダラチャート作成していない時の表示 -->
+		<div class="mandala_not_created text-center">
+			<p>
+				まだマンダラチャートが作成されていません。<br>
+				マンダラチャートを作成することで、すべての機能が使用できるようになります！
+			</p>
+			<%= link_to "新規作成する", new_mandala_path, class: "button button-blue" %>
+		</div>
+	<% end %>
 </div>
 
 

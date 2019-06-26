@@ -4,7 +4,15 @@
 			<%= m.hidden_field :target, class: "element_val" %>
 			<%= m.hidden_field :number, :value => value, class: "element_num" %>
 		<% end %>
-	<% elsif step == 3 || step == "edit" %>
+	<% elsif step == 3 %>
+		<%= f.fields_for :elements, Element.find_by(mandala_id: mandala_center.id, number: value) do |m| %>
+			<%= m.hidden_field :target, class: "element_val" %>
+			<%= m.hidden_field :number, :value => value, class: "element_num" %>
+		<% end %>
+		<% if Element.find_by(mandala_id: mandala_center.id, number: value).activities.present? %>
+			<%= hidden_field_tag :activitiy_comp, true %>
+		<% end %>
+	<% elsif step == "edit" %>
 		<%= f.fields_for :elements, Element.find_by(mandala_id: mandala_center.id, number: value) do |m| %>
 			<%= m.hidden_field :target, class: "element_val" %>
 			<%= m.hidden_field :number, :value => value, class: "element_num" %>

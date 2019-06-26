@@ -19,11 +19,25 @@
 	background-image: url('/images/dream.jpg');
 	background-size: cover;
 }
+.content1_field {
+	z-index: 1;
+	margin-top: 6rem;
+}
+.content-1 h1,
+.content-2 h1 {
+	font-size: 4vw;
+	margin-top: 4vw;
+}
+.content-1 p,
+.content-2 p {
+	font-size: 2vw;
+}
 .content-2 {
 	position: relative;
 	background-image: url('/images/checklist.jpg');
 	background-size: cover;
 }
+.content-1::after,
 .content-2::after {
 	content: "";
 	position: absolute;
@@ -31,7 +45,7 @@
 	left: 0;
 	height: 200%;
 	width: 100%;
-	background: rgba(0, 0, 0, 0.2);
+	background: rgba(0, 0, 0, 0.3);
 }
 .content-3 {
 	background-image: url('/images/goals.jpg');
@@ -104,7 +118,7 @@
 	transition: all .3s;
 }
 .squares-disabled {
-	color: #fff;
+	color: #b3b3b3;
 	border: 1px solid;
 	cursor: default;
 }
@@ -114,8 +128,9 @@
 .squares-gray {
 	background-color: #f1f5fde0;
 }
-.squares-white:hover,
-.squares-gray:hover {
+.squares:hover,
+.mp_squares:hover,
+.mp_ol_squares:hover {
 	background-color: rgba(204, 204, 204, 0.75);
 }
 @media screen and (max-width: 1025px) {
@@ -139,6 +154,8 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
+	word-wrap: break-word;
+	overflow: hidden;
 }
 .box-header {
 	height: 20%;
@@ -162,7 +179,20 @@
 	word-wrap: break-word;
 	margin: 0;
 }
-
+.info_field {
+	position: absolute;
+	top: 25rem;
+	left: 1vw;
+	width: 25vw;
+	height: 10vw;
+	background-color: #5dbede;
+	border-radius : 10px;
+}
+.info_field p {
+	font-size: 1vw;
+	margin-left: 0.4vw;
+	margin-top: 1rem;
+}
 /* マンダラチャート 入力フォーム用*/
 #input-modal {
 	color: #34495e;
@@ -177,20 +207,24 @@
 }
 
 /* マンダラチャート作成画面タイトル */
+.error_message_area {
+	position: absolute;
+	top: 22rem;
+	width: 100%;
+	background-color: #f35c5c;
+	color: #fff;
+}
 .container-main > header {
 	margin: 0 auto;
 	width: 100%;
 	height: 30vh;
 	background: rgba(0,0,0,0.1);
 }
-.container-main > header a {
+.container-main > header p {
 	color: #566473;
-	text-decoration: none;
-	outline: none;
+	font-size: 1.5vw;
 }
-.container-main > header a:hover {
-	color: #4f7bab;
-}
+
 .container-main > header > h2 {
 	position: absolute;
 	left: 1vw;
@@ -222,6 +256,7 @@
 	padding:  10px;
 	margin-bottom: 15px;
 	border-radius:  2px;
+	font-size: 2vw;
 }
 .container-main > header h1:before {
 	content:  '';
@@ -249,4 +284,19 @@
 		font-size: 70%;
 		text-align: right;
 	}
+}
+
+#delete_field {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    width: 40%;
+    padding: 2rem;
+    background-color: #fff;
+}
+.delete_mandala {
+	cursor: pointer;
+}
+.delete_link {
+	padding-top: 3rem;
 }
