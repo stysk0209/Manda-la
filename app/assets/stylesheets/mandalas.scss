@@ -24,6 +24,7 @@
 	background-image: url('/images/checklist.jpg');
 	background-size: cover;
 }
+.content-1::after,
 .content-2::after {
 	content: "";
 	position: absolute;
@@ -31,7 +32,7 @@
 	left: 0;
 	height: 200%;
 	width: 100%;
-	background: rgba(0, 0, 0, 0.2);
+	background: rgba(0, 0, 0, 0.3);
 }
 .content-3 {
 	background-image: url('/images/goals.jpg');
@@ -250,4 +251,19 @@
 		font-size: 70%;
 		text-align: right;
 	}
+}
+
+#delete_field {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    width: 40%;
+    padding: 2rem;
+    background-color: #fff;
+}
+.delete_mandala {
+	cursor: pointer;
+}
+.delete_link {
+	padding-top: 6rem;
 }

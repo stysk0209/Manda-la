@@ -31,13 +31,13 @@ class MandalasController < ApplicationController
   end
 
   def edit
+    @mandala = Mandala.find_by(user_id: current_user, achieved: false)
     @main_title = "マンダラチャート編集"
     gon.form_edit = true
     if params[:element_edit]
       gon.step ="el_edit"
       @step = "el_edit"
-      mandala = Mandala.find_by(user_id: current_user, achieved: false)
-      @mandala_center = Element.find_by(mandala_id: mandala.id, number: params[:element_edit].to_i)
+      @mandala_center = Element.find_by(mandala_id: @mandala.id, number: params[:element_edit].to_i)
       @mandala_center.activities.build
       square_text2
       element_activity_text
