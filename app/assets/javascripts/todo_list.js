@@ -3,8 +3,7 @@ $(function() {
     // マンダラチャートからTODOリストを追加する処理
     $('#btnAdd_chart').on('click', function () {
         $('#add_task_messages').show();
-        $('.task_select').off('click');
-        $('.task_select').on('click', function() {
+        $(document).on('click', '.task_select', function() {
             $.ajax({
                 url: "/tasks",
                 type: "POST",
@@ -37,7 +36,7 @@ $(document).on('click', '#alert_close', function() {
 });
 $(document).on('click', '#message_close', function() {
     $('#add_task_messages').hide();
-    $('.task_select').off('click');
+    $(document).off('click', '.task_select');
 });
 
 // 警告部の初期化

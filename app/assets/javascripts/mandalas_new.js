@@ -54,17 +54,65 @@ $(function() {
 	window.location.href = url + "?element_edit=" + id
 	});
 
+	//STEP3で、入力済みの要素にホバーしたら、入力OKを表示する
+	$('.squares').hover(function() {
+		element_text = $(this).find('.text').text();
+		if ($(this).find('#activitiy_comp').val() == "true" ) {
+			$(this).find('.text').text('入力OK')
+			$('head').append('<style>.squares:hover { background-color: rgba(100, 204, 204, 0.75); color: #fff; }</style>');
+		}
+	}, function() {
+		$(this).find('.text').text(element_text);
+		$('head').append('<style>.squares:hover { background-color: rgba(204, 204, 204, 0.75); }</style>');
+	});
+
 	// Userマイページ マンダラチャート用(各要素の詳細へ遷移)
 	$('.el_select').off('click');
-	$('.el_select').on('click', function() {
-		let id = $(this).attr('id').replace('element', "");
-		let url = $(location).attr('href');
-		window.location.href = url + "?element_select=" + id;
+	$(document).on('click', '.el_select', function() {
+		var id = $(this).attr('id').replace('element', "");
+		$.ajax({
+				url: $(location).attr('pathname'),
+				scriptCharset: 'UTF-8',
+				type: "GET",
+				dataType: 'html', // 受信時のデータ形式
+				contentType: 'application/json', //送信時のデータ形式
+				data: {
+					ajax: true,
+					element_select: id
+				}
+		})
+		.done(function(data) {
+			$('#mandala_field').html(data);
+			$('#element1,#element2,#element3,#element4,#element5,#element6,#element7,#element8').removeClass('el_select');
+			$('#element1,#element2,#element3,#element4,#element5,#element6,#element7,#element8').addClass('task_select');
+			$('#element_center').addClass('el_select_center');
+		})
+		.fail(function(data) {
+			alert('通信に失敗しました')
+		});
 	});
 	// Userマイページ マンダラチャート用(中心の要素をクリックで戻る)
 	$('.el_select_center').off('click');
-	$('.el_select_center').on('click', function() {
-		window.location.href = $(location).attr('pathname');
+	$(document).on('click', '.el_select_center', function() {
+		$.ajax({
+				url: $(location).attr('pathname'),
+				scriptCharset: 'UTF-8',
+				type: "GET",
+				dataType: 'html', // 受信時のデータ形式
+				contentType: 'application/json', //送信時のデータ形式
+				data: {
+					ajax: true
+				}
+		})
+		.done(function(data) {
+			$('#mandala_field').html(data);
+			$('#element1,#element2,#element3,#element4,#element5,#element6,#element7,#element8').removeClass('task_select');
+			$('#element1,#element2,#element3,#element4,#element5,#element6,#element7,#element8').addClass('el_select');
+			$('#element_center').removeClass('el_select_center');
+		})
+		.fail(function(data) {
+			alert('通信に失敗しました')
+		});
 	});
 
 });
