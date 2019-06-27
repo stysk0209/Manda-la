@@ -6,6 +6,7 @@ ja:
       user:
         email: "メールアドレス"
         name: "名前"
+        password: "パスワード"
       mandala:
         target: "目標"
       mandala/elements:
