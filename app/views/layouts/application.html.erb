@@ -38,11 +38,18 @@
                   <span>ユーザ情報編集</span>
                 <% end %>
               </li>
-              <li>
-                <%= link_to user_graph_path(current_user.id), class: "gn-icon gn-icon-graph" do %>
-                  <span>グラフを見る</span>
-                <% end %>
-              </li>
+              <% if Mandala.find_by(user_id: current_user.id, achieved: false) %>
+                 <li>
+                  <%= link_to edit_mandala_path(Mandala.find_by(user_id: current_user.id, achieved: false)), class: "gn-icon gn-icon-squares" do %>
+                    <span>チャートを編集</span>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to user_graph_path(current_user.id), class: "gn-icon gn-icon-graph" do %>
+                    <span>頑張り度</span>
+                  <% end %>
+                </li>
+              <% end %>
             </ul>
           </li>
         <% else %>

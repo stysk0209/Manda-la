@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-before_action :user_signed_in?
+before_action :sign_in_auth
 
   #GET /users/:id (user_path)
   def show
@@ -102,6 +102,12 @@ before_action :user_signed_in?
   end
 
 #-------------------- 以下ストロングパラメータの記述 --------------------#
+
+  def sign_in_auth
+    unless user_signed_in?
+      redirect_to root_path
+    end
+  end
 
   def user_params
     params.require(:user).permit(:name, :email)
