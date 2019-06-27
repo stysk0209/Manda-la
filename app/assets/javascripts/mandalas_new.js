@@ -59,7 +59,7 @@ $(function() {
 	$('.squares').hover(function() {
 		element_text = $(this).find('.text').text();
 		if ($(this).find('#activitiy_comp').val() == "true" ) {
-			$(this).find('.text').text('入力OK')
+			$(this).find('.text').text('入力OK');
 			$('head').append('<style>.squares:hover { background-color: rgba(100, 204, 204, 0.75); color: #fff; }</style>');
 		}
 	}, function() {
@@ -115,20 +115,8 @@ $(function() {
 			alert('通信に失敗しました')
 		});
 	});
-
-	//STEP3で、入力済みの要素にホバーしたら、入力OKを表示する
-	$('.squares').hover(function() {
-		element_text = $(this).find('.text').text();
-		if ($(this).find('#activitiy_comp').val() == "true" ) {
-			$(this).find('.text').text('入力OK')
-			$('head').append('<style>.squares:hover { background-color: rgba(100, 204, 204, 0.75); color: #fff; }</style>');
-		}
-	}, function() {
-		$(this).find('.text').text(element_text);
-		$('head').append('<style>.squares:hover { background-color: rgba(204, 204, 204, 0.75); }</style>');
-	});
-
 });
+
 
 function ModalOpen(modal) {
 		if ($("#modal-overlay")[0]) return false; //2回目以降モーダルを表示しない

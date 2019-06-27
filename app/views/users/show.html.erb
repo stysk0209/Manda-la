@@ -5,27 +5,28 @@
 			<h1><%= @mandala.target %></h1>
 		<% end %>
 	</header>
-
-	<div class="col-md-6">
-		<h3 class="bg-light">マンダラチャート</h3>
-		<div id="mandala_field">
-			<% if @squares_overlooking == true %>
-				<!-- マンダラチャートを俯瞰図で表示 -->
-				<%= render '/users/mandala_overlooking', mandala_center: @mandala %>
-			<% else %>
-				<!-- マンダラチャートを 9マスで表示 -->
-				<%= render '/users/mypage_mandalachart', center_text: @center_text, around_text: @around_text, element_text1: @element_text1, element_text2: @element_text2,
-				element_text3: @element_text3, element_text4: @element_text4, element_text5: @element_text5, element_text6: @element_text6, element_text7: @element_text7,
-				element_text8: @element_text8, element_text9: @element_text9, element_select: @element_select %>
-			<% end %>
-		</div>
-		<div class="row text-center margin-top margin-bottom">
-			<%= link_to "編集する", edit_mandala_path(@mandala_center.id), class: "button button-min button-white margin-right-min" %>
-			<% if @squares_overlooking == true %>
-				<%= link_to "3×3表示に戻す", user_path(current_user.id), class: "button button-min button-white" %>
-			<% else %>
-				<%= link_to "俯瞰図で見る", user_path(current_user.id, overlooking: true), class: "button button-min button-white" %>
-			<% end %>
+	<% if @mandala %> <!-- マンダラチャート作成済み時の表示 -->
+		<div class="col-md-6">
+			<h3 class="bg-light">マンダラチャート</h3>
+			<div id="mandala_field">
+				<% if @squares_overlooking == true %>
+					<!-- マンダラチャートを俯瞰図で表示 -->
+					<%= render '/users/mandala_overlooking', mandala_center: @mandala %>
+				<% else %>
+					<!-- マンダラチャートを 9マスで表示 -->
+					<%= render '/users/mypage_mandalachart', center_text: @center_text, around_text: @around_text, element_text1: @element_text1, element_text2: @element_text2,
+					element_text3: @element_text3, element_text4: @element_text4, element_text5: @element_text5, element_text6: @element_text6, element_text7: @element_text7,
+					element_text8: @element_text8, element_text9: @element_text9, element_select: @element_select %>
+				<% end %>
+			</div>
+			<div class="row text-center margin-top margin-bottom">
+				<%= link_to "編集する", edit_mandala_path(@mandala_center.id), class: "button button-min button-white margin-right-min" %>
+				<% if @squares_overlooking == true %>
+					<%= link_to "3×3表示に戻す", user_path(current_user.id), class: "button button-min button-white" %>
+				<% else %>
+					<%= link_to "俯瞰図で見る", user_path(current_user.id, overlooking: true), class: "button button-min button-white" %>
+				<% end %>
+			</div>
 		</div>
 		<div class="col-md-6">
 			<h3 class="bg-light">TODOリスト</h3>
