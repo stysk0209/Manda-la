@@ -1,6 +1,6 @@
 class MandalasController < ApplicationController
 
-before_action :user_signed_in?, only:[:new, :create,]
+before_action :sign_in_auth, only:[:new, :create,]
 before_action :authenticate, only:[:edit, :update, :destroy]
 
   #GET / (root_path)
@@ -228,7 +228,7 @@ before_action :authenticate, only:[:edit, :update, :destroy]
     end
   end
 
-#---------------- Mandalaチャートcreateアクション用 ----------------#
+#---------------- 各認証チェックアクション ----------------#
 
 
    def authenticate #ログインしているか、マンダラチャートを作成済みかチェック
@@ -243,6 +243,7 @@ before_action :authenticate, only:[:edit, :update, :destroy]
     end
    end
 
+  #必要な行動をすべて入力済みかチェック(STEP3用)
   def activity_complete_auth(mandala)
     mandala.elements.each do |element|
       unless element.activities.present?
@@ -250,6 +251,13 @@ before_action :authenticate, only:[:edit, :update, :destroy]
       end
     end
     return true
+  end
+
+  #ログイン認証用
+  def sign_in_auth
+    unless user_signed_in?
+      redirect_to root_path
+    end
   end
 #-------------------- 以下ストロングパラメータの定義 --------------------#
 
