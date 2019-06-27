@@ -190,17 +190,23 @@ before_action :authenticate, only:[:edit, :update, :destroy]
 
   def create_step3
     mandala = Mandala.find_by(user_id: current_user.id, achieved: false)
-    if mandala.update(mandala_params)
-      redirect_to user_path(current_user.id)
+    unless activity_complete_auth(mandala) #必要な行動が入力されていないものがあるか判定
+      flash[:errors] = ["必要な行動が入力されていない要素があります。"]
+      redirect_to new_mandala_path(step:3)
     else
-      if request.path.include?(mandala_path(current_user.id))
-        redirect_to edit_mandala_path
+      if mandala.update(mandala_params)
+        redirect_to user_path(current_user.id)
       else
-        redirect_to new_mandala_path(step:3)
-        flash[:errors] = mandala.errors.full_messages
+        if request.path.include?(mandala_path(current_user.id))
+          redirect_to edit_mandala_path
+        else
+          redirect_to new_mandala_path(step:3)
+          flash[:errors] = mandala.errors.full_messages
+        end
       end
     end
   end
+
 
   def create_activity
     mandala = Mandala.find_by(user_id: current_user.id, achieved: false)
@@ -236,6 +242,15 @@ before_action :authenticate, only:[:edit, :update, :destroy]
       redirect_to root_path
     end
    end
+
+  def activity_complete_auth(mandala)
+    mandala.elements.each do |element|
+      unless element.activities.present?
+        return false
+      end
+    end
+    return true
+  end
 #-------------------- 以下ストロングパラメータの定義 --------------------#
 
   def mandala_params

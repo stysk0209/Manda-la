@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
 
+before_action :user_signed_in?
+
+  #GET /users/:id (user_path)
   def show
-    if @mandala = Mandala.find_by(user_id: current_user.id, achieved: false)
+    if @mandala = Mandala.find_by(user_id: current_user.id, achieved: false) #マンダラチャート作成済みかチェック
       @task_new = Task.new
       @tasks = Task.where(user_id: current_user.id, done: false)
       gon.step = 3 #jQuery分岐用
@@ -25,8 +28,15 @@ class UsersController < ApplicationController
         end
       end
     end
+    if params[:ajax]
+      render partial: 'users/mypage_mandalachart', locals: { center_text: @center_text, around_text: @around_text, element_text1: @element_text1,
+                                                              element_text2: @element_text2,element_text3: @element_text3, element_text4: @element_text4,
+                                                              element_text5: @element_text5, element_text6: @element_text6, element_text7: @element_text7,
+                                                              element_text8: @element_text8, element_text9: @element_text9, element_select: @element_select }, layout: false
+    end
   end
 
+  #GET /users/:id/graph (user_graph_path)
   def graph
     @mandala = Mandala.find_by(user_id: current_user.id, achieved: false)
     gon.element = @mandala.elements.pluck(:target) #グラフのラベル用
@@ -42,10 +52,12 @@ class UsersController < ApplicationController
     end
   end
 
+  #GET /users/:id/edit (edit_user_path)
   def edit
     @user = current_user
   end
 
+  #PACTH /users/:id (user_path)
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -55,6 +67,13 @@ class UsersController < ApplicationController
     end
   end
 
+
+
+
+
+  private
+
+#-------------------- viewに反映するテキスト処理 --------------------#
 
   def text_mandala
     @element_text1 = Element.find_by(mandala_id: @mandala_center.id, number: 1).target
@@ -69,19 +88,20 @@ class UsersController < ApplicationController
   end
 
   def text_element
+    @element_text5 = @mandala_center.target
+    if @mandala_center.activities.present?
       @element_text1 = Activity.find_by(element_id: @mandala_center.id, number: 1).target
       @element_text2 = Activity.find_by(element_id: @mandala_center.id, number: 2).target
       @element_text3 = Activity.find_by(element_id: @mandala_center.id, number: 3).target
       @element_text4 = Activity.find_by(element_id: @mandala_center.id, number: 4).target
-      @element_text5 = @mandala_center.target
       @element_text6 = Activity.find_by(element_id: @mandala_center.id, number: 5).target
       @element_text7 = Activity.find_by(element_id: @mandala_center.id, number: 6).target
       @element_text8 = Activity.find_by(element_id: @mandala_center.id, number: 7).target
       @element_text9 = Activity.find_by(element_id: @mandala_center.id, number: 8).target
+    end
   end
 
-
-  private
+#-------------------- 以下ストロングパラメータの記述 --------------------#
 
   def user_params
     params.require(:user).permit(:name, :email)

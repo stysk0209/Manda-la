@@ -17,6 +17,4 @@
 //= require cocoon
 //= require Chart.min
 //= require bootstrap-sprockets
-//= require bootstrap-datepicker
-//= require bootstrap-datepicker/locales/bootstrap-datepicker.ja.js
 // require_tree .
