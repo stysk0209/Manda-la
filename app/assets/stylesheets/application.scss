@@ -152,6 +152,10 @@ body {
 .gn-icon-graph::before {
 	content: '\f080'
 }
+.gn-icon-squares::before {
+	content: '\f00a'
+}
+
 @media screen and (max-width: 740px) {
 	.gn-menu-main .gn-icon {
 		font-size: 20px;
