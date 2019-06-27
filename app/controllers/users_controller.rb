@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
 
+before_action :user_signed_in?
+
+  #GET /users/:id (user_path)
   def show
-    if @mandala = Mandala.find_by(user_id: current_user.id, achieved: false)
+    if @mandala = Mandala.find_by(user_id: current_user.id, achieved: false) #マンダラチャート作成済みかチェック
       @task_new = Task.new
       @tasks = Task.where(user_id: current_user.id, done: false)
       gon.step = 3 #jQuery分岐用
@@ -33,6 +36,7 @@ class UsersController < ApplicationController
     end
   end
 
+  #GET /users/:id/graph (user_graph_path)
   def graph
     @mandala = Mandala.find_by(user_id: current_user.id, achieved: false)
     gon.element = @mandala.elements.pluck(:target) #グラフのラベル用
@@ -48,10 +52,12 @@ class UsersController < ApplicationController
     end
   end
 
+  #GET /users/:id/edit (edit_user_path)
   def edit
     @user = current_user
   end
 
+  #PACTH /users/:id (user_path)
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -61,6 +67,13 @@ class UsersController < ApplicationController
     end
   end
 
+
+
+
+
+  private
+
+#-------------------- viewに反映するテキスト処理 --------------------#
 
   def text_mandala
     @element_text1 = Element.find_by(mandala_id: @mandala_center.id, number: 1).target
@@ -88,8 +101,7 @@ class UsersController < ApplicationController
     end
   end
 
-
-  private
+#-------------------- 以下ストロングパラメータの記述 --------------------#
 
   def user_params
     params.require(:user).permit(:name, :email)
