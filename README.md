@@ -1,24 +1,33 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Manda-la
+「Manda-la」は、あなたの目標達成を支援するサイトです。  
+マンダラチャートを使用し、目標を達成するために必要な要素を洗い出すことで、  
+自分に必要なことは何なのだろう？という思考の整理をお手伝いします。  
 
-Things you may want to cover:
+# 環境
+・Ruby(2.3.8)  
+・Rails(5.2.3)
 
-* Ruby version
+# 使用方法
+1. 会員登録後、マイページに遷移し、マンダラチャートの新規作成ボタンをクリックします。
+2. 画面上の説明に従い、マンダラチャートの作成をします。
+3. マンダラチャートを作成後、以下の機能が使用可能となります。
+    * ***マンダラチャート閲覧機能***  
+      マイページにて、作成したマンダラチャートを閲覧できます。  
+      マンダラチャート下部にある、「俯瞰図でみる」をクリックすると、  
+      3×3マス表示から、9×9マス表示に切り替えて閲覧することが出来ます。  
+    * ***TODOリスト作成機能***  
+      マイページにて、TODOリストの作成をすることが出来ます。  
+      TODOリストの作成方法は、入力フォームから登録する方法と、マンダラチャートから登録する方法があります。  
+      マンダラチャートから登録する場合は、「マンダラチャートから追加」をクリックし、  
+      マンダラチャートの「必要な行動」をクリックすることでタスクに登録することができます。  
+      登録処理を終了する場合は、「マンダラチャートから追加」ボタン下部のメッセージBOXを閉じます。
+    * ***タスク達成度をグラフで見る機能***  
+      ヘッダーメニュー「マイぺージ」内の「タスク達成度」をクリックします。
+      TODOリストで完了されたタスクをもとに、グラフを表示します。  
+      要素別、週別でタスクの達成数を閲覧することができ、下部の「総計で表示する」をクリックすることで、  
+      タスク達成数の総計を閲覧することが出来ます。
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# ダウンロード
+このアプリケーションはGitHubにて公開されています。  
+    https://github.com/stysk0209/Manda-la
