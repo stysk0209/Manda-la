@@ -12,12 +12,38 @@
 		<h1>マンダラチャートを作成しよう!</h1>
 		<p><%= @main_text %></p>
 	</header>
-	<% if @step == 4 %>
+	<% if @step == 1 %>
 		<div class="info_field">
-			<p><i class="fas fa-info-circle"></i> Info</p>
+			<p><i class="fas fa-info-circle"></i> Information</p>
 			<p>
-				必ずしもすべての行動を入力する必要はありません。<br>
-				思いつく限り入力したら、保存してしまいましょう！
+				達成したい目標を入力してください。<br>
+				後で編集することもできます<br>
+			</p>
+		</div>
+	<% elsif @step == 2 %>
+		<div class="info_field">
+			<p><i class="fas fa-info-circle"></i> Information</p>
+			<p>
+				目標達成に必要な要素を入力してください。<br>
+				＜例＞<br>
+				目標：英語を話せるようになる<br>
+				要素：語彙力、リスニング力 etc...
+			</p>
+		</div>
+	<% elsif @step == 3 %>
+		<div class="info_field">
+			<p><i class="fas fa-info-circle"></i> Information</p>
+			<p>
+				各要素をクリックすると、行動入力画面に遷移します。<br>
+				遷移先では要素の編集をすることもできます。<br>
+			</p>
+		</div>
+	<% elsif @step == 4 %>
+		<div class="info_field">
+			<p><i class="fas fa-info-circle"></i> Information</p>
+			<p>
+				要素を実現するために必要な行動を入力してください。<br>
+				すべての行動を入力する必要はありません。<br>
 				(後から編集することが出来ます。)
 			</p>
 		</div>

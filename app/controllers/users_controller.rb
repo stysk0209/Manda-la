@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-before_action :sign_in_auth
+before_action :mandala_complete?, only:[:show, :graph ]
 
   #GET /users/:id (user_path)
   def show

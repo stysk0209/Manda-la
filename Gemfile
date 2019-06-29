@@ -75,7 +75,6 @@ gem 'jQuery-Validation-Engine-rails' #バリデーションチェック用
 gem 'rails-i18n' #日本語化
 gem 'gon'
 gem 'cocoon'
-gem 'bootstrap-datepicker-rails'
 gem 'momentjs-rails'
 
 # production環境用
