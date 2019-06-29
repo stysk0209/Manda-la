@@ -212,13 +212,13 @@ before_action :authenticate, only:[:edit, :update, :destroy]
     mandala = Mandala.find_by(user_id: current_user.id, achieved: false)
     element = Element.find_by(mandala_id: mandala.id, number: params[:element][:number].to_i )
     if element.update(element_params)
-      if request.path.include?(mandala_path(current_user.id)) #リクエストURLをチェック(mandala/:id/editから来たらtrue)
+      if request.path.include?(mandala_path(mandala.id)) #リクエストURLをチェック(mandala/:id/editから来たらtrue)
         redirect_to edit_mandala_path(mandala.id)
       else
         redirect_to new_mandala_path(step: 3)
       end
     else #update失敗時
-      if request.path.include?(mandala_path(current_user.id)) #リクエストURLをチェック(mandala/:id/editから来たらtrue)
+      if request.path.include?(mandala_path(mandala.id)) #リクエストURLをチェック(mandala/:id/editから来たらtrue)
         redirect_to edit_mandala_path(element_edit: params[:element][:number].to_i)
         flash[:errors] = element.errors.full_messages
       else
