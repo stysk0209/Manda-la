@@ -42,7 +42,7 @@ before_action :mandala_complete?, only:[:show, :graph ]
     gon.element = @mandala.elements.pluck(:target) #グラフのラベル用
     if params[:total] #総計表示
       gon.score_all = score_comp(@mandala)
-      gon.achieved_comp = achieved_comp #月ごとのタスク実行数
+      gon.achieved_comp = achieved_comp(@mandala) #月ごとのタスク実行数
     else
       @weekly = true
       gon.scores_this_week = score_this_week(@mandala) #今週のデータ
@@ -72,6 +72,82 @@ before_action :mandala_complete?, only:[:show, :graph ]
 
 
   private
+
+#-------------------- graph計算メソッド --------------------#
+
+  def score_this_week(mandala)
+    elements = mandala.elements.pluck(:id) # idを配列形式に
+    scores = {} #ハッシュ形式で保存する宣言
+    elements.each { |element| scores[element] = 0 } # { id => 0, id => 0,...}のハッシュ形式に
+    points = Point.where(element_id: elements)
+    this_week = points.on_this_week
+    this_week.each{ |key,value| scores[key] = value}
+
+    return scores.values
+  end
+
+  def score_last_week(mandala)
+    elements = mandala.elements.pluck(:id) # idを配列形式に
+    scores = {} #ハッシュ形式で保存する宣言
+    elements.each { |element| scores[element] = 0 } # { id => 0, id => 0,...}のハッシュ形式に
+    points = Point.where(element_id: elements)
+    last_week = points.on_last_week
+    last_week.each{ |key,value| scores[key] = value}
+
+    return scores.values
+  end
+
+  def achieved_this_week(mandala)
+    by_weekday = {0 => 0, 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0, 6 => 0} #曜日別タスク完了数を初期化
+    elements = mandala.elements.pluck(:id)
+    points = Point.where(element_id: elements)
+    this_week = points.this_week
+    by_date = this_week.group_by{|w| w.created_at.wday }
+    by_date.each{ |key, value| by_weekday[key] = value.count }
+
+    return by_weekday.values
+  end
+
+  def achieved_last_week(mandala)
+    by_weekday = {0 => 0, 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0, 6 => 0} #曜日別タスク完了数を初期化
+    elements = mandala.elements.pluck(:id)
+    points = Point.where(element_id: elements)
+    points_last_week = points.last_week
+    by_date = points_last_week.group_by{|u| u.created_at.wday }
+    by_date.each{ |key, value| by_weekday[key] = value.count }
+
+    return by_weekday.values
+  end
+
+  def score_comp(mandala)
+    elements = mandala.elements.pluck(:id) # idを配列形式に
+    points = Point.where(element_id: elements)
+    scores = {} #ハッシュ形式で保存する宣言
+    elements.each { |element| scores[element] = 0 } # { id => 0, id => 0,...}のハッシュ形式に
+    points_comp = points.element_points
+    points_comp.each{ |key,value| scores[key] = value}
+
+    return scores.values
+  end
+
+  def achieved_comp(mandala)
+    elements = mandala.elements.pluck(:id) # idを配列形式に
+    points = Point.where(element_id: elements)
+    hash = {}
+    6.times.map do |i|
+      hash.store((Date.today - i.months).mon, points.where(created_at: (Date.today - i.months).all_month) )
+    end
+    point_sum = hash.map do |key, value|
+          value.count
+    end
+    result = point_sum.map.with_index do | point,i |
+      point_sum[i..5].sum
+    end
+
+    return result.sort!
+  end
+
+
 
 #-------------------- viewに反映するテキスト処理 --------------------#
 
