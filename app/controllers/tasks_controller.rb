@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
 
-
+	#POST /tasks (tasks_path)
 	def create
 		@task_new = Task.new(task_params)
 		unless @task_new.save
@@ -14,6 +14,7 @@ class TasksController < ApplicationController
 		end
 	end
 
+	#GET /tasks/:id/done (task_done_path)
 	def done
 		task = Task.find(params[:id])
 		task.update(done: true)
@@ -24,6 +25,7 @@ class TasksController < ApplicationController
 	end
 
 
+	#DELETE /tasks/:id (task_path)
 	def destroy
 		task = Task.find(params[:id])
 		task.destroy

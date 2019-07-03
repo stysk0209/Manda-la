@@ -1,7 +1,8 @@
 class MandalasController < ApplicationController
 
-before_action :sign_in_auth, only:[:new, :create,]
-before_action :authenticate, only:[:edit, :update, :destroy]
+#mandala_complete?メソッドは、ほかのコントローラーと共通の処理のため、Aplication_Helperに記述
+before_action :sign_in_auth, only:[:new]
+before_action :mandala_complete?, only:[:edit]
 
   #GET / (root_path)
   def top
@@ -44,7 +45,7 @@ before_action :authenticate, only:[:edit, :update, :destroy]
     @mandala = Mandala.find_by(user_id: current_user, achieved: false)
     @main_title = "マンダラチャート編集"
     gon.form_edit = true
-    if params[:element_edit]
+    if params[:element_edit] #必要な行動編集画面へ
       gon.step ="el_edit"
       @step = "el_edit"
       @mandala_center = Element.find_by(mandala_id: @mandala.id, number: params[:element_edit].to_i)
@@ -63,7 +64,7 @@ before_action :authenticate, only:[:edit, :update, :destroy]
 
   #POST /mandala/:id (mandala_path)
   def update
-    if params[:step] == "el_edit"
+    if params[:step] == "el_edit" #必要な行動入力画面からPOSTされてきたら
       create_activity
     else
       create_step3
@@ -119,7 +120,7 @@ before_action :authenticate, only:[:edit, :update, :destroy]
     @mandala_center = Element.find_by(mandala_id: mandala.id, number: params[:element_edit].to_i)
     @main_text = "要素を実現するために必要な行動を入力していきましょう！"
     square_text2
-    if @mandala_center.activities.present?
+    if @mandala_center.activities.present? #すでに必要な行動が入力済みなら、テキスト情報をviewへ渡す
       element_activity_text
     end
     @mandala_center.activities.build
@@ -194,10 +195,10 @@ before_action :authenticate, only:[:edit, :update, :destroy]
       flash[:errors] = ["必要な行動が入力されていない要素があります。"]
       redirect_to new_mandala_path(step:3)
     else
-      if mandala.update(mandala_params)
+      if mandala.update(mandala_params) #例外処理
         redirect_to user_path(current_user.id)
       else
-        if request.path.include?(mandala_path(current_user.id))
+        if request.path.include?(mandala_path(mandala.id))
           redirect_to edit_mandala_path
         else
           redirect_to new_mandala_path(step:3)
@@ -212,13 +213,13 @@ before_action :authenticate, only:[:edit, :update, :destroy]
     mandala = Mandala.find_by(user_id: current_user.id, achieved: false)
     element = Element.find_by(mandala_id: mandala.id, number: params[:element][:number].to_i )
     if element.update(element_params)
-      if request.path.include?(mandala_path(current_user.id)) #リクエストURLをチェック(mandala/:id/editから来たらtrue)
+      if request.path.include?(mandala_path(mandala.id)) #リクエストURLをチェック(mandala/:id/editから来たらtrue)
         redirect_to edit_mandala_path(mandala.id)
       else
         redirect_to new_mandala_path(step: 3)
       end
     else #update失敗時
-      if request.path.include?(mandala_path(current_user.id)) #リクエストURLをチェック(mandala/:id/editから来たらtrue)
+      if request.path.include?(mandala_path(mandala.id)) #リクエストURLをチェック(mandala/:id/editから来たらtrue)
         redirect_to edit_mandala_path(element_edit: params[:element][:number].to_i)
         flash[:errors] = element.errors.full_messages
       else
@@ -229,19 +230,6 @@ before_action :authenticate, only:[:edit, :update, :destroy]
   end
 
 #---------------- 各認証チェックアクション ----------------#
-
-
-   def authenticate #ログインしているか、マンダラチャートを作成済みかチェック
-    if user_signed_in?
-      if Mandala.find_by(user_id: current_user.id, achieved: false)
-        #認証OK、各アクションへ
-      else
-        redirect_to user_path(current_user.id)
-      end
-    else
-      redirect_to root_path
-    end
-   end
 
   #必要な行動をすべて入力済みかチェック(STEP3用)
   def activity_complete_auth(mandala)

@@ -12,8 +12,7 @@ $(function() {
 		$('#element1,#element2,#element3,#element4,#element5,#element6,#element7,#element8').removeClass('el_select');
 		$('#element1,#element2,#element3,#element4,#element5,#element6,#element7,#element8').addClass('task_select');
 		$('#element_center').addClass('el_select_center');
-	} else { // (gon.step == "element_overlooking")
-	}
+	} // (gon.step == "element_overlooking")
 
 
 	// モーダルを開く

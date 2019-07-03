@@ -12,7 +12,6 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap-datepicker3
  */
 
 @import "bootstrap-sprockets";
@@ -21,8 +20,7 @@
 body {
 	font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro",
 				 メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-	background-image: url('/images/light-patterns.jpg')
-	// color: white;
+	background-image: url('/images/bg.jpg');
 }
 
 *,

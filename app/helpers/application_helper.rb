@@ -1,6 +1,5 @@
 module ApplicationHelper
 
-
 # No Method Error undefined local variable or method `resource'の対応で記述
 	def resource_name
 		:user

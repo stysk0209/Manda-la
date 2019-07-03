@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-# develop環境 => 2.5.5
-# production環境 => 2.3.8
 ruby '2.3.8'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -75,7 +73,6 @@ gem 'jQuery-Validation-Engine-rails' #バリデーションチェック用
 gem 'rails-i18n' #日本語化
 gem 'gon'
 gem 'cocoon'
-gem 'bootstrap-datepicker-rails'
 gem 'momentjs-rails'
 
 # production環境用
