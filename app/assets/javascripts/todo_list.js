@@ -3,6 +3,7 @@ $(function() {
     // マンダラチャートからTODOリストを追加する処理
     $('#btnAdd_chart').on('click', function () {
         $('#add_task_messages').show();
+        $(document).off('click', '.task_select')
         $(document).on('click', '.task_select', function() {
             $.ajax({
                 url: "/tasks",

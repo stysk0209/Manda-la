@@ -26,21 +26,12 @@
 /* 見出しデザイン用 */
 .container-main h3 {
     position: relative;
-    width: 30rem;
-    background: #f1f8ff;
-    padding: 0.25em 0.5em;
-    border-left: solid 2em #5c9ee7;
-}
-
-.container-main h3:before {
-    position: absolute;
-    padding: 0em;
-    color: white;
-    font-weight: normal;
-    left: -1.35em;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
+    width: 36rem;
+    line-height: 30px;
+    background-image: url(/images/midashi2.png);
+    background-size: cover;
+    padding: 0.5em 0.8em;
+    color: #2f4f4f;
 }
 
 

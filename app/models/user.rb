@@ -10,7 +10,7 @@ class User < ApplicationRecord
 	accepts_nested_attributes_for :mandalas, allow_destroy: true
 
 	validates :name,		presence: true,
-							length: { maximum: 20 }
+							length: { maximum: 10 }
 	validates :email,		presence: true,
 							length: { maximum: 20 }
 	validates :email,		presence: true,

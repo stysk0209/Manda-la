@@ -1,6 +1,0 @@
-<%= binding.pry %>
-<% if params[:radar_comp] %>
-	$('#radar_field').html('<%= j(render partial: 'users/radar_comp') %>');
-<% else %>
-	$('#radar_field').html('<%= j(render partial: 'users/radar_weekly') %>');
-<% end %>

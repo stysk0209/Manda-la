@@ -53,7 +53,7 @@
 		<% end %>
 
 		<div class="field cp_iptxt">
-			<%= f.text_field :name, placeholder: "名前", autofocus: true, autocomplete: "name", class: "name", :size => "" %>
+			<%= f.text_field :name, placeholder: "名前(10文字以内)", autofocus: true, autocomplete: "name", class: "name", :size => "" %>
 			<i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
 		</div>
 
@@ -66,12 +66,12 @@
 			<% if @minimum_password_length %>
 				<em>(<%= @minimum_password_length %> characters minimum)</em>
 			<% end %>
-			<%= f.password_field :password, placeholder: "パスワード", autocomplete: "new-password", class: "password" %>
+			<%= f.password_field :password, placeholder: "パスワード(6文字以上)", autocomplete: "new-password", class: "password" %>
 			<i class="fas fa-unlock-alt fa-lg fa-fw" aria-hidden="true"></i>
 		</div>
 
 		<div class="field cp_iptxt">
-			<%= f.password_field :password_confirmation, placeholder: "パスワード確認", autocomplete: "new-password", class: "password_confirm" %>
+			<%= f.password_field :password_confirmation, placeholder: "パスワード確認(6文字以上)", autocomplete: "new-password", class: "password_confirm" %>
 			<i class="fas fa-unlock-alt fa-lg fa-fw" aria-hidden="true"></i>
 		</div>
 
@@ -96,7 +96,7 @@
 			</div>
 
 			<div class="field cp_iptxt">
-				<%= f.password_field :password, placeholder: "パスワード", autocomplete: "current-password", class: "password" %>
+				<%= f.password_field :password, placeholder: "パスワード(6文字以上)", autocomplete: "current-password", class: "password" %>
 				<i class="fas fa-unlock-alt fa-lg fa-fw" aria-hidden="true"></i>
 			</div>
 

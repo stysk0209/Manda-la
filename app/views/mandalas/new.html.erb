@@ -1,29 +1,29 @@
 
 <div class="container-main">
 	<header class="text-center">
-		<div class="error_message_area">
-			<% if flash[:errors] %>
-				<span>エラー発生:</span>
-				<% flash[:errors].each do |message| %>
-					<span><%= message %></span>
-				<% end %>
-			<% end %>
-		</div>
 		<h1>マンダラチャートを作成しよう!</h1>
 		<p><%= @main_text %></p>
 	</header>
+	<div class="error_message_area text-center">
+		<% if flash[:errors] %>
+			<span>エラー発生:</span>
+			<% flash[:errors].each do |message| %>
+				<span><%= message %></span>
+			<% end %>
+		<% end %>
+	</div>
 	<% if @step == 1 %>
 		<div class="info_field">
-			<p><i class="fas fa-info-circle"></i> Information</p>
-			<p>
+			<p class="info_title"><i class="fas fa-info-circle"></i> Information</p>
+			<p class="info_text">
 				達成したい目標を入力してください。<br>
 				後で編集することもできます<br>
 			</p>
 		</div>
 	<% elsif @step == 2 %>
 		<div class="info_field">
-			<p><i class="fas fa-info-circle"></i> Information</p>
-			<p>
+			<p class="info_title"><i class="fas fa-info-circle"></i> Information</p>
+			<p class="info_text">
 				目標達成に必要な要素を入力してください。<br>
 				＜例＞<br>
 				目標：英語を話せるようになる<br>
@@ -32,18 +32,22 @@
 		</div>
 	<% elsif @step == 3 %>
 		<div class="info_field">
-			<p><i class="fas fa-info-circle"></i> Information</p>
-			<p>
-				各要素をクリックすると、行動入力画面に遷移します。<br>
-				遷移先では要素の編集をすることもできます。<br>
+			<p class="info_title"><i class="fas fa-info-circle"></i> Information</p>
+			<p class="info_text">
+				各要素をクリックすると、<br>
+				行動入力画面に遷移します。<br>
+				遷移先では要素の編集をすることも<br>
+				できます。<br>
 			</p>
 		</div>
 	<% elsif @step == 4 %>
 		<div class="info_field">
-			<p><i class="fas fa-info-circle"></i> Information</p>
-			<p>
-				要素を実現するために必要な行動を入力してください。<br>
-				すべての行動を入力する必要はありません。<br>
+			<p class="info_title"><i class="fas fa-info-circle"></i> Information</p>
+			<p class="info_text">
+				要素を実現するために必要な行動を<br>
+				入力してください。<br>
+				すべての行動を入力する必要は<br>
+				ありません。<br>
 				(後から編集することが出来ます。)
 			</p>
 		</div>

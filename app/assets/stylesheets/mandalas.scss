@@ -150,16 +150,7 @@
 .mp_ol_squares:hover {
 	background-color: rgba(204, 204, 204, 0.75);
 }
-@media screen and (max-width: 1025px) {
-	.squares {
-		width: 20%;
-	}
-}
-@media screen and (max-width: 740px) {
-	.squares {
-		width: 30%;
-	}
-}
+
 .squares:before {
 	content: "";
 	display: block;
@@ -198,19 +189,28 @@
 }
 .info_field {
 	position: absolute;
-	top: 25rem;
+	top: 20vw;
 	left: 1vw;
 	width: 25vw;
-	height: 10vw;
-	background-color: #5dbede;
-	border-radius : 10px;
+	height: 17vw;
+	background-image: url(/images/husen.png);
+	background-size: cover;
+
+	.info_title {
+		color: #777777;
+		font-size: 2vw;
+		margin-left: 5.4vw;
+		margin-top: 2.5vw;
+	}
+
+	.info_text {
+		color: #777777;
+		font-size: 1.2vw;
+		margin-left: 1.5vw;
+		margin-top: 2vw;
+	}
 }
-.info_field p {
-	color: #777777;
-	font-size: 0.96vw;
-	margin-left: 0.4vw;
-	margin-top: 1rem;
-}
+
 /* マンダラチャート 入力フォーム用*/
 #input-modal {
 	color: #34495e;
@@ -234,7 +234,7 @@
 }
 .container-main > header {
 	margin: 0 auto;
-	width: 100%;
+	width: 102%;
 	height: 30vh;
 	background: rgba(0,0,0,0.1);
 }
@@ -246,55 +246,26 @@
 .container-main > header > h2 {
 	position: absolute;
 	left: 1vw;
-	top: 4vw;
-	color: #fff;
+	top: 6vh;
+	color: #000;
+	font-size: 1.5rem;
 	padding: 8px 8px 8px 12px;
 }
-.container-main > header h2:before {
-	content:  '';
-	background-color: #b3b3b3;
-	display:  block;
-	position:  absolute;
-	left: 10%;
-	height: 60%;
-	top: 36%;
-	z-index:  -1;
-	width: 80%;
-	box-shadow: 0 0 8px 8px #b3b3b3;
-}
+
 .container-main > header h1 {
-	margin: 15vh 0;
+	margin: 6vw 0;
+	width: 42%;
 	position:  relative;
 	font-weight:  normal;
 	display:  inline-block;
-	background-color: #feeaac;
-	padding:  10px;
+	background-image: url(/images/midashi.png);
+	background-size: cover;
+	padding:  18px;
 	margin-bottom: 15px;
 	border-radius:  2px;
 	font-size: 2vw;
 }
-.container-main > header h1:before {
-	content:  '';
-	background-color: #b3b3b3;
-	display:  block;
-	position:  absolute;
-	left: 50%;
-	height: 60%;
-	top: 26%;
-	z-index:  -1;
-	width: 46%;
-	box-shadow: 0 0 8px 8px #b3b3b3;
-	transform: rotate(3deg);
-}
 
-@media screen and (max-width: 1025px) {
-	.container-main > header {
-		margin: 0 auto;
-		padding: 120px 50px;
-		font-size: 70%;
-		text-align: right;
-	}
-}
 
 #delete_field {
     display: none;
@@ -309,4 +280,28 @@
 }
 .delete_link {
 	padding-top: 3rem;
+}
+
+@media screen and (max-width: 1025px) {
+	.container-main > header {
+		text-align: right;
+		height: 34vw;
+	}
+	.info_field {
+		top: 15vw;
+	}
+	.squares {
+		width: 30%;
+	}
+	.container-main > header h1 {
+		margin-top: 21vw;
+	}
+	#input-modal {
+		width: 98%;
+		height: 30vw;
+	}
+	#modal1, #modal2 {
+		width: 98%;
+	}
+
 }

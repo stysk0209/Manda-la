@@ -5,10 +5,10 @@
 				<p class="element_title"><%= around_text %></p>
 			</div>
 			<div class="box-body">
-				<p class="text"><%= element_text1 %></p>
+				<p class="text"><%= element1.target %></p>
 			</div>
-			<% if element_select && element_text1 %>
-				<%= hidden_field_tag :element_id, Activity.find_by(target: element_text1).element_id %>
+			<% if element_select && element1 %>
+				<%= hidden_field_tag :element_id, element1.element_id %>
 				<%= hidden_field_tag :user_id, current_user.id %>
 			<% end %>
 		</div>
@@ -19,10 +19,10 @@
 				<p class="element_title"><%= around_text %></p>
 			</div>
 			<div class="box-body">
-				<p class="text"><%= element_text2 %></p>
+				<p class="text"><%= element2.target %></p>
 			</div>
-			<%if element_select && element_text2 %>
-				<%= hidden_field_tag :element_id, Activity.find_by(target: element_text2).element_id %>
+			<%if element_select && element2 %>
+				<%= hidden_field_tag :element_id, element2.element_id %>
 				<%= hidden_field_tag :user_id, current_user.id %>
 			<% end %>
 		</div>
@@ -33,10 +33,10 @@
 				<p class="element_title"><%= around_text %></p>
 			</div>
 			<div class="box-body">
-				<p class="text"><%= element_text3 %></p>
+				<p class="text"><%= element3.target %></p>
 			</div>
-			<%if element_select && element_text3 %>
-				<%= hidden_field_tag :element_id, Activity.find_by(target: element_text3).element_id %>
+			<%if element_select && element3 %>
+				<%= hidden_field_tag :element_id, element3.element_id %>
 				<%= hidden_field_tag :user_id, current_user.id %>
 			<% end %>
 		</div>
@@ -49,10 +49,10 @@
 				<p class="element_title"><%= around_text %></p>
 			</div>
 			<div class="box-body">
-				<p class="text"><%= element_text4 %></p>
+				<p class="text"><%= element4.target %></p>
 			</div>
-			<%if element_select && element_text4 %>
-				<%= hidden_field_tag :element_id, Activity.find_by(target: element_text4).element_id %>
+			<%if element_select && element4 %>
+				<%= hidden_field_tag :element_id, element4.element_id %>
 				<%= hidden_field_tag :user_id, current_user.id %>
 			<% end %>
 		</div>
@@ -63,7 +63,7 @@
 				<p class="element_title"><%= center_text %></p>
 			</div>
 			<div class="box-body">
-				<p class="text"><%= element_text5 %></p>
+				<p class="text"><%= element5.target %></p>
 			</div>
 		</div>
 	</div>
@@ -73,10 +73,10 @@
 				<p class="element_title"><%= around_text %></p>
 			</div>
 			<div class="box-body">
-				<p class="text"><%= element_text6 %></p>
+				<p class="text"><%= element6.target %></p>
 			</div>
-			<%if element_select && element_text6 %>
-				<%= hidden_field_tag :element_id, Activity.find_by(target: element_text6).element_id %>
+			<%if element_select && element6 %>
+				<%= hidden_field_tag :element_id, element6.element_id %>
 				<%= hidden_field_tag :user_id, current_user.id %>
 			<% end %>
 		</div>
@@ -89,10 +89,10 @@
 				<p class="element_title"><%= around_text %></p>
 			</div>
 			<div class="box-body">
-				<p class="text"><%= element_text7 %></p>
+				<p class="text"><%= element7.target %></p>
 			</div>
-			<%if element_select && element_text7 %>
-				<%= hidden_field_tag :element_id, Activity.find_by(target: element_text7).element_id %>
+			<%if element_select && element7 %>
+				<%= hidden_field_tag :element_id, element7.element_id %>
 				<%= hidden_field_tag :user_id, current_user.id %>
 			<% end %>
 		</div>
@@ -103,10 +103,10 @@
 				<p class="element_title"><%= around_text %></p>
 			</div>
 			<div class="box-body">
-				<p class="text"><%= element_text8 %></p>
+				<p class="text"><%= element8.target %></p>
 			</div>
-			<%if element_select && element_text8 %>
-				<%= hidden_field_tag :element_id, Activity.find_by(target: element_text8).element_id %>
+			<%if element_select && element8 %>
+				<%= hidden_field_tag :element_id, element8.element_id %>
 				<%= hidden_field_tag :user_id, current_user.id %>
 			<% end %>
 		</div>
@@ -117,10 +117,10 @@
 				<p class="element_title"><%= around_text %></p>
 			</div>
 			<div class="box-body">
-				<p class="text"><%= element_text9 %></p>
+				<p class="text"><%= element9.target %></p>
 			</div>
-			<%if element_select && element_text9 %>
-				<%= hidden_field_tag :element_id, Activity.find_by(target: element_text9).element_id %>
+			<%if element_select && element9 %>
+				<%= hidden_field_tag :element_id, element9.element_id %>
 				<%= hidden_field_tag :user_id, current_user.id %>
 			<% end %>
 		</div>

@@ -29,10 +29,10 @@ before_action :mandala_complete?, only:[:show, :graph ]
       end
     end
     if params[:ajax]
-      render partial: 'users/mypage_mandalachart', locals: { center_text: @center_text, around_text: @around_text, element_text1: @element_text1,
-                                                              element_text2: @element_text2,element_text3: @element_text3, element_text4: @element_text4,
-                                                              element_text5: @element_text5, element_text6: @element_text6, element_text7: @element_text7,
-                                                              element_text8: @element_text8, element_text9: @element_text9, element_select: @element_select }, layout: false
+      render partial: 'users/mypage_mandalachart', locals: { center_text: @center_text, around_text: @around_text, element1: @element1,
+                                                              element2: @element2,element3: @element3, element4: @element4,
+                                                              element5: @element5, element6: @element6, element7: @element7,
+                                                              element8: @element8, element9: @element9, element_select: @element_select }, layout: false
     end
   end
 
@@ -135,15 +135,11 @@ before_action :mandala_complete?, only:[:show, :graph ]
     points = Point.where(element_id: elements)
     hash = {}
     6.times.map do |i|
-      hash.store((Date.today - i.months).mon, points.where(created_at: (Date.today - i.months).all_month) )
+      hash.store((Date.today - i.months).mon, points.where.not(created_at: (Date.today - i.months).next_month.beginning_of_month..Float::INFINITY ))
     end
-    point_sum = hash.map do |key, value|
-          value.count
+    result = hash.map do |key,value|
+      value.count
     end
-    result = point_sum.map.with_index do | point,i |
-      point_sum[i..5].sum
-    end
-
     return result.sort!
   end
 
@@ -152,28 +148,28 @@ before_action :mandala_complete?, only:[:show, :graph ]
 #-------------------- viewに反映するテキスト処理 --------------------#
 
   def text_mandala
-    @element_text1 = Element.find_by(mandala_id: @mandala_center.id, number: 1).target
-    @element_text2 = Element.find_by(mandala_id: @mandala_center.id, number: 2).target
-    @element_text3 = Element.find_by(mandala_id: @mandala_center.id, number: 3).target
-    @element_text4 = Element.find_by(mandala_id: @mandala_center.id, number: 4).target
-    @element_text5 = @mandala_center.target
-    @element_text6 = Element.find_by(mandala_id: @mandala_center.id, number: 5).target
-    @element_text7 = Element.find_by(mandala_id: @mandala_center.id, number: 6).target
-    @element_text8 = Element.find_by(mandala_id: @mandala_center.id, number: 7).target
-    @element_text9 = Element.find_by(mandala_id: @mandala_center.id, number: 8).target
+    @element1 = Element.find_by(mandala_id: @mandala_center.id, number: 1)
+    @element2 = Element.find_by(mandala_id: @mandala_center.id, number: 2)
+    @element3 = Element.find_by(mandala_id: @mandala_center.id, number: 3)
+    @element4 = Element.find_by(mandala_id: @mandala_center.id, number: 4)
+    @element5 = @mandala_center
+    @element6 = Element.find_by(mandala_id: @mandala_center.id, number: 5)
+    @element7 = Element.find_by(mandala_id: @mandala_center.id, number: 6)
+    @element8 = Element.find_by(mandala_id: @mandala_center.id, number: 7)
+    @element9 = Element.find_by(mandala_id: @mandala_center.id, number: 8)
   end
 
   def text_element
-    @element_text5 = @mandala_center.target
+    @element5 = @mandala_center
     if @mandala_center.activities.present?
-      @element_text1 = Activity.find_by(element_id: @mandala_center.id, number: 1).target
-      @element_text2 = Activity.find_by(element_id: @mandala_center.id, number: 2).target
-      @element_text3 = Activity.find_by(element_id: @mandala_center.id, number: 3).target
-      @element_text4 = Activity.find_by(element_id: @mandala_center.id, number: 4).target
-      @element_text6 = Activity.find_by(element_id: @mandala_center.id, number: 5).target
-      @element_text7 = Activity.find_by(element_id: @mandala_center.id, number: 6).target
-      @element_text8 = Activity.find_by(element_id: @mandala_center.id, number: 7).target
-      @element_text9 = Activity.find_by(element_id: @mandala_center.id, number: 8).target
+      @element1 = Activity.find_by(element_id: @mandala_center.id, number: 1)
+      @element2 = Activity.find_by(element_id: @mandala_center.id, number: 2)
+      @element3 = Activity.find_by(element_id: @mandala_center.id, number: 3)
+      @element4 = Activity.find_by(element_id: @mandala_center.id, number: 4)
+      @element6 = Activity.find_by(element_id: @mandala_center.id, number: 5)
+      @element7 = Activity.find_by(element_id: @mandala_center.id, number: 6)
+      @element8 = Activity.find_by(element_id: @mandala_center.id, number: 7)
+      @element9 = Activity.find_by(element_id: @mandala_center.id, number: 8)
     end
   end
 

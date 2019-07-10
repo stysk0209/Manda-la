@@ -1,0 +1,208 @@
+@charset "UTF-8";
+/* -- Mandalaチャート用のCSSは、[mandalas.css]での記述が適用しています -- */
+/* line 11, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.mp_header_text {
+  margin-top: 10rem;
+  margin-bottom: 4rem;
+}
+
+/* マンダラチャート未作成時の表示レイアウト */
+/* line 17, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.mandala_not_created {
+  width: 100%;
+}
+
+/* line 20, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.mandala_not_created p {
+  font-size: 2vw;
+  padding-top: 2vw;
+  padding-bottom: 4vw;
+}
+
+/* 見出しデザイン用 */
+/* line 28, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.container-main h3 {
+  position: relative;
+  width: 36rem;
+  line-height: 30px;
+  background-image: url(/images/midashi2.png);
+  background-size: cover;
+  padding: 0.5em 0.8em;
+  color: #2f4f4f;
+}
+
+/* ---- チャートレイアウト用 ---- */
+/* line 40, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.mp_squares {
+  position: relative;
+  width: 22%;
+  height: auto;
+  display: inline-block;
+  color: #5f6f81;
+  border: 1px solid rgba(95, 111, 129, 0.2);
+  cursor: pointer;
+}
+
+/* line 49, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.mp_squares:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+/* line 54, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.mp_ol_squares {
+  position: relative;
+  width: 31%;
+  height: auto;
+  display: inline-block;
+  color: #5f6f81;
+  border: 1px solid rgba(95, 111, 129, 0.2);
+  cursor: pointer;
+}
+
+/* line 63, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.mp_ol_squares:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+/* line 68, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.edit_btn {
+  margin-top: 2rem;
+}
+
+/* ---- TODOリスト用 ---- */
+/* line 73, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.select_box {
+  overflow: hidden;
+  width: 90%;
+  text-align: center;
+}
+
+/* line 78, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.select_box select {
+  width: 100%;
+  padding-right: 1em;
+  cursor: pointer;
+  text-indent: 0.01px;
+  text-overflow: ellipsis;
+  border: none;
+  outline: none;
+  background: transparent;
+  background-image: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* line 92, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.select_box select::-ms-expand {
+  display: none;
+}
+
+/* line 95, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.select_box {
+  position: relative;
+  border: 1px solid #bbbbbb;
+  border-radius: 2px;
+  background: #ffffff;
+}
+
+/* line 101, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.select_box::before {
+  position: absolute;
+  top: 0.8em;
+  right: 0.9em;
+  width: 0;
+  height: 0;
+  padding: 0;
+  content: '';
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #666666;
+  pointer-events: none;
+}
+
+/* line 114, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.select_box select {
+  padding: 6px 38px 6px 6px;
+  color: #666666;
+}
+
+/* line 118, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+#btnAdd_chart {
+  margin-left: 15px;
+}
+
+/* line 121, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+#btnAdd {
+  margin-right: 15px;
+}
+
+/* line 124, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.task_content {
+  background-color: #fff;
+}
+
+/* line 127, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.alert {
+  margin-top: 1vw;
+}
+
+/* line 130, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.alert p {
+  margin: 0;
+}
+
+/* line 133, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+#alert_close {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* line 137, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+#add_task_messages {
+  display: none;
+}
+
+/* グラフ画面レイアウト用 */
+/* line 142, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.graph_right {
+  margin-top: 5rem;
+}
+
+/* line 145, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.link_field > .button {
+  width: 100%;
+}
+
+/* ユーザ情報編集ページ用 */
+/* line 150, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.edit_label {
+  position: absolute;
+  left: 0;
+  top: -2rem;
+}
+
+/* line 155, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.error_messages {
+  position: relative;
+  top: 40%;
+}
+
+/* line 159, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+.withdraw {
+  cursor: pointer;
+}
+
+/* line 162, /vagrant/Manda-la/app/assets/stylesheets/users.scss */
+#withdraw_field {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  width: 40%;
+  padding: 2rem;
+  background-color: #fff;
+}

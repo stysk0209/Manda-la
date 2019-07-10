@@ -14,17 +14,17 @@
 					<%= render '/users/mandala_overlooking', mandala_center: @mandala %>
 				<% else %>
 					<!-- マンダラチャートを 9マスで表示 -->
-					<%= render '/users/mypage_mandalachart', center_text: @center_text, around_text: @around_text, element_text1: @element_text1, element_text2: @element_text2,
-					element_text3: @element_text3, element_text4: @element_text4, element_text5: @element_text5, element_text6: @element_text6, element_text7: @element_text7,
-					element_text8: @element_text8, element_text9: @element_text9, element_select: @element_select %>
+					<%= render '/users/mypage_mandalachart', center_text: @center_text, around_text: @around_text, element1: @element1, element2: @element2,
+					element3: @element3, element4: @element4, element5: @element5, element6: @element6, element7: @element7,
+					element8: @element8, element9: @element9, element_select: @element_select %>
 				<% end %>
 			</div>
 			<div class="row text-center margin-top margin-bottom">
-				<%= link_to "編集する", edit_mandala_path(@mandala_center.id), class: "button button-min button-white margin-right-min" %>
+				<%= link_to "編集する", edit_mandala_path(@mandala_center.id), class: "button button-min button-blue margin-right-min" %>
 				<% if @squares_overlooking == true %>
-					<%= link_to "3×3表示に戻す", user_path(current_user.id), class: "button button-min button-white" %>
+					<%= link_to "3×3表示に戻す", user_path(current_user.id), class: "button button-min button-blue" %>
 				<% else %>
-					<%= link_to "俯瞰図で見る", user_path(current_user.id, overlooking: true), class: "button button-min button-white" %>
+					<%= link_to "俯瞰図で見る", user_path(current_user.id, overlooking: true), class: "button button-min button-blue" %>
 				<% end %>
 			</div>
 		</div>
