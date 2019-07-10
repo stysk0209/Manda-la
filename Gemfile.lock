@@ -53,8 +53,6 @@ GEM
     bindex (0.7.0)
     bootsnap (1.4.4)
       msgpack (~> 1.0)
-    bootstrap-datepicker-rails (1.8.0.1)
-      railties (>= 3.0)
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
@@ -75,7 +73,6 @@ GEM
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
-    cocoon (1.2.14)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -105,7 +102,6 @@ GEM
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
-    jQuery-Validation-Engine-rails (0.0.2)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
     jquery-rails (4.3.5)
@@ -266,17 +262,14 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.1.0)
-  bootstrap-datepicker-rails
   bootstrap-sass
   byebug
   capybara (>= 2.15)
   chart-js-rails
   chromedriver-helper
-  cocoon
   coffee-rails (~> 4.2)
   devise
   gon
-  jQuery-Validation-Engine-rails
   jbuilder (~> 2.5)
   jquery-rails
   momentjs-rails

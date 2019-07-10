@@ -14,7 +14,6 @@
 //= require rails-ujs
 //= require activestorage
 // require turbolinks
-//= require cocoon
 //= require Chart.min
 //= require bootstrap-sprockets
 // require_tree .
