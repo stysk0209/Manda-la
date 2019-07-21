@@ -2,11 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-
-
-/* -- Mandalaチャート用のCSSは、[mandalas.css]での記述が適用しています -- */
-
 .mp_header_text {
 	margin-top: 10rem;
 	margin-bottom: 4rem;
@@ -15,23 +10,25 @@
 /* マンダラチャート未作成時の表示レイアウト */
 .mandala_not_created {
     width: 100%;
-}
-.mandala_not_created p {
-    font-size: 2vw;
-    padding-top: 2vw;
-    padding-bottom: 4vw;
-}
 
+    p {
+        font-size: 2vw;
+        padding-top: 2vw;
+        padding-bottom: 4vw;
+    }
+}
 
 /* 見出しデザイン用 */
-.container-main h3 {
-    position: relative;
-    width: 36rem;
-    line-height: 30px;
-    background-image: url(/images/midashi2.png);
-    background-size: cover;
-    padding: 0.5em 0.8em;
-    color: #2f4f4f;
+.container-main {
+    h3 {
+        position: relative;
+        width: 36rem;
+        line-height: 30px;
+        background-image: url(/images/midashi2.png);
+        background-size: cover;
+        padding: 0.5em 0.8em;
+        color: #2f4f4f;
+    }
 }
 
 
@@ -44,12 +41,14 @@
     color: #5f6f81;
     border: 1px solid rgba(95, 111, 129, 0.2);
     cursor: pointer;
+
+    &:before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+    }
 }
-.mp_squares:before {
-	content: "";
-	display: block;
-	padding-top: 100%;
-}
+
 .mp_ol_squares {
     position: relative;
     width: 31%;
@@ -58,12 +57,14 @@
     color: #5f6f81;
     border: 1px solid rgba(95, 111, 129, 0.2);
     cursor: pointer;
+
+    &:before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+    }
 }
-.mp_ol_squares:before {
-	content: "";
-	display: block;
-	padding-top: 100%;
-}
+
 .edit_btn {
 	margin-top: 2rem;
 }
@@ -73,47 +74,45 @@
     overflow: hidden;
     width: 90%;
     text-align: center;
-}
-.select_box select {
-    width: 100%;
-    padding-right: 1em;
-    cursor: pointer;
-    text-indent: 0.01px;
-    text-overflow: ellipsis;
-    border: none;
-    outline: none;
-    background: transparent;
-    background-image: none;
-    box-shadow: none;
-    -webkit-appearance: none;
-    appearance: none;
-}
-.select_box select::-ms-expand {
-    display: none;
-}
-.select_box {
     position: relative;
     border: 1px solid #bbbbbb;
     border-radius: 2px;
     background: #ffffff;
+
+    select {
+        width: 100%;
+        padding: 6px 38px 6px 6px;
+        color: #666666;
+        cursor: pointer;
+        text-indent: 0.01px;
+        text-overflow: ellipsis;
+        border: none;
+        outline: none;
+        background: transparent;
+        background-image: none;
+        box-shadow: none;
+        -webkit-appearance: none; //プルダウン矢印非表示
+        appearance: none;
+
+        select:-ms-expand { //IEでのプルダウンの矢印を非表示
+            display: none;
+        }
+    }
+    &:before {
+        position: absolute;
+        top: 0.8em;
+        right: 0.9em;
+        width: 0;
+        height: 0;
+        padding: 0;
+        content: '';
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid #666666;
+        pointer-events: none;
+    }
 }
-.select_box::before {
-    position: absolute;
-    top: 0.8em;
-    right: 0.9em;
-    width: 0;
-    height: 0;
-    padding: 0;
-    content: '';
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 6px solid #666666;
-    pointer-events: none;
-}
-.select_box select {
-    padding: 6px 38px 6px 6px;
-    color: #666666;
-}
+
 #btnAdd_chart {
     margin-left: 15px;
 }
@@ -125,10 +124,12 @@
 }
 .alert {
     margin-top: 1vw;
+
+    p {
+        margin: 0;
+    }
 }
-.alert p {
-    margin: 0;
-}
+
 #alert_close {
     font-size: 2rem;
     cursor: pointer;
@@ -165,4 +166,10 @@
     width: 40%;
     padding: 2rem;
     background-color: #fff;
+}
+
+@media screen and (max-width: 740px) {
+    #withdraw_field {
+        width: 96%;
+    }
 }
