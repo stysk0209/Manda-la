@@ -23,6 +23,11 @@ $(function() {
 					colorschemes: {
 						scheme: 'brewer.RdYlGn8'
 					}
+				},
+				scale: {
+					ticks: {
+						min: 0
+					}
 				}
 			}
 		});
@@ -68,6 +73,11 @@ $(function() {
 				plugins: {
 					colorschemes: {
 						scheme: 'brewer.RdYlGn8'
+					}
+				},
+				scale: {
+					ticks: {
+						min: 0
 					}
 				}
 			}
